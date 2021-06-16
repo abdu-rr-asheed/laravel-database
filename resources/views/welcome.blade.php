@@ -11,10 +11,12 @@
             href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap"
             rel="stylesheet"
         />
-        <title>E-learning</title>
+        <title>E-learning 2</title>
         <link rel="stylesheet" href="./css/app.css" />
+        <<link rel="icon" href="{{ URL::asset('logo.png') }}" type="image/x-icon"/>
+        <!-- <link rel="shortcut icon" sizes="256x256" href="./css/logo.png"> -->
     </head>
-    <body>
+    <body class="container">
         <div id="app"></div>
         <script src="./js/app.js"></script>
     </body>

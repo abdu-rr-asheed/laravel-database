@@ -10833,3 +10833,191 @@ textarea.form-control-lg {
     display: none !important;
   }
 }
+* {
+  margin: 0;
+  padding: 0;
+  font-family: "Poppins", sans-serif;
+}
+
+a {
+  text-decoration: none;
+}
+
+body {
+  background: #0f0e17;
+  --main-color: #ff8906;
+  --font-color: #fffffe;
+  font-size: 1rem;
+}
+
+.btn-primary {
+  background: var(--main-color);
+  border-color: #ff8906;
+}
+
+.btn-primary a {
+  color: #fffffe;
+}
+
+.btn-primary:hover {
+  color: #fff;
+  background-color: #e53170;
+  border-color: #e53170;
+}
+
+.Logo-title {
+  color: var(--font-color);
+  font-size: 25px;
+  font-weight: 600;
+  margin-left: 10px;
+}
+
+.nav-link {
+  color: var(--font-color);
+  font-weight: 600;
+  font-size: 20px;
+}
+
+.nav-link > span {
+  margin-right: 10px;
+}
+
+.nav-item {
+  position: relative;
+  padding: 0 10px;
+}
+
+.nav-item::after {
+  content: "|";
+  position: absolute;
+  right: 0;
+  top: 12px;
+  color: #fff;
+}
+
+.navbar-light .navbar-nav .nav-item:last-child a {
+  color: #ff8906;
+}
+
+.nav-item:last-child::after {
+  display: none;
+}
+
+.navbar-light .navbar-nav .show > .nav-link,
+.navbar-light .navbar-nav .nav-link.active {
+  color: #e53170;
+}
+
+.navbar-light .navbar-nav .nav-link {
+  color: white;
+}
+
+.navbar-light .navbar-nav .nav-link:hover,
+.navbar-light .navbar-nav .nav-link:focus {
+  color: #e53170;
+}
+
+.searchbar .form-control {
+  background-color: #ff8906 !important;
+  border: 1px solid #ff8906;
+  border-radius: 0.25rem 0 0 0.25rem;
+}
+
+.searchbar .input-group {
+  align-items: flex-start;
+}
+
+.searchbar input::-moz-placeholder {
+  color: #000;
+}
+
+.searchbar input:-ms-input-placeholder {
+  color: #000;
+}
+
+.searchbar input::placeholder {
+  color: #000;
+}
+
+.btn-check:checked + .btn-primary,
+.btn-check:active + .btn-primary,
+.btn-primary:active,
+.btn-primary.active,
+.show > .btn-primary.dropdown-toggle {
+  color: #fff;
+  background-color: #ff8906;
+  border-color: #ff8906;
+}
+
+.addbtn .fa-plus-square {
+  margin-right: 10px;
+}
+
+table .fa-clone {
+  color: #ff8906;
+}
+
+table .fa-window-close {
+  color: #f25f4c;
+}
+
+table .fa-edit {
+  color: #e53170;
+}
+
+.navbar-light .navbar-toggler-icon {
+  background-image: url(/images/bars-solid.svg);
+}
+
+.addForm .form-control {
+  color: #fffffe;
+  background-color: #211f31;
+  border: 1px solid #ff8906;
+}
+
+.addForm label {
+  color: #fffffe;
+}
+
+.addForm .form-control:focus {
+  color: #fffffe;
+  background-color: #211f31;
+  border-color: #ff8906;
+}
+
+input[type=file]::file-selector-button {
+  color: #fffffe;
+  background-color: #0f0e17;
+}
+
+input[type=file]::file-selector-button:hover {
+  color: #fffffe;
+  background-color: #0f0e17;
+}
+
+.form-floating > .form-control:not(:-moz-placeholder-shown) {
+  padding-top: 1rem;
+}
+
+.form-floating > .form-control:not(:-ms-input-placeholder) {
+  padding-top: 1rem;
+}
+
+.form-floating > .form-control:focus,
+.form-floating > .form-control:not(:placeholder-shown) {
+  padding-top: 1rem;
+}
+
+.modal-open {
+  overflow: visible !important;
+}
+
+.container,
+.container-fluid,
+.container-xxl,
+.container-xl,
+.container-lg,
+.container-md,
+.container-sm {
+  padding-right: var(--bs-gutter-x, 0.75rem) !important;
+}

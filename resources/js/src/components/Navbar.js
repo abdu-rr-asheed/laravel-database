@@ -1,13 +1,14 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 const Navbar = () => {
     return (
         <>
             {/* Navbar  */}
-            <nav class="navbar navbar-expand-lg navbar-light">
-                <div class="container">
-                    <a class="navbar-brand" href="#">
-                        <div class="logo d-flex align-items-center">
+            <nav className="navbar navbar-expand-lg navbar-light">
+                <div className="container">
+                    <a className="navbar-brand" href="#">
+                        <div className="logo d-flex align-items-center">
                             <svg
                                 width="76"
                                 height="42"
@@ -37,11 +38,11 @@ const Navbar = () => {
                                     stroke="black"
                                 />
                             </svg>
-                            <div class="Logo-title">E-Learning</div>
+                            <div className="Logo-title">E-Learning</div>
                         </div>
                     </a>
                     <button
-                        class="navbar-toggler"
+                        className="navbar-toggler"
                         type="button"
                         data-bs-toggle="collapse"
                         data-bs-target="#navbarSupportedContent"
@@ -49,37 +50,37 @@ const Navbar = () => {
                         aria-expanded="false"
                         aria-label="Toggle navigation"
                     >
-                        <span class="navbar-toggler-icon"></span>
+                        <span className="navbar-toggler-icon"></span>
                     </button>
                     <div
-                        class="collapse navbar-collapse"
+                        className="collapse navbar-collapse"
                         id="navbarSupportedContent"
                     >
-                        <ul class="navbar-nav ms-lg-auto">
-                            <li class="nav-item">
-                                <a
-                                    class="nav-link active"
+                        <ul className="navbar-nav ms-lg-auto">
+                            <li className="nav-item">
+                                <Link
+                                    to="/"
+                                    className="nav-link"
                                     aria-current="page"
-                                    href="index.html"
                                 >
                                     <span>
-                                        <i class="fas fa-user-alt"></i>
+                                        <i className="fas fa-user-alt"></i>
                                     </span>
                                     Candidate
-                                </a>
+                                </Link>
                             </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="Result.html">
+                            <li className="nav-item">
+                                <Link to="/result" className="nav-link">
                                     <span>
-                                        <i class="fas fa-star"></i>
+                                        <i className="fas fa-star"></i>
                                     </span>
                                     Result
-                                </a>
+                                </Link>
                             </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="#">
+                            <li className="nav-item">
+                                <a className="nav-link" href="#">
                                     <span>
-                                        <i class="fas fa-sign-out-alt"></i>
+                                        <i className="fas fa-sign-out-alt"></i>
                                     </span>
                                     Log Out
                                 </a>

@@ -2,7 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import Navbar from "./Navbar";
 
-function Index() {
+const Index = () => {
     return (
         <>
             <Navbar />
@@ -110,6 +110,6 @@ function Index() {
             </div>
         </>
     );
-}
+};
 
 export default Index;

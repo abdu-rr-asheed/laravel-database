@@ -503,7 +503,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-function Index() {
+var Index = function Index() {
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.Fragment, {
     children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(_Navbar__WEBPACK_IMPORTED_MODULE_1__.default, {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
       className: "searchbar d-flex justify-content-between my-5",
@@ -638,7 +638,7 @@ function Index() {
       })
     })]
   });
-}
+};
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (Index);
 

@@ -13,8 +13,6 @@
         />
         <title>E-learning 2</title>
         <link rel="stylesheet" href="./css/app.css" />
-        <<link rel="icon" href="{{ URL::asset('logo.png') }}" type="image/x-icon"/>
-        <!-- <link rel="shortcut icon" sizes="256x256" href="./css/logo.png"> -->
     </head>
     <body class="container">
         <div id="app"></div>

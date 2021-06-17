@@ -1,6 +1,7 @@
 import React from "react";
-import { Link } from "react-router-dom";
 import Navbar from "./Navbar";
+import Search from "./Search";
+import BtnCandidate from "./BtnCandidate";
 
 const Index = () => {
     return (
@@ -9,27 +10,10 @@ const Index = () => {
             {/* Search Bar  */}
             <div className="searchbar d-flex justify-content-between my-5">
                 <div className="input-group mb-3 w-25">
-                    <input
-                        type="text"
-                        className="form-control"
-                        placeholder="Search..."
-                        aria-label="Search..."
-                        aria-describedby="button-addon2"
-                    />
-                    <button
-                        className="btn btn-primary"
-                        type="button"
-                        id="button-addon2"
-                    >
-                        <i className="fas fa-search"></i>
-                    </button>
+                    <Search />
                 </div>
                 <div className="addbtn">
-                    <button type="button" className="btn btn-primary">
-                        <Link to="/AddCandidate">
-                            <i className="fas fa-plus-square"></i>Add Candidate
-                        </Link>
-                    </button>
+                    <BtnCandidate />
                 </div>
             </div>
 

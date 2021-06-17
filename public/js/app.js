@@ -651,7 +651,8 @@ var Index = function Index() {
             className: "modal-body d-flex justify-content-center",
             children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("img", {
               src: _images_rasheed_jpg__WEBPACK_IMPORTED_MODULE_4__.default,
-              alt: "Logo"
+              alt: "Logo",
+              className: "img-fluid w-75"
             })
           })]
         })

@@ -84,7 +84,11 @@ const Index = () => {
                             ></button>
                         </div>
                         <div className="modal-body d-flex justify-content-center">
-                            <img src={rasheed} alt="Logo" />
+                            <img
+                                src={rasheed}
+                                alt="Logo"
+                                className="img-fluid w-75"
+                            />
                         </div>
                     </div>
                 </div>

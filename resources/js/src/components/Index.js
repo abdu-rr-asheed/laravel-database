@@ -2,6 +2,7 @@ import React from "react";
 import Navbar from "./Navbar";
 import Search from "./Search";
 import BtnCandidate from "./BtnCandidate";
+import rasheed from "../images/rasheed.jpg";
 
 const Index = () => {
     return (
@@ -83,11 +84,7 @@ const Index = () => {
                             ></button>
                         </div>
                         <div className="modal-body d-flex justify-content-center">
-                            <img
-                                src=""
-                                alt="abdurrasheed"
-                                className="img-fluid w-75"
-                            ></img>
+                            <img src={rasheed} alt="Logo" />
                         </div>
                     </div>
                 </div>

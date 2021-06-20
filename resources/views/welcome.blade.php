@@ -15,6 +15,7 @@
             rel="stylesheet"
         />
         <title>E-learning 2</title>
+        <link rel="shortcut icon" href="%PUBLIC_URL%/favicon.ico">
         <link rel="stylesheet" href="./css/app.css" />
     </head>
     <body class="container">

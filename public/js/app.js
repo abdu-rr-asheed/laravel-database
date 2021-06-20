@@ -1184,7 +1184,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-var btnResult = function btnResult() {
+var BtnResult = function BtnResult() {
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.Fragment, {
     children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("button", {
       type: "button",
@@ -1199,7 +1199,7 @@ var btnResult = function btnResult() {
   });
 };
 
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (btnResult);
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (BtnResult);
 
 /***/ }),
 

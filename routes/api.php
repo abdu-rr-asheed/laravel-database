@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\StudentController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -35,6 +36,15 @@ Route::group(['middleware' => ['auth:sanctum']], function () {
 
 // Route::get('/products', [ProductController::class, 'index']);
 // Route::post('/products', [ProductController::class, 'store']);
+
+
+//Student
+
+Route::get('/students' , [StudentController::class, 'index']);
+Route::post('/add-student' , [StudentController::class, 'store']);
+Route::get('/edit-student/{id}' , [StudentController::class, 'edit']);
+Route::put('/update-student/{id}' , [StudentController::class, 'update']);
+Route::delete('/delete-student/{id}' , [StudentController::class, 'destroy']);
 
 
 Route::middleware('auth:api')->get('/user', function (Request $request) {

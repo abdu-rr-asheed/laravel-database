@@ -1,14 +1,14 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
-import Index from "./components/Index";
-import Add from "./components/Addcandidate";
-import Edit from "./components/Edit";
-import Result from "./components/Result";
-import Addresult from "./components/Addresult";
-import UpdateCandidate from "./components/UpdateCandidate";
+import Index from "./Index";
+import Add from "./Addcandidate";
+import Edit from "./Edit";
+import Result from "./Result";
+import Addresult from "./Addresult";
+import UpdateCandidate from "./UpdateCandidate";
 
-const App = () => {
+function Home() {
     return (
         <Router>
             <Switch>
@@ -21,8 +21,8 @@ const App = () => {
             </Switch>
         </Router>
     );
-};
+}
 
-export default App;
+export default Home;
 
-ReactDOM.render(<App />, document.getElementById("app"));
+ReactDOM.render(<Home />, document.getElementById("app"));

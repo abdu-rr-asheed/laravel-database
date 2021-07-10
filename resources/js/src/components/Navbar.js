@@ -7,7 +7,7 @@ const Navbar = () => {
             {/* Navbar  */}
             <nav className="navbar navbar-expand-lg navbar-light">
                 <div className="container">
-                    <a className="navbar-brand" href="#">
+                    <Link to="/" className="navbar-brand" href="#">
                         <div className="logo d-flex align-items-center">
                             <svg
                                 width="76"
@@ -40,7 +40,7 @@ const Navbar = () => {
                             </svg>
                             <div className="Logo-title">E-Learning</div>
                         </div>
-                    </a>
+                    </Link>
                     <button
                         className="navbar-toggler"
                         type="button"

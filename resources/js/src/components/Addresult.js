@@ -1,108 +1,120 @@
-import React from "react";
+import React, { Component } from "react";
 import Navbar from "./Navbar";
 
-const Addresult = () => {
-    return (
-        <>
-            <Navbar />
-            {/* <!-- search Bar --> */}
-            <div class="searchbar d-flex justify-content-between my-5">
-                <div class="input-group mb-3 m-auto w-50">
-                    <input
-                        type="text"
-                        class="form-control"
-                        placeholder="Search..."
-                        aria-label="Search..."
-                        aria-describedby="button-addon2"
-                    />
-                    <button
-                        class="btn btn-primary"
-                        type="button"
-                        id="button-addon2"
-                    >
-                        <i class="fas fa-search"></i>
-                    </button>
+export class Addresult extends Component {
+    render() {
+        return (
+            <>
+                <Navbar />
+                {/* <!-- search Bar --> */}
+                <div className="searchbar d-flex justify-content-between my-5">
+                    <div className="input-group mb-3 m-auto w-50">
+                        <input
+                            type="text"
+                            className="form-control"
+                            placeholder="Search..."
+                            aria-label="Search..."
+                            aria-describedby="button-addon2"
+                        />
+                        <button
+                            className="btn btn-primary"
+                            type="button"
+                            id="button-addon2"
+                        >
+                            <i className="fas fa-search"></i>
+                        </button>
+                    </div>
                 </div>
-            </div>
 
-            {/* <!-- Form --> */}
+                {/* <!-- Form --> */}
 
-            <div class="row addForm mt-5">
-                <div class="col-4 my-2">
-                    <form class="form-floating">
-                        <input
-                            type="email"
-                            class="form-control"
-                            id="idinty"
-                            placeholder="name@example.com"
-                        />
-                        <label for="idinty">ID</label>
+                <div className="row addForm mt-5">
+                    <form className="d-flex flex-wrap">
+                        <div className="col-4 my-2">
+                            <div className="form-floating mx-1">
+                                <input
+                                    type="email"
+                                    className="form-control"
+                                    id="idinty"
+                                    placeholder="name@example.com"
+                                />
+                                <label htmlFor="idinty">ID</label>
+                            </div>
+                        </div>
+                        <div className="col-4 my-2">
+                            <div className="form-floating mx-1">
+                                <input
+                                    type="email"
+                                    className="form-control"
+                                    id="floatingInputValue2"
+                                    placeholder="name@example.com"
+                                />
+                                <label htmlFor="floatingInputValue2">
+                                    Fast Name
+                                </label>
+                            </div>
+                        </div>
+                        <div className="col-4 my-2">
+                            <div className="form-floating mx-1">
+                                <input
+                                    type="email"
+                                    className="form-control"
+                                    id="floatingInputValue3"
+                                    placeholder="name@example.com"
+                                />
+                                <label htmlFor="floatingInputValue3">
+                                    Last Name
+                                </label>
+                            </div>
+                        </div>
+                        <div className="col-4 my-2">
+                            <div className="form-floating mx-1">
+                                <input
+                                    type="email"
+                                    className="form-control"
+                                    id="floatingInputValue4"
+                                    placeholder="name@example.com"
+                                />
+                                <label htmlFor="floatingInputValue4">
+                                    Email
+                                </label>
+                            </div>
+                        </div>
+                        <div className="col-4 my-2">
+                            <div className="form-floating mx-1">
+                                <input
+                                    type="email"
+                                    className="form-control"
+                                    id="floatingInputValue5"
+                                    placeholder="name@example.com"
+                                />
+                                <label htmlFor="floatingInputValue5">
+                                    Industry
+                                </label>
+                            </div>
+                        </div>
+                        <div className="col-4 my-2">
+                            <div className="form-floating mx-1">
+                                <input
+                                    type="file"
+                                    className="form-control"
+                                    id="floatingInputValue6"
+                                    placeholder="name@example.com"
+                                    name="myImage"
+                                    accept="image/png, image/jpg, image/jpeg"
+                                />
+                            </div>
+                        </div>
+                        <div className="savebtn mt-3 mx-1">
+                            <button type="button" className="btn btn-primary">
+                                <i className="fas fa-save"></i> Save Result
+                            </button>
+                        </div>
                     </form>
                 </div>
-                <div class="col-4 my-2">
-                    <form class="form-floating">
-                        <input
-                            type="email"
-                            class="form-control"
-                            id="floatingInputValue2"
-                            placeholder="name@example.com"
-                        />
-                        <label for="floatingInputValue2">Fast Name</label>
-                    </form>
-                </div>
-                <div class="col-4 my-2">
-                    <form class="form-floating">
-                        <input
-                            type="email"
-                            class="form-control"
-                            id="floatingInputValue3"
-                            placeholder="name@example.com"
-                        />
-                        <label for="floatingInputValue3">Last Name</label>
-                    </form>
-                </div>
-                <div class="col-4 my-2">
-                    <form class="form-floating">
-                        <input
-                            type="email"
-                            class="form-control"
-                            id="floatingInputValue4"
-                            placeholder="name@example.com"
-                        />
-                        <label for="floatingInputValue4">Email</label>
-                    </form>
-                </div>
-                <div class="col-4 my-2">
-                    <form class="form-floating">
-                        <input
-                            type="email"
-                            class="form-control"
-                            id="floatingInputValue5"
-                            placeholder="name@example.com"
-                        />
-                        <label for="floatingInputValue5">Industry</label>
-                    </form>
-                </div>
-                <div class="col-4 my-2">
-                    <form class="form-floating">
-                        <input
-                            type="file"
-                            class="form-control"
-                            id="floatingInputValue6"
-                            placeholder="name@example.com"
-                            name="myImage"
-                            accept="image/png, image/jpg, image/jpeg"
-                        />
-                    </form>
-                </div>
-                <div class="savebtn mt-3">
-                    <button type="button" class="btn btn-primary float-end">
-                        <i class="fas fa-save"></i> Save
-                    </button>
-                </div>
-            </div>
-        </>
-    );
-};
+            </>
+        );
+    }
+}
 
 export default Addresult;

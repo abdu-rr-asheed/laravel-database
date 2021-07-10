@@ -11,7 +11,7 @@ const Search = () => {
                 aria-describedby="button-addon2"
             />
             <button
-                className="btn btn-primary"
+                className="btn btn-primary text-white"
                 type="button"
                 id="button-addon2"
             >

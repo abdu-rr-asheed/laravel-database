@@ -10985,6 +10985,10 @@ table .fa-edit {
   border-color: #ff8906;
 }
 
+input[type=file] {
+  padding-top: 30px !important;
+}
+
 input[type=file]::file-selector-button {
   color: #fffffe;
   background-color: #0f0e17;
@@ -10993,19 +10997,6 @@ input[type=file]::file-selector-button {
 input[type=file]::file-selector-button:hover {
   color: #fffffe;
   background-color: #0f0e17;
-}
-
-.form-floating > .form-control:not(:-moz-placeholder-shown) {
-  padding-top: 1rem;
-}
-
-.form-floating > .form-control:not(:-ms-input-placeholder) {
-  padding-top: 1rem;
-}
-
-.form-floating > .form-control:focus,
-.form-floating > .form-control:not(:placeholder-shown) {
-  padding-top: 1rem;
 }
 
 .modal-open {

@@ -7,6 +7,7 @@ import Edit from "./Edit";
 import Result from "./Result";
 import Addresult from "./Addresult";
 import UpdateCandidate from "./UpdateCandidate";
+import Ex from "./Ex";
 
 function Home() {
     return (
@@ -18,6 +19,8 @@ function Home() {
                 <Route path="/Addresult" component={Addresult} />
                 <Route path="/result" component={Result} />
                 <Route path="/updateCandidate" component={UpdateCandidate} />
+                <Route path="/Ex" component={Ex} />
+                {/* sad */}
             </Switch>
         </Router>
     );

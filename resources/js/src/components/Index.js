@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import "../../../css/app.css";
 import axios from "axios";
 import Search from "./Search";
 import BtnCandidate from "./BtnCandidate";

@@ -1,5 +1,6 @@
 import React from "react";
 import ReactDOM from "react-dom";
+import "../../../css/app.css";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import Index from "./components/Index";
 import Add from "./components/Addcandidate";

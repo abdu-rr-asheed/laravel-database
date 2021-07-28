@@ -95,7 +95,7 @@ body {
     margin-right: 10px;
 }
 table {
-    vertical-align: middle;
+    vertical-align: middle !important;
 }
 table .fa-clone {
     color: #ff8906;

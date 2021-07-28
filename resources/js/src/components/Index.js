@@ -3,23 +3,19 @@ import axios from "axios";
 import Search from "./Search";
 import BtnCandidate from "./BtnCandidate";
 import Navbar from "./Navbar";
-import rasheed from "../images/rasheed.jpg";
 import { Link } from "react-router-dom";
 
 class Index extends Component {
     state = {
         students: [],
-        // loading: true,
     };
 
     async componentDidMount() {
         document.title = "E-learnig System";
         const res = await axios.get("http://127.0.0.1:8000/api/students");
-        // console.log(res);
         if (res.data.status === 200) {
             this.setState({
                 students: res.data.students,
-                // loading: false,
             });
         }
     }
@@ -27,8 +23,6 @@ class Index extends Component {
     deleteStudent = async (e, id) => {
         const thidClickFinda = e.currentTarget;
         thidClickFinda.disabled = true;
-        // thidClickFinda.innerText =
-        //     '<i className="fas fa-window-close text-white"></i>';
         const res = await axios.delete(
             `http://127.0.0.1:8000/api/delete-student/${id}`
         );
@@ -38,43 +32,8 @@ class Index extends Component {
         }
     };
     render() {
-        // var student_HTMLTABLE = "";
-        // if (this.state.loading) {
-        //   student_HTMLTABLE = (
-        //     <tr>
-        //       <td colSpan="7">
-        //         <h2>Loading...</h2>
-        //       </td>
-        //     </tr>
-        //   );
-        // } else {
         var student_HTMLTABLE = this.state.students.map((item) => {
             return (
-                // <tr>
-                //     <th scope="row">1</th>
-                //     <td>Abdur</td>
-                //     <td>Rasheed</td>
-                //     <td>abdurrasheed430@gmail.com</td>
-                //     <td>Gampola</td>
-                //     <td>
-                //         <div
-                //             data-bs-toggle="modal"
-                //             data-bs-target="#exampleModal"
-                //         >
-                //             <i className="fas fa-clone"></i>
-                //         </div>
-                //     </td>
-                //     <td>
-                //         <Link to="/updateCandidate">
-                //             <i className="fas fa-edit"></i>
-                //         </Link>
-                //     </td>
-                //     <td>
-                //         <Link to="/updateCandidate">
-                //             <i className="fas fa-window-close"></i>
-                //         </Link>
-                //     </td>
-                // </tr>
                 <tr key={item.id}>
                     <td>{item.id}</td>
                     <td>{item.first_Name}</td>
@@ -139,70 +98,8 @@ class Index extends Component {
                                     <th scope="col">Delete</th>
                                 </tr>
                             </thead>
-                            {/* <tbody> */}
-                            {/* <tr>
-                                    <th scope="row">1</th>
-                                    <td>Abdur</td>
-                                    <td>Rasheed</td>
-                                    <td>abdurrasheed430@gmail.com</td>
-                                    <td>Gampola</td>
-                                    <td>
-                                        <div
-                                            data-bs-toggle="modal"
-                                            data-bs-target="#exampleModal"
-                                        >
-                                            <i className="fas fa-clone"></i>
-                                        </div>
-                                    </td>
-                                    <td>
-                                        <Link to="/updateCandidate">
-                                            <i className="fas fa-edit"></i>
-                                        </Link>
-                                    </td>
-                                    <td>
-                                        <Link to="/updateCandidate">
-                                            <i className="fas fa-window-close"></i>
-                                        </Link>
-                                    </td>
-                                </tr> */}
-                            {/* </tbody> */}
                             <tbody>{student_HTMLTABLE}</tbody>
                         </table>
-                    </div>
-                </div>
-
-                {/* Modal */}
-                <div
-                    className="modal fade"
-                    id="exampleModal"
-                    tabIndex="-1"
-                    aria-labelledby="exampleModalLabel"
-                    aria-hidden="true"
-                >
-                    <div className="modal-dialog modal-dialog-centered">
-                        <div className="modal-content">
-                            <div className="modal-header">
-                                <h5
-                                    className="modal-title"
-                                    id="exampleModalLabel"
-                                >
-                                    Abdur Rasheed
-                                </h5>
-                                <button
-                                    type="button"
-                                    className="btn-close"
-                                    data-bs-dismiss="modal"
-                                    aria-label="Close"
-                                ></button>
-                            </div>
-                            <div className="modal-body d-flex justify-content-center">
-                                <img
-                                    src={rasheed}
-                                    alt="Logo"
-                                    className="img-fluid w-75"
-                                />
-                            </div>
-                        </div>
                     </div>
                 </div>
             </>

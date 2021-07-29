@@ -52,6 +52,7 @@ const Addcandidate = () => {
         <>
             <Navbar />
             <div className="row addForm mt-5">
+                <h1 className="text-light ml-1 mb-4">Add a new Student</h1>
                 <form
                     className="d-flex flex-wrap"
                     onSubmit={saveStudent}

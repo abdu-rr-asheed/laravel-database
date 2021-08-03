@@ -109,15 +109,11 @@ const Edit = (props) => {
                         <div className="form-floating mx-1">
                             <select
                                 className="form-select form-control"
-                                // defaultValue
-                                // defaultValue="Please choose one"
                                 name="industry"
                                 onChange={handleInput}
                                 value={studentInput.industry}
                             >
-                                {/* <option value="Please choose one" disabled>
-                                        Please choose one
-                                    </option> */}
+                                <option>Please choose one</option>
                                 <option value="Health">Health</option>
                                 <option value="Business">Business</option>
                                 <option value="ICT">ICT</option>

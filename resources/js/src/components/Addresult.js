@@ -7,30 +7,33 @@ export class Addresult extends Component {
             <>
                 <Navbar />
                 {/* <!-- search Bar --> */}
-                <div className="searchbar d-flex justify-content-between my-5">
-                    <div className="input-group mb-3 m-auto w-50">
-                        <input
-                            type="text"
-                            className="form-control"
-                            placeholder="Search..."
-                            aria-label="Search..."
-                            aria-describedby="button-addon2"
-                        />
-                        <button
-                            className="btn btn-primary"
-                            type="button"
-                            id="button-addon2"
-                        >
-                            <i className="fas fa-search"></i>
-                        </button>
+                <div className="row justify-content-center">
+                    {/* Search Bar  */}
+                    <div className="col-md-8 col-12 searchbar my-5">
+                        <div className="input-group">
+                            <input
+                                type="text"
+                                className="form-control"
+                                placeholder="Search..."
+                                aria-label="Search..."
+                                aria-describedby="button-addon2"
+                            />
+                            <button
+                                className="btn btn-primary"
+                                type="button"
+                                id="button-addon2"
+                            >
+                                <i className="fas fa-search"></i>
+                            </button>
+                        </div>
                     </div>
                 </div>
 
                 {/* <!-- Form --> */}
 
-                <div className="row addForm mt-5">
+                <div className="row addForm">
                     <form className="d-flex flex-wrap">
-                        <div className="col-4 my-2">
+                        <div className="col-md-4 col-12 my-2">
                             <div className="form-floating mx-1">
                                 <input
                                     type="email"
@@ -41,7 +44,7 @@ export class Addresult extends Component {
                                 <label htmlFor="idinty">ID</label>
                             </div>
                         </div>
-                        <div className="col-4 my-2">
+                        <div className="col-md-4 col-12 my-2">
                             <div className="form-floating mx-1">
                                 <input
                                     type="email"
@@ -54,7 +57,7 @@ export class Addresult extends Component {
                                 </label>
                             </div>
                         </div>
-                        <div className="col-4 my-2">
+                        <div className="col-md-4 col-12 my-2">
                             <div className="form-floating mx-1">
                                 <input
                                     type="email"
@@ -67,7 +70,7 @@ export class Addresult extends Component {
                                 </label>
                             </div>
                         </div>
-                        <div className="col-4 my-2">
+                        <div className="col-md-4 col-12 my-2">
                             <div className="form-floating mx-1">
                                 <input
                                     type="email"
@@ -80,7 +83,7 @@ export class Addresult extends Component {
                                 </label>
                             </div>
                         </div>
-                        <div className="col-4 my-2">
+                        <div className="col-md-4 col-12 my-2">
                             <div className="form-floating mx-1">
                                 <input
                                     type="email"
@@ -93,7 +96,7 @@ export class Addresult extends Component {
                                 </label>
                             </div>
                         </div>
-                        <div className="col-4 my-2">
+                        <div className="col-md-4 col-12 my-2">
                             <div className="form-floating mx-1">
                                 <input
                                     type="file"
@@ -103,10 +106,14 @@ export class Addresult extends Component {
                                     name="myImage"
                                     accept="image/png, image/jpg, image/jpeg"
                                 />
+                                <label>Profile Photo</label>
                             </div>
                         </div>
-                        <div className="savebtn mt-3 mx-1">
-                            <button type="button" className="btn btn-primary">
+                        <div className="w-100 my-3">
+                            <button
+                                type="button"
+                                className="btn btn-primary float-end"
+                            >
                                 <i className="fas fa-save"></i> Save Result
                             </button>
                         </div>

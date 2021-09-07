@@ -107,7 +107,8 @@ table .fa-edit {
     color: #e53170;
 }
 .navbar-light .navbar-toggler-icon {
-    background-image: url(/images/bars-solid.svg);
+    background-image: url(../images/bars-solid.svg) !important;
+    /* background-image: url(/images/bars-solid.svg); */
 }
 
 .addForm .form-control {

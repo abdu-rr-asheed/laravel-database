@@ -7,13 +7,17 @@ const Result = () => {
     return (
         <>
             <Navbar />
-            {/* search Bar */}
-            <div className="searchbar d-flex justify-content-between my-5">
-                <div className="input-group mb-3 w-25">
-                    <Search />
+            <div className="row">
+                {/* Search Bar  */}
+                <div className="col-md-4 col-12 searchbar my-md-5 my-2">
+                    <div className="input-group mb-3">
+                        <Search />
+                    </div>
                 </div>
-                <div className="addbtn">
-                    <BtnResult />
+                <div className="col-md-8 col-12 my-md-5 my-2">
+                    <div className="addbtn float-end ">
+                        <BtnResult />
+                    </div>
                 </div>
             </div>
 
@@ -21,7 +25,7 @@ const Result = () => {
 
             <div className="Chart">
                 <div className="table-responsive">
-                    <table className="table table-dark table-striped text-center">
+                    <table className="table table-dark table-striped text-center text-nowrap">
                         <thead>
                             <tr>
                                 <th scope="col">#</th>

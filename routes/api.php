@@ -29,9 +29,9 @@ use Illuminate\Support\Facades\Route;
 // Protected Routes
 
 // Route::group(['middleware' => ['auth:sanctum']], function () {
-//     Route::post('/products', [ProductController::class, 'store']);    
-//     Route::put('/products/{id}', [ProductController::class, 'update']);    
-//     Route::delete('/products/{id}', [ProductController::class, 'destroy']);    
+    // Route::post('/products', [ProductController::class, 'store']);    
+    // Route::put('/products/{id}', [ProductController::class, 'update']);    
+    // Route::delete('/products/{id}', [ProductController::class, 'destroy']);    
 //     Route::post('/logout', [AuthController::class, 'logout']);
 // });
 
@@ -44,7 +44,7 @@ use Illuminate\Support\Facades\Route;
 Route::get('/students' , [StudentController::class, 'index']);
 Route::post('/add-student' , [StudentController::class, 'store']);
 Route::get('/edit-student/{id}' , [StudentController::class, 'edit']);
-Route::put('/update-student/{id}' , [StudentController::class, 'update']);
+Route::post('/updatestudent/{id}' , [StudentController::class, 'update']);
 Route::delete('/delete-student/{id}' , [StudentController::class, 'destroy']);
 
 

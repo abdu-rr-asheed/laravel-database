@@ -1,5 +1,6 @@
 import axios from "axios";
 import React, { useState } from "react";
+import swal from "sweetalert";
 import Navbar from "./Navbar";
 
 const Addcandidate = () => {
@@ -11,6 +12,7 @@ const Addcandidate = () => {
     });
 
     const [pic, setpic] = useState([]);
+    const [error_list, setError] = useState([]);
 
     const handleInput = (e) => {
         e.persist();
@@ -33,7 +35,7 @@ const Addcandidate = () => {
         formdata.append("industry", studentInput.industry);
 
         axios
-            .post(`http://127.0.0.1:8000/api/add-student`, formdata)
+            .post(`http://192.168.43.54:8001/api/add-student`, formdata)
             .then((res) => {
                 if (res.data.status === 200) {
                     console.log(res.data.message);
@@ -44,6 +46,11 @@ const Addcandidate = () => {
                         email: "",
                         industry: "",
                     });
+                    setError([]);
+                    swal("Success", res.data.message, "success");
+                } else if (res.data.status === 422) {
+                    swal("Validation Error", "", "warning");
+                    setError(res.data.errors);
                 }
             });
     };
@@ -58,7 +65,7 @@ const Addcandidate = () => {
                     onSubmit={saveStudent}
                     encType="multipart/form-data"
                 >
-                    <div className="col-4 my-2">
+                    <div className="col-md-4 col-12 my-2">
                         <div className="form-floating mx-1">
                             <input
                                 type="text"
@@ -70,8 +77,11 @@ const Addcandidate = () => {
                             />
                             <label>Fast Name</label>
                         </div>
+                        <div className="text-warning">
+                            {error_list.first_Name}
+                        </div>
                     </div>
-                    <div className="col-4 my-2">
+                    <div className="col-md-4 col-12 my-2">
                         <div className="form-floating mx-1">
                             <input
                                 type="text"
@@ -83,8 +93,11 @@ const Addcandidate = () => {
                             />
                             <label>Last Name</label>
                         </div>
+                        <span className="text-warning">
+                            {error_list.last_Name}
+                        </span>
                     </div>
-                    <div className="col-4 my-2">
+                    <div className="col-md-4 col-12 my-2">
                         <div className="form-floating mx-1">
                             <input
                                 type="email"
@@ -96,8 +109,9 @@ const Addcandidate = () => {
                             />
                             <label>Email</label>
                         </div>
+                        <span className="text-warning">{error_list.email}</span>
                     </div>
-                    <div className="col-4 my-2">
+                    <div className="col-md-4 col-12 my-2">
                         <div className="form-floating mx-1">
                             <select
                                 className="form-select form-control"
@@ -112,8 +126,11 @@ const Addcandidate = () => {
                             </select>
                             <label>Industry</label>
                         </div>
+                        <span className="text-warning">
+                            {error_list.industry}
+                        </span>
                     </div>
-                    <div className="col-4 my-2">
+                    <div className="col-md-4 col-12 my-2">
                         <div className="form-floating mx-1">
                             {/* image */}
                             <input
@@ -126,6 +143,9 @@ const Addcandidate = () => {
                             />
                             <label>Profile Photo</label>
                         </div>
+                        <span className="text-warning">
+                            {error_list.profile_photo}
+                        </span>
                     </div>
                     <br />
                     <div className="savebtn mt-3 mx-1 w-100">

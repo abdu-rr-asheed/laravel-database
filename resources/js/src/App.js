@@ -8,6 +8,8 @@ import Edit from "./components/Edit";
 import Result from "./components/Result";
 import Addresult from "./components/Addresult";
 import UpdateCandidate from "./components/UpdateCandidate";
+import Login from "./components/Login";
+import Register from "./components/Register";
 
 const App = () => {
     return (
@@ -19,6 +21,8 @@ const App = () => {
                 <Route path="/Addresult" component={Addresult} />
                 <Route path="/result" component={Result} />
                 <Route path="/updateCandidate" component={UpdateCandidate} />
+                <Route path="/login" component={Login} />
+                <Route path="/register" component={Register} />
             </Switch>
         </Router>
     );

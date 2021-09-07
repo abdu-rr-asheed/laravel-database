@@ -1,5 +1,5 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 
 const Navbar = () => {
     return (
@@ -7,7 +7,7 @@ const Navbar = () => {
             {/* Navbar  */}
             <nav className="navbar navbar-expand-lg navbar-light">
                 <div className="container">
-                    <Link to="/" className="navbar-brand" href="#">
+                    <Link to="/" className="navbar-brand" to="/">
                         <div className="logo d-flex align-items-center">
                             <svg
                                 width="76"
@@ -58,32 +58,36 @@ const Navbar = () => {
                     >
                         <ul className="navbar-nav ms-lg-auto">
                             <li className="nav-item">
-                                <Link
-                                    to="/"
-                                    className="nav-link"
-                                    aria-current="page"
-                                >
-                                    <span>
-                                        <i className="fas fa-user-alt"></i>
-                                    </span>
-                                    Candidate
-                                </Link>
-                            </li>
-                            <li className="nav-item">
-                                <Link to="/result" className="nav-link">
+                                <NavLink to="/result" className="nav-link">
                                     <span>
                                         <i className="fas fa-star"></i>
                                     </span>
                                     Result
-                                </Link>
+                                </NavLink>
                             </li>
                             <li className="nav-item">
-                                <a className="nav-link" href="#">
+                                <NavLink to="/login" className="nav-link">
+                                    <span>
+                                        <i className="fas fa-user"></i>
+                                    </span>
+                                    Login
+                                </NavLink>
+                            </li>
+                            <li className="nav-item">
+                                <NavLink to="/register" className="nav-link">
+                                    <span>
+                                        <i className="fas fa-user-plus"></i>
+                                    </span>
+                                    Register
+                                </NavLink>
+                            </li>
+                            <li className="nav-item">
+                                <Link className="nav-link" to="/">
                                     <span>
                                         <i className="fas fa-sign-out-alt"></i>
                                     </span>
                                     Log Out
-                                </a>
+                                </Link>
                             </li>
                         </ul>
                     </div>

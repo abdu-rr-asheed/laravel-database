@@ -1,5 +1,6 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
+import swal from "sweetalert";
 import Navbar from "./Navbar";
 
 const Edit = (props) => {
@@ -24,34 +25,37 @@ const Edit = (props) => {
 
     useEffect(() => {
         const student_Id = props.match.params.id;
-        axios.get(`/api/edit-student/${student_Id}`).then((res) => {
-            if (res.data.status === 200) {
-                // console.log(res.data.student);
-                setstudent(res.data.student);
-            }
-        });
+        axios
+            .get(`http://192.168.43.54:8001/api/edit-student/${student_Id}`)
+            .then((res) => {
+                if (res.data.status === 200) {
+                    console.log(res.data.student);
+                    setstudent(res.data.student);
+                }
+            });
     }, []);
 
-    const updateStudent = (e) => {
+    const updateStudent = async (e) => {
         e.preventDefault();
 
         const student_Id = props.match.params.id;
 
         const formdata = new FormData();
-        formdata.append("profile_photo", pic.profile_photo);
         formdata.append("first_Name", studentInput.first_Name);
         formdata.append("last_Name", studentInput.last_Name);
         formdata.append("email", studentInput.email);
         formdata.append("industry", studentInput.industry);
+        formdata.append("profile_photo", pic.profile_photo);
 
-        axios
-            .put(
-                `http://127.0.0.1:8000/api/update-student/${student_Id}`,
+        await axios
+            .post(
+                `http://192.168.43.54:8001/api/updatestudent/${student_Id}`,
                 formdata
             )
             .then((res) => {
                 if (res.data.status === 200) {
-                    console.log(res.data.message);
+                    // console.log(res.data.message);
+                    swal("Success", res.data.message, "success");
                 }
             });
     };
@@ -66,7 +70,7 @@ const Edit = (props) => {
                     onSubmit={updateStudent}
                     encType="multipart/form-data"
                 >
-                    <div className="col-4 my-2">
+                    <div className="col-md-4 col-12 my-2">
                         <div className="form-floating mx-1">
                             <input
                                 type="text"
@@ -79,7 +83,7 @@ const Edit = (props) => {
                             <label>Fast Name</label>
                         </div>
                     </div>
-                    <div className="col-4 my-2">
+                    <div className="col-md-4 col-12 my-2">
                         <div className="form-floating mx-1">
                             <input
                                 type="text"
@@ -92,7 +96,7 @@ const Edit = (props) => {
                             <label>Last Name</label>
                         </div>
                     </div>
-                    <div className="col-4 my-2">
+                    <div className="col-md-4 col-12 my-2">
                         <div className="form-floating mx-1">
                             <input
                                 type="email"
@@ -105,7 +109,7 @@ const Edit = (props) => {
                             <label>Email</label>
                         </div>
                     </div>
-                    <div className="col-4 my-2">
+                    <div className="col-md-4 col-12 my-2">
                         <div className="form-floating mx-1">
                             <select
                                 className="form-select form-control"
@@ -121,7 +125,7 @@ const Edit = (props) => {
                             <label>Industry</label>
                         </div>
                     </div>
-                    <div className="col-4 my-2">
+                    <div className="col-md-4 col-12 my-2">
                         <div className="form-floating mx-1">
                             {/* image */}
                             <input
@@ -135,9 +139,9 @@ const Edit = (props) => {
                             <label>Profile Photo</label>
                         </div>
                     </div>
-                    <div className="col-4 my-2">
+                    <div className="col-md-4 col-12 my-2">
                         <img
-                            src={`http://127.0.0.1:8000/images/students/${studentInput.profile_photo}`}
+                            src={`http://192.168.43.54:8001/images/students/${studentInput.profile_photo}`}
                             width="100px"
                         />
                     </div>

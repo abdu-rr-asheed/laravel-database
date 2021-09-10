@@ -1,7 +1,64 @@
 import React from "react";
-import { Link, NavLink } from "react-router-dom";
+import { Link, NavLink, useHistory } from "react-router-dom";
+import axios from "axios";
+import swal from "sweetalert";
 
 const Navbar = () => {
+    const history = useHistory();
+
+    const logoutSubmit = (e) => {
+        e.preventDefault();
+
+        axios.post(`/api/logout`).then((res) => {
+            if (res.data.status === 200) {
+                localStorage.removeItem("auth_token");
+                localStorage.removeItem("auth_name");
+                swal("Success", res.data.message, "success");
+                history.push("/");
+            }
+        });
+    };
+
+    var AuthButton = "";
+    if (!localStorage.getItem("auth_token")) {
+        AuthButton = (
+            <>
+                <li className="nav-item">
+                    <NavLink to="/login" className="nav-link">
+                        <span>
+                            <i className="fas fa-user"></i>
+                        </span>
+                        Login
+                    </NavLink>
+                </li>
+                <li className="nav-item">
+                    <NavLink to="/register" className="nav-link">
+                        <span>
+                            <i className="fas fa-user-plus"></i>
+                        </span>
+                        Register
+                    </NavLink>
+                </li>
+            </>
+        );
+    } else {
+        AuthButton = (
+            <li className="nav-item">
+                <button
+                    type="button"
+                    onClick={logoutSubmit}
+                    className="nav-link btn btn-sm"
+                    to="/"
+                >
+                    <span>
+                        <i className="fas fa-sign-out-alt"></i>
+                    </span>
+                    Log Out
+                </button>
+            </li>
+        );
+    }
+
     return (
         <>
             {/* Navbar  */}
@@ -65,30 +122,7 @@ const Navbar = () => {
                                     Result
                                 </NavLink>
                             </li>
-                            <li className="nav-item">
-                                <NavLink to="/login" className="nav-link">
-                                    <span>
-                                        <i className="fas fa-user"></i>
-                                    </span>
-                                    Login
-                                </NavLink>
-                            </li>
-                            <li className="nav-item">
-                                <NavLink to="/register" className="nav-link">
-                                    <span>
-                                        <i className="fas fa-user-plus"></i>
-                                    </span>
-                                    Register
-                                </NavLink>
-                            </li>
-                            <li className="nav-item">
-                                <Link className="nav-link" to="/">
-                                    <span>
-                                        <i className="fas fa-sign-out-alt"></i>
-                                    </span>
-                                    Log Out
-                                </Link>
-                            </li>
+                            {AuthButton}
                         </ul>
                     </div>
                 </div>

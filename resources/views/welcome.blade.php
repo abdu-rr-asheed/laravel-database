@@ -8,20 +8,12 @@
             rel="stylesheet"
         />
         <title>E-learning System</title>
-        <link rel="manifest" href="../js/manifest.json">
-        <!-- <link rel="shortcut icon" href="../../public/images/logo.png"> -->
-        <link rel="icon" type="image/png" sizes="32x32" href="../../public/images/logo.png">
-        <link rel="icon" type="image/png" sizes="16x16" href="../../public/images/logo.png">
+        <link rel="shortcut icon" href="../../public/images/logo.png">
         <link rel="stylesheet" href="./css/app.css" />
     </head>
     <body class="container">
         <div id="app"></div>
         <script src="./js/app.js"></script>
-        <script>
-            if ('serviceWorker' in navigator){
-                navigator.serviceWorker.register("./js/service-worker.js")
-            }
-        </script>
         <script
       src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/js/all.min.js"
       crossorigin="anonymous"

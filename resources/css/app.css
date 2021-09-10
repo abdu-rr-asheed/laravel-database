@@ -3,6 +3,11 @@
     padding: 0;
     font-family: "Poppins", sans-serif;
 }
+input:-internal-autofill-selected {
+    background-image: none !important;
+    background-color: #211f31 !important;
+    color: #fffffe !important;
+}
 a {
     text-decoration: none;
 }
@@ -52,7 +57,7 @@ body {
     top: 12px;
     color: #fff;
 }
-.navbar-light .navbar-nav .nav-item:last-child a {
+.navbar-light .navbar-nav .nav-item:last-child button {
     color: #ff8906;
 }
 .nav-item:last-child::after {

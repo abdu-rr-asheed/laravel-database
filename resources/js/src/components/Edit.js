@@ -1,7 +1,7 @@
-import axios from "axios";
 import React, { useEffect, useState } from "react";
-import swal from "sweetalert";
 import Navbar from "./Navbar";
+import swal from "sweetalert";
+import axios from "axios";
 
 const Edit = (props) => {
     const [studentInput, setstudent] = useState({
@@ -12,6 +12,7 @@ const Edit = (props) => {
     });
 
     const [pic, setpic] = useState([]);
+    const [loading, setLoading] = useState(true);
 
     const handleInput = (e) => {
         e.persist();
@@ -29,8 +30,8 @@ const Edit = (props) => {
             .get(`http://192.168.43.54:8001/api/edit-student/${student_Id}`)
             .then((res) => {
                 if (res.data.status === 200) {
-                    console.log(res.data.student);
                     setstudent(res.data.student);
+                    setLoading(false);
                 }
             });
     }, []);
@@ -59,6 +60,19 @@ const Edit = (props) => {
                 }
             });
     };
+
+    if (loading) {
+        return (
+            <div
+                className="d-flex justify-content-center align-items-center"
+                style={{ height: "100vh" }}
+            >
+                <div className="spinner-border text-warning" role="status">
+                    <span className="visually-hidden">Loading...</span>
+                </div>
+            </div>
+        );
+    }
 
     return (
         <>

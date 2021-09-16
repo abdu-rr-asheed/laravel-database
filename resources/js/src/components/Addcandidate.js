@@ -34,25 +34,23 @@ const Addcandidate = () => {
         formdata.append("email", studentInput.email);
         formdata.append("industry", studentInput.industry);
 
-        axios
-            .post(`http://192.168.43.54:8001/api/add-student`, formdata)
-            .then((res) => {
-                if (res.data.status === 200) {
-                    console.log(res.data.message);
-                    setstudent({
-                        ...studentInput,
-                        first_Name: "",
-                        last_Name: "",
-                        email: "",
-                        industry: "",
-                    });
-                    setError([]);
-                    swal("Success", res.data.message, "success");
-                } else if (res.data.status === 422) {
-                    swal("Validation Error", "", "warning");
-                    setError(res.data.errors);
-                }
-            });
+        axios.post(`/api/add-student`, formdata).then((res) => {
+            if (res.data.status === 200) {
+                console.log(res.data.message);
+                setstudent({
+                    ...studentInput,
+                    first_Name: "",
+                    last_Name: "",
+                    email: "",
+                    industry: "",
+                });
+                setError([]);
+                swal("Success", res.data.message, "success");
+            } else if (res.data.status === 422) {
+                swal("Validation Error", "", "warning");
+                setError(res.data.errors);
+            }
+        });
     };
 
     return (

@@ -21,7 +21,7 @@ use Illuminate\Support\Facades\Route;
 
 // Route::get('/products', [ProductController::class, 'index']);
 // Route::get('/products/{id}', [ProductController::class, 'show']);
-// Route::get('/products/search/{name}', [ProductController::class, 'search']);
+
 
 // Protected Routes
 
@@ -59,6 +59,7 @@ Route::post('/add-student' , [StudentController::class, 'store']);
 Route::get('/edit-student/{id}' , [StudentController::class, 'edit']);
 Route::post('/updatestudent/{id}' , [StudentController::class, 'update']);
 Route::delete('/delete-student/{id}' , [StudentController::class, 'destroy']);
+Route::get('/students/search/{name}', [StudentController::class, 'search']);
 
 
 Route::middleware('auth:api')->get('/user', function (Request $request) {

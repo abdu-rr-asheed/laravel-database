@@ -197,4 +197,8 @@ class StudentController extends Controller
             'message' => 'Student Deleted successfully',
         ]);
     }
+    public function search($name)
+    {
+        return Student::where('first_Name', 'Like', '%'.$name.'%')->get();
+    }
 }

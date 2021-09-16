@@ -26,14 +26,12 @@ const Edit = (props) => {
 
     useEffect(() => {
         const student_Id = props.match.params.id;
-        axios
-            .get(`http://192.168.43.54:8001/api/edit-student/${student_Id}`)
-            .then((res) => {
-                if (res.data.status === 200) {
-                    setstudent(res.data.student);
-                    setLoading(false);
-                }
-            });
+        axios.get(`/api/edit-student/${student_Id}`).then((res) => {
+            if (res.data.status === 200) {
+                setstudent(res.data.student);
+                setLoading(false);
+            }
+        });
     }, []);
 
     const updateStudent = async (e) => {
@@ -49,10 +47,7 @@ const Edit = (props) => {
         formdata.append("profile_photo", pic.profile_photo);
 
         await axios
-            .post(
-                `http://192.168.43.54:8001/api/updatestudent/${student_Id}`,
-                formdata
-            )
+            .post(`/api/updatestudent/${student_Id}`, formdata)
             .then((res) => {
                 if (res.data.status === 200) {
                     // console.log(res.data.message);
@@ -155,7 +150,7 @@ const Edit = (props) => {
                     </div>
                     <div className="col-md-4 col-12 my-2">
                         <img
-                            src={`http://192.168.43.54:8001/images/students/${studentInput.profile_photo}`}
+                            src={`http://localhost:8001/images/students/${studentInput.profile_photo}`}
                             width="100px"
                         />
                     </div>

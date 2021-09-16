@@ -2011,7 +2011,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-(axios__WEBPACK_IMPORTED_MODULE_11___default().defaults.baseURL) = "http://192.168.43.54:8001";
+(axios__WEBPACK_IMPORTED_MODULE_11___default().defaults.baseURL) = "http://localhost:8001";
 (axios__WEBPACK_IMPORTED_MODULE_11___default().defaults.headers.post["Content-Type"]) = "application/json";
 (axios__WEBPACK_IMPORTED_MODULE_11___default().defaults.headers.post.Accept) = "application/json";
 (axios__WEBPACK_IMPORTED_MODULE_11___default().defaults.withCredentials) = true;
@@ -2148,7 +2148,7 @@ var Addcandidate = function Addcandidate() {
     formdata.append("last_Name", studentInput.last_Name);
     formdata.append("email", studentInput.email);
     formdata.append("industry", studentInput.industry);
-    axios__WEBPACK_IMPORTED_MODULE_0___default().post("http://192.168.43.54:8001/api/add-student", formdata).then(function (res) {
+    axios__WEBPACK_IMPORTED_MODULE_0___default().post("/api/add-student", formdata).then(function (res) {
       if (res.data.status === 200) {
         console.log(res.data.message);
         setstudent(_objectSpread(_objectSpread({}, studentInput), {}, {
@@ -2611,7 +2611,7 @@ var Edit = function Edit(props) {
 
   (0,react__WEBPACK_IMPORTED_MODULE_1__.useEffect)(function () {
     var student_Id = props.match.params.id;
-    axios__WEBPACK_IMPORTED_MODULE_4___default().get("http://192.168.43.54:8001/api/edit-student/".concat(student_Id)).then(function (res) {
+    axios__WEBPACK_IMPORTED_MODULE_4___default().get("/api/edit-student/".concat(student_Id)).then(function (res) {
       if (res.data.status === 200) {
         setstudent(res.data.student);
         setLoading(false);
@@ -2635,7 +2635,7 @@ var Edit = function Edit(props) {
               formdata.append("industry", studentInput.industry);
               formdata.append("profile_photo", pic.profile_photo);
               _context.next = 10;
-              return axios__WEBPACK_IMPORTED_MODULE_4___default().post("http://192.168.43.54:8001/api/updatestudent/".concat(student_Id), formdata).then(function (res) {
+              return axios__WEBPACK_IMPORTED_MODULE_4___default().post("/api/updatestudent/".concat(student_Id), formdata).then(function (res) {
                 if (res.data.status === 200) {
                   // console.log(res.data.message);
                   sweetalert__WEBPACK_IMPORTED_MODULE_3___default()("Success", res.data.message, "success");
@@ -2770,7 +2770,7 @@ var Edit = function Edit(props) {
         }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("div", {
           className: "col-md-4 col-12 my-2",
           children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("img", {
-            src: "http://192.168.43.54:8001/images/students/".concat(studentInput.profile_photo),
+            src: "http://localhost:8001/images/students/".concat(studentInput.profile_photo),
             width: "100px"
           })
         }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("br", {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("div", {
@@ -2804,15 +2804,14 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
-/* harmony import */ var _Search__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Search */ "./resources/js/src/components/Search.js");
-/* harmony import */ var _BtnCandidate__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./BtnCandidate */ "./resources/js/src/components/BtnCandidate.js");
-/* harmony import */ var _Navbar__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./Navbar */ "./resources/js/src/components/Navbar.js");
-/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
-/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_4__);
-/* harmony import */ var sweetalert__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! sweetalert */ "./node_modules/sweetalert/dist/sweetalert.min.js");
-/* harmony import */ var sweetalert__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(sweetalert__WEBPACK_IMPORTED_MODULE_5__);
-/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
+/* harmony import */ var _BtnCandidate__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./BtnCandidate */ "./resources/js/src/components/BtnCandidate.js");
+/* harmony import */ var _Navbar__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./Navbar */ "./resources/js/src/components/Navbar.js");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var sweetalert__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! sweetalert */ "./node_modules/sweetalert/dist/sweetalert.min.js");
+/* harmony import */ var sweetalert__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(sweetalert__WEBPACK_IMPORTED_MODULE_4__);
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
 function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
 
 function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
@@ -2824,7 +2823,6 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
 function _iterableToArrayLimit(arr, i) { var _i = arr == null ? null : typeof Symbol !== "undefined" && arr[Symbol.iterator] || arr["@@iterator"]; if (_i == null) return; var _arr = []; var _n = true; var _d = false; var _s, _e; try { for (_i = _i.call(arr); !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
 
 function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
-
 
 
 
@@ -2849,39 +2847,45 @@ var Index = function Index() {
 
   (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
     document.title = "E-learning System";
-    axios__WEBPACK_IMPORTED_MODULE_4___default().get("http://192.168.43.54:8001/api/students").then(function (res) {
+    axios__WEBPACK_IMPORTED_MODULE_3___default().get("/api/students").then(function (res) {
       if (res.data.status === 200) {
         setAllstudents(res.data.students);
         setLoading(false);
       }
     });
-  }, []);
+  }, []); // const searchSubmit = (e) => {
+  //     e.preventDefault();
+  //     axios.post(`/api/students/search/${name}`).then((res) => {
+  // if (res.data.status === 200) {
+  // }
+  //     });
+  // };
 
   var deleteStudent = function deleteStudent(e, id) {
     e.preventDefault();
     var thisClicked = e.currentTarget;
     thisClicked.disable = true;
-    axios__WEBPACK_IMPORTED_MODULE_4___default().delete("http://192.168.43.54:8001/api/delete-student/".concat(id)).then(function (res) {
+    axios__WEBPACK_IMPORTED_MODULE_3___default().delete("/api/delete-student/".concat(id)).then(function (res) {
       if (res.data.status === 200) {
         thisClicked.closest("tr").remove();
-        sweetalert__WEBPACK_IMPORTED_MODULE_5___default()("Success", res.data.message, "success");
+        sweetalert__WEBPACK_IMPORTED_MODULE_4___default()("Success", res.data.message, "success");
       } else if (res.data.status === 404) {
-        sweetalert__WEBPACK_IMPORTED_MODULE_5___default()("Warning", res.data.message, "warning");
+        sweetalert__WEBPACK_IMPORTED_MODULE_4___default()("Warning", res.data.message, "warning");
         thisClicked.disable = true;
       }
     });
   };
 
   if (loading) {
-    return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("div", {
+    return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("div", {
       className: "d-flex justify-content-center align-items-center",
       style: {
         height: "100vh"
       },
-      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("div", {
+      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("div", {
         className: "spinner-border text-warning",
         role: "status",
-        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("span", {
+        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("span", {
           className: "visually-hidden",
           children: "Loading..."
         })
@@ -2891,39 +2895,39 @@ var Index = function Index() {
     {
       var student_HTMLTABLE = "";
       student_HTMLTABLE = allstudents.map(function (item) {
-        return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsxs)("tr", {
-          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("td", {
+        return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("tr", {
+          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("td", {
             children: item.id
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("td", {
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("td", {
             children: item.first_Name
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("td", {
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("td", {
             children: item.last_Name
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("td", {
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("td", {
             children: item.email
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("td", {
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("td", {
             children: item.industry
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("td", {
-            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("img", {
-              src: "http://192.168.43.54:8001/images/students/" + item.profile_photo,
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("td", {
+            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("img", {
+              src: "http://localhost:8001/images/students/" + item.profile_photo,
               alt: item.last_Name,
               loading: "lazy",
               width: "100px"
             })
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("td", {
-            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_7__.Link, {
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("td", {
+            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_6__.Link, {
               to: "edit-student/".concat(item.id),
               className: "btn",
-              children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("i", {
+              children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("i", {
                 className: "fas fa-edit"
               })
             })
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("td", {
-            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("button", {
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("td", {
+            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("button", {
               onClick: function onClick(e) {
                 return deleteStudent(e, item.id);
               },
               className: "btn",
-              children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("i", {
+              children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("i", {
                 className: "fas fa-window-close"
               })
             })
@@ -2933,57 +2937,72 @@ var Index = function Index() {
     }
   }
 
-  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.Fragment, {
-    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(_Navbar__WEBPACK_IMPORTED_MODULE_3__.default, {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsxs)("div", {
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.Fragment, {
+    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(_Navbar__WEBPACK_IMPORTED_MODULE_2__.default, {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("div", {
       className: "row",
-      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("div", {
+      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("div", {
         className: "col-md-4 col-12 searchbar my-md-5 my-2",
-        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("div", {
+        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("div", {
           className: "input-group mb-3",
-          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(_Search__WEBPACK_IMPORTED_MODULE_1__.default, {})
+          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("input", {
+            type: "text",
+            className: "form-control",
+            placeholder: "Search...",
+            "aria-label": "Search...",
+            "aria-describedby": "button-addon2" // onChange={searchhandleInput}
+            // value={searchInput.name}
+
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("button", {
+            className: "btn btn-primary text-white",
+            type: "submit",
+            id: "button-addon2",
+            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("i", {
+              className: "fas fa-search"
+            })
+          })]
         })
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("div", {
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("div", {
         className: "col-md-8 col-12 my-md-5 my-2",
-        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("div", {
+        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("div", {
           className: "addbtn float-end ",
-          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(_BtnCandidate__WEBPACK_IMPORTED_MODULE_2__.default, {})
+          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(_BtnCandidate__WEBPACK_IMPORTED_MODULE_1__.default, {})
         })
       })]
-    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("div", {
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("div", {
       className: "Chart",
-      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("div", {
+      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("div", {
         className: "table-responsive",
-        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsxs)("table", {
+        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("table", {
           className: "table table-dark table-striped text-center text-nowrap",
-          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("thead", {
-            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsxs)("tr", {
-              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("th", {
+          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("thead", {
+            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("tr", {
+              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("th", {
                 scope: "col",
                 children: "#"
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("th", {
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("th", {
                 scope: "col",
                 children: "First Name"
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("th", {
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("th", {
                 scope: "col",
                 children: "Last Name"
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("th", {
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("th", {
                 scope: "col",
                 children: "Email"
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("th", {
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("th", {
                 scope: "col",
                 children: "industry"
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("th", {
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("th", {
                 scope: "col",
                 children: "P.P"
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("th", {
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("th", {
                 scope: "col",
                 children: "Edit"
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("th", {
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("th", {
                 scope: "col",
                 children: "Delete"
               })]
             })
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("tbody", {
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("tbody", {
             children: student_HTMLTABLE
           })]
         })
@@ -2992,114 +3011,7 @@ var Index = function Index() {
   });
 };
 
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (Index); // import React, { Component } from "react";
-// import axios from "axios";
-// import Search from "./Search";
-// import BtnCandidate from "./BtnCandidate";
-// import Navbar from "./Navbar";
-// import { Link } from "react-router-dom";
-// class Index extends Component {
-//     state = {
-//         students: [],
-//     };
-//     async componentDidMount() {
-//         document.title = "E-learnig System";
-//         const res = await axios.get("http://127.0.0.1:8001/api/students");
-//         if (res.data.status === 200) {
-//             this.setState({
-//                 students: res.data.students,
-//             });
-//         }
-//     }
-//     deleteStudent = async (e, id) => {
-//         const thidClickFinda = e.currentTarget;
-//         thidClickFinda.disabled = true;
-//         const res = await axios.delete(
-//             `http://127.0.0.1:8001/api/delete-student/${id}`
-//         );
-//         if (res.data.status === 200) {
-//             thidClickFinda.closest("tr").remove();
-//             console.log(res.data.message);
-//         }
-//     };
-//     render() {
-//         var student_HTMLTABLE = this.state.students.map((item) => {
-//             return (
-//                 <tr key={item.id}>
-//                     <td>{item.id}</td>
-//                     <td>{item.first_Name}</td>
-//                     <td>{item.last_Name}</td>
-//                     <td>{item.email}</td>
-//                     <td>{item.industry}</td>
-//                     <td>
-//                         <img
-//                             src={
-//                                 "http://127.0.0.1:8001/images/students/" +
-//                                 item.profile_photo
-//                             }
-//                             alt={item.last_Name}
-//                             loading="lazy"
-//                             width="100px"
-//                         />
-//                     </td>
-//                     <td>
-//                         <Link to={`edit-student/${item.id}`} className="btn">
-//                             <i className="fas fa-edit"></i>
-//                         </Link>
-//                     </td>
-//                     <td>
-//                         <div
-//                             onClick={(e) => this.deleteStudent(e, item.id)}
-//                             className="btn"
-//                         >
-//                             <i className="fas fa-window-close"></i>
-//                         </div>
-//                     </td>
-//                 </tr>
-//             );
-//         });
-// }
-// return (
-//     <>
-//         <Navbar />
-
-{
-  /* Search Bar  */
-} // <div className="searchbar d-flex justify-content-between my-5">
-//     <div className="input-group mb-3 w-25">
-//         <Search />
-//     </div>
-//     <div className="addbtn">
-//         <BtnCandidate />
-//     </div>
-// </div>
-
-{
-  /* Table */
-} //                 <div className="Chart">
-//                     <div className="table-responsive">
-//                         <table className="table table-dark table-striped text-center">
-//                             <thead>
-//                                 <tr>
-//                                     <th scope="col">#</th>
-//                                     <th scope="col">First Name</th>
-//                                     <th scope="col">Last Name</th>
-//                                     <th scope="col">Email</th>
-//                                     <th scope="col">industry</th>
-//                                     <th scope="col">P.P</th>
-//                                     <th scope="col">Edit</th>
-//                                     <th scope="col">Delete</th>
-//                                 </tr>
-//                             </thead>
-//                             <tbody>{student_HTMLTABLE}</tbody>
-//                         </table>
-//                     </div>
-//                 </div>
-//             </>
-//         );
-//     }
-// }
-// export default Index;
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (Index);
 
 /***/ }),
 
@@ -3944,24 +3856,8 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-
 var Search = function Search() {
-  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.Fragment, {
-    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("input", {
-      type: "text",
-      className: "form-control",
-      placeholder: "Search...",
-      "aria-label": "Search...",
-      "aria-describedby": "button-addon2"
-    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("button", {
-      className: "btn btn-primary text-white",
-      type: "button",
-      id: "button-addon2",
-      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("i", {
-        className: "fas fa-search"
-      })
-    })]
-  });
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.Fragment, {});
 };
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (Search);

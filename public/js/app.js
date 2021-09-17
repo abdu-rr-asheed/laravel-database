@@ -2838,28 +2838,40 @@ var Index = function Index() {
   var _useState = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)([]),
       _useState2 = _slicedToArray(_useState, 2),
       allstudents = _useState2[0],
-      setAllstudents = _useState2[1];
+      setAllstudents = _useState2[1]; // const [loading, setLoading] = useState(true);
 
-  var _useState3 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(true),
+
+  var _useState3 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(""),
       _useState4 = _slicedToArray(_useState3, 2),
-      loading = _useState4[0],
-      setLoading = _useState4[1];
+      searchTeam = _useState4[0],
+      setSearchTeam = _useState4[1];
+
+  var _useState5 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)([]),
+      _useState6 = _slicedToArray(_useState5, 2),
+      filteredResult = _useState6[0],
+      setFilteredResult = _useState6[1];
 
   (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
     document.title = "E-learning System";
     axios__WEBPACK_IMPORTED_MODULE_3___default().get("/api/students").then(function (res) {
       if (res.data.status === 200) {
-        setAllstudents(res.data.students);
-        setLoading(false);
+        setAllstudents(res.data.students); // setLoading(false);
       }
     });
-  }, []); // const searchSubmit = (e) => {
-  //     e.preventDefault();
-  //     axios.post(`/api/students/search/${name}`).then((res) => {
-  // if (res.data.status === 200) {
-  // }
-  //     });
-  // };
+  }, []);
+
+  var searchData = function searchData(value) {
+    setSearchTeam(value);
+
+    if (searchTeam !== "") {
+      var filterdata = allstudents.filter(function (item) {
+        return Object.values(item).join("").toLowerCase("").includes(searchTeam.toLowerCase());
+      });
+      setFilteredResult(filterdata);
+    } else {
+      setFilteredResult(allstudents);
+    }
+  };
 
   var deleteStudent = function deleteStudent(e, id) {
     e.preventDefault();
@@ -2874,68 +2886,61 @@ var Index = function Index() {
         thisClicked.disable = true;
       }
     });
-  };
+  }; // if (loading) {
+  //     return (
+  //         <div
+  //             className="d-flex justify-content-center align-items-center"
+  //             style={{ height: "100vh" }}
+  //         >
+  //             <div className="spinner-border text-warning" role="status">
+  //                 <span className="visually-hidden">Loading...</span>
+  //             </div>
+  //         </div>
+  //     );
+  // } else {
+  //     {
+  //         var student_HTMLTABLE = "";
+  //         student_HTMLTABLE = allstudents.map((item) => {
+  //             return (
+  //                 <tr key={item.id}>
+  //                     <td>{item.id}</td>
+  //                     <td>{item.first_Name}</td>
+  //                     <td>{item.last_Name}</td>
+  //                     <td>{item.email}</td>
+  //                     <td>{item.industry}</td>
+  //                     <td>
+  //                         <img
+  //                             src={
+  //                                 "http://localhost:8001/images/students/" +
+  //                                 item.profile_photo
+  //                             }
+  //                             alt={item.last_Name}
+  //                             loading="lazy"
+  //                             width="100px"
+  //                         />
+  //                     </td>
+  //                     <td>
+  //                         <Link
+  //                             to={`edit-student/${item.id}`}
+  //                             className="btn"
+  //                         >
+  //                             <i className="fas fa-edit"></i>
+  //                         </Link>
+  //                     </td>
+  //                     <td>
+  //                         <button
+  //                             onClick={(e) => deleteStudent(e, item.id)}
+  //                             className="btn"
+  //                         >
+  //                             <i className="fas fa-window-close"></i>
+  //                         </button>
+  //                     </td>
+  //                 </tr>
+  //             );
+  //         });
+  //     }
+  // }
 
-  if (loading) {
-    return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("div", {
-      className: "d-flex justify-content-center align-items-center",
-      style: {
-        height: "100vh"
-      },
-      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("div", {
-        className: "spinner-border text-warning",
-        role: "status",
-        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("span", {
-          className: "visually-hidden",
-          children: "Loading..."
-        })
-      })
-    });
-  } else {
-    {
-      var student_HTMLTABLE = "";
-      student_HTMLTABLE = allstudents.map(function (item) {
-        return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("tr", {
-          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("td", {
-            children: item.id
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("td", {
-            children: item.first_Name
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("td", {
-            children: item.last_Name
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("td", {
-            children: item.email
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("td", {
-            children: item.industry
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("td", {
-            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("img", {
-              src: "http://localhost:8001/images/students/" + item.profile_photo,
-              alt: item.last_Name,
-              loading: "lazy",
-              width: "100px"
-            })
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("td", {
-            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_6__.Link, {
-              to: "edit-student/".concat(item.id),
-              className: "btn",
-              children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("i", {
-                className: "fas fa-edit"
-              })
-            })
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("td", {
-            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("button", {
-              onClick: function onClick(e) {
-                return deleteStudent(e, item.id);
-              },
-              className: "btn",
-              children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("i", {
-                className: "fas fa-window-close"
-              })
-            })
-          })]
-        }, item.id);
-      });
-    }
-  }
 
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.Fragment, {
     children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(_Navbar__WEBPACK_IMPORTED_MODULE_2__.default, {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("div", {
@@ -2949,13 +2954,16 @@ var Index = function Index() {
             className: "form-control",
             placeholder: "Search...",
             "aria-label": "Search...",
-            "aria-describedby": "button-addon2" // onChange={searchhandleInput}
-            // value={searchInput.name}
+            "aria-describedby": "button-addon2",
+            onChange: function onChange(e) {
+              return searchData(e.target.value);
+            } // value={searchInput.name}
 
           }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("button", {
             className: "btn btn-primary text-white",
             type: "submit",
-            id: "button-addon2",
+            id: "button-addon2" // onClick={searchData}
+            ,
             children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("i", {
               className: "fas fa-search"
             })
@@ -3003,7 +3011,85 @@ var Index = function Index() {
               })]
             })
           }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("tbody", {
-            children: student_HTMLTABLE
+            children: searchTeam.length > 1 ? filteredResult.map(function (item) {
+              return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("tr", {
+                children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("td", {
+                  children: item.id
+                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("td", {
+                  children: item.first_Name
+                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("td", {
+                  children: item.last_Name
+                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("td", {
+                  children: item.email
+                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("td", {
+                  children: item.industry
+                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("td", {
+                  children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("img", {
+                    src: "http://localhost:8001/images/students/" + item.profile_photo,
+                    alt: item.last_Name,
+                    loading: "lazy",
+                    width: "100px"
+                  })
+                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("td", {
+                  children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_6__.Link, {
+                    to: "edit-student/".concat(item.id),
+                    className: "btn",
+                    children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("i", {
+                      className: "fas fa-edit"
+                    })
+                  })
+                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("td", {
+                  children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("button", {
+                    onClick: function onClick(e) {
+                      return deleteStudent(e, item.id);
+                    },
+                    className: "btn",
+                    children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("i", {
+                      className: "fas fa-window-close"
+                    })
+                  })
+                })]
+              }, item.id);
+            }) : allstudents.map(function (item) {
+              return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("tr", {
+                children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("td", {
+                  children: item.id
+                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("td", {
+                  children: item.first_Name
+                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("td", {
+                  children: item.last_Name
+                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("td", {
+                  children: item.email
+                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("td", {
+                  children: item.industry
+                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("td", {
+                  children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("img", {
+                    src: "http://localhost:8001/images/students/" + item.profile_photo,
+                    alt: item.last_Name,
+                    loading: "lazy",
+                    width: "100px"
+                  })
+                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("td", {
+                  children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_6__.Link, {
+                    to: "edit-student/".concat(item.id),
+                    className: "btn",
+                    children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("i", {
+                      className: "fas fa-edit"
+                    })
+                  })
+                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("td", {
+                  children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("button", {
+                    onClick: function onClick(e) {
+                      return deleteStudent(e, item.id);
+                    },
+                    className: "btn",
+                    children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("i", {
+                      className: "fas fa-window-close"
+                    })
+                  })
+                })]
+              }, item.id);
+            })
           })]
         })
       })

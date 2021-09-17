@@ -7,25 +7,33 @@ import swal from "sweetalert";
 
 const Index = () => {
     const [allstudents, setAllstudents] = useState([]);
-    const [loading, setLoading] = useState(true);
+    // const [loading, setLoading] = useState(true);
+    const [searchTeam, setSearchTeam] = useState("");
+    const [filteredResult, setFilteredResult] = useState([]);
 
     useEffect(() => {
         document.title = "E-learning System";
         axios.get("/api/students").then((res) => {
             if (res.data.status === 200) {
                 setAllstudents(res.data.students);
-                setLoading(false);
+                // setLoading(false);
             }
         });
     }, []);
-    // const searchSubmit = (e) => {
-    //     e.preventDefault();
-
-    //     axios.post(`/api/students/search/${name}`).then((res) => {
-    // if (res.data.status === 200) {
-    // }
-    //     });
-    // };
+    const searchData = (value) => {
+        setSearchTeam(value);
+        if (searchTeam !== "") {
+            const filterdata = allstudents.filter((item) => {
+                return Object.values(item)
+                    .join("")
+                    .toLowerCase("")
+                    .includes(searchTeam.toLowerCase());
+            });
+            setFilteredResult(filterdata);
+        } else {
+            setFilteredResult(allstudents);
+        }
+    };
 
     const deleteStudent = (e, id) => {
         e.preventDefault();
@@ -44,60 +52,60 @@ const Index = () => {
         });
     };
 
-    if (loading) {
-        return (
-            <div
-                className="d-flex justify-content-center align-items-center"
-                style={{ height: "100vh" }}
-            >
-                <div className="spinner-border text-warning" role="status">
-                    <span className="visually-hidden">Loading...</span>
-                </div>
-            </div>
-        );
-    } else {
-        {
-            var student_HTMLTABLE = "";
-            student_HTMLTABLE = allstudents.map((item) => {
-                return (
-                    <tr key={item.id}>
-                        <td>{item.id}</td>
-                        <td>{item.first_Name}</td>
-                        <td>{item.last_Name}</td>
-                        <td>{item.email}</td>
-                        <td>{item.industry}</td>
-                        <td>
-                            <img
-                                src={
-                                    "http://localhost:8001/images/students/" +
-                                    item.profile_photo
-                                }
-                                alt={item.last_Name}
-                                loading="lazy"
-                                width="100px"
-                            />
-                        </td>
-                        <td>
-                            <Link
-                                to={`edit-student/${item.id}`}
-                                className="btn"
-                            >
-                                <i className="fas fa-edit"></i>
-                            </Link>
-                        </td>
-                        <td>
-                            <button
-                                onClick={(e) => deleteStudent(e, item.id)}
-                                className="btn"
-                            >
-                                <i className="fas fa-window-close"></i>
-                            </button>
-                        </td>
-                    </tr>
-                );
-            });
-        }
-    }
+    // if (loading) {
+    //     return (
+    //         <div
+    //             className="d-flex justify-content-center align-items-center"
+    //             style={{ height: "100vh" }}
+    //         >
+    //             <div className="spinner-border text-warning" role="status">
+    //                 <span className="visually-hidden">Loading...</span>
+    //             </div>
+    //         </div>
+    //     );
+    // } else {
+    //     {
+    //         var student_HTMLTABLE = "";
+    //         student_HTMLTABLE = allstudents.map((item) => {
+    //             return (
+    //                 <tr key={item.id}>
+    //                     <td>{item.id}</td>
+    //                     <td>{item.first_Name}</td>
+    //                     <td>{item.last_Name}</td>
+    //                     <td>{item.email}</td>
+    //                     <td>{item.industry}</td>
+    //                     <td>
+    //                         <img
+    //                             src={
+    //                                 "http://localhost:8001/images/students/" +
+    //                                 item.profile_photo
+    //                             }
+    //                             alt={item.last_Name}
+    //                             loading="lazy"
+    //                             width="100px"
+    //                         />
+    //                     </td>
+    //                     <td>
+    //                         <Link
+    //                             to={`edit-student/${item.id}`}
+    //                             className="btn"
+    //                         >
+    //                             <i className="fas fa-edit"></i>
+    //                         </Link>
+    //                     </td>
+    //                     <td>
+    //                         <button
+    //                             onClick={(e) => deleteStudent(e, item.id)}
+    //                             className="btn"
+    //                         >
+    //                             <i className="fas fa-window-close"></i>
+    //                         </button>
+    //                     </td>
+    //                 </tr>
+    //             );
+    //         });
+    //     }
+    // }
 
     return (
         <>
@@ -113,13 +121,14 @@ const Index = () => {
                             placeholder="Search..."
                             aria-label="Search..."
                             aria-describedby="button-addon2"
-                            // onChange={searchhandleInput}
+                            onChange={(e) => searchData(e.target.value)}
                             // value={searchInput.name}
                         />
                         <button
                             className="btn btn-primary text-white"
                             type="submit"
                             id="button-addon2"
+                            // onClick={searchData}
                         >
                             <i className="fas fa-search"></i>
                         </button>
@@ -149,7 +158,95 @@ const Index = () => {
                                 <th scope="col">Delete</th>
                             </tr>
                         </thead>
-                        <tbody>{student_HTMLTABLE}</tbody>
+                        <tbody>
+                            {searchTeam.length > 1
+                                ? filteredResult.map((item) => {
+                                      return (
+                                          <tr key={item.id}>
+                                              <td>{item.id}</td>
+                                              <td>{item.first_Name}</td>
+                                              <td>{item.last_Name}</td>
+                                              <td>{item.email}</td>
+                                              <td>{item.industry}</td>
+                                              <td>
+                                                  <img
+                                                      src={
+                                                          "http://localhost:8001/images/students/" +
+                                                          item.profile_photo
+                                                      }
+                                                      alt={item.last_Name}
+                                                      loading="lazy"
+                                                      width="100px"
+                                                  />
+                                              </td>
+                                              <td>
+                                                  <Link
+                                                      to={`edit-student/${item.id}`}
+                                                      className="btn"
+                                                  >
+                                                      <i className="fas fa-edit"></i>
+                                                  </Link>
+                                              </td>
+                                              <td>
+                                                  <button
+                                                      onClick={(e) =>
+                                                          deleteStudent(
+                                                              e,
+                                                              item.id
+                                                          )
+                                                      }
+                                                      className="btn"
+                                                  >
+                                                      <i className="fas fa-window-close"></i>
+                                                  </button>
+                                              </td>
+                                          </tr>
+                                      );
+                                  })
+                                : allstudents.map((item) => {
+                                      return (
+                                          <tr key={item.id}>
+                                              <td>{item.id}</td>
+                                              <td>{item.first_Name}</td>
+                                              <td>{item.last_Name}</td>
+                                              <td>{item.email}</td>
+                                              <td>{item.industry}</td>
+                                              <td>
+                                                  <img
+                                                      src={
+                                                          "http://localhost:8001/images/students/" +
+                                                          item.profile_photo
+                                                      }
+                                                      alt={item.last_Name}
+                                                      loading="lazy"
+                                                      width="100px"
+                                                  />
+                                              </td>
+                                              <td>
+                                                  <Link
+                                                      to={`edit-student/${item.id}`}
+                                                      className="btn"
+                                                  >
+                                                      <i className="fas fa-edit"></i>
+                                                  </Link>
+                                              </td>
+                                              <td>
+                                                  <button
+                                                      onClick={(e) =>
+                                                          deleteStudent(
+                                                              e,
+                                                              item.id
+                                                          )
+                                                      }
+                                                      className="btn"
+                                                  >
+                                                      <i className="fas fa-window-close"></i>
+                                                  </button>
+                                              </td>
+                                          </tr>
+                                      );
+                                  })}
+                        </tbody>
                     </table>
                 </div>
             </div>

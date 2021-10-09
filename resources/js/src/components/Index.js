@@ -6,17 +6,15 @@ import axios from "axios";
 import swal from "sweetalert";
 
 const Index = () => {
-    const [allstudents, setAllstudents] = useState([]);
-    // const [loading, setLoading] = useState(true);
     const [searchTeam, setSearchTeam] = useState("");
     const [filteredResult, setFilteredResult] = useState([]);
+    const [allstudents, setAllstudents] = useState([]);
 
     useEffect(() => {
         document.title = "E-learning System";
         axios.get("/api/students").then((res) => {
             if (res.data.status === 200) {
                 setAllstudents(res.data.students);
-                // setLoading(false);
             }
         });
     }, []);
@@ -52,61 +50,105 @@ const Index = () => {
         });
     };
 
-    // if (loading) {
-    //     return (
-    //         <div
-    //             className="d-flex justify-content-center align-items-center"
-    //             style={{ height: "100vh" }}
-    //         >
-    //             <div className="spinner-border text-warning" role="status">
-    //                 <span className="visually-hidden">Loading...</span>
-    //             </div>
-    //         </div>
-    //     );
-    // } else {
-    //     {
-    //         var student_HTMLTABLE = "";
-    //         student_HTMLTABLE = allstudents.map((item) => {
-    //             return (
-    //                 <tr key={item.id}>
-    //                     <td>{item.id}</td>
-    //                     <td>{item.first_Name}</td>
-    //                     <td>{item.last_Name}</td>
-    //                     <td>{item.email}</td>
-    //                     <td>{item.industry}</td>
-    //                     <td>
-    //                         <img
-    //                             src={
-    //                                 "http://localhost:8001/images/students/" +
-    //                                 item.profile_photo
-    //                             }
-    //                             alt={item.last_Name}
-    //                             loading="lazy"
-    //                             width="100px"
-    //                         />
-    //                     </td>
-    //                     <td>
-    //                         <Link
-    //                             to={`edit-student/${item.id}`}
-    //                             className="btn"
-    //                         >
-    //                             <i className="fas fa-edit"></i>
-    //                         </Link>
-    //                     </td>
-    //                     <td>
-    //                         <button
-    //                             onClick={(e) => deleteStudent(e, item.id)}
-    //                             className="btn"
-    //                         >
-    //                             <i className="fas fa-window-close"></i>
-    //                         </button>
-    //                     </td>
-    //                 </tr>
-    //             );
-    //         });
-    //     }
-    // }
-
+    var student_HTMLTABLE = "";
+    student_HTMLTABLE =
+        searchTeam.length > 1
+            ? filteredResult.map((item) => {
+                  return (
+                      <tr key={item.id}>
+                          <td>{item.id}</td>
+                          <td>
+                              {item.first_Name}&nbsp;
+                              {item.last_Name}
+                          </td>
+                          <td>{item.email}</td>
+                          <td>{item.industry}</td>
+                          <td>
+                              <img
+                                  src={
+                                      "http://localhost:8001/images/students/" +
+                                      item.profile_photo
+                                  }
+                                  alt={item.last_Name}
+                                  loading="lazy"
+                                  width="100px"
+                              />
+                          </td>
+                          <td>
+                              <Link
+                                  to={`Addresult/${item.id}`}
+                                  className="btn btn-sm btn-primary"
+                              >
+                                  Result
+                              </Link>
+                          </td>
+                          <td>
+                              <Link
+                                  to={`edit-student/${item.id}`}
+                                  className="btn"
+                              >
+                                  <i className="fas fa-edit"></i>
+                              </Link>
+                          </td>
+                          <td>
+                              <button
+                                  onClick={(e) => deleteStudent(e, item.id)}
+                                  className="btn"
+                              >
+                                  <i className="fas fa-window-close"></i>
+                              </button>
+                          </td>
+                      </tr>
+                  );
+              })
+            : allstudents.map((item) => {
+                  return (
+                      <tr key={item.id}>
+                          <td>{item.id}</td>
+                          <td>
+                              {item.first_Name}&nbsp;
+                              {item.last_Name}
+                          </td>
+                          <td>{item.email}</td>
+                          <td>{item.industry}</td>
+                          <td>
+                              <img
+                                  src={
+                                      "http://localhost:8001/images/students/" +
+                                      item.profile_photo
+                                  }
+                                  alt={item.last_Name}
+                                  loading="lazy"
+                                  width="100px"
+                              />
+                          </td>
+                          <td>
+                              <Link
+                                  to={`Addresult/${item.id}`}
+                                  className="btn btn-sm btn-primary"
+                              >
+                                  Result
+                              </Link>
+                          </td>
+                          <td>
+                              <Link
+                                  to={`edit-student/${item.id}`}
+                                  className="btn"
+                              >
+                                  <i className="fas fa-edit"></i>
+                              </Link>
+                          </td>
+                          <td>
+                              <button
+                                  onClick={(e) => deleteStudent(e, item.id)}
+                                  className="btn"
+                              >
+                                  <i className="fas fa-window-close"></i>
+                              </button>
+                          </td>
+                      </tr>
+                  );
+              });
     return (
         <>
             <Navbar />
@@ -149,104 +191,17 @@ const Index = () => {
                         <thead>
                             <tr>
                                 <th scope="col">#</th>
-                                <th scope="col">First Name</th>
-                                <th scope="col">Last Name</th>
+                                <th scope="col">Name</th>
+                                {/* <th scope="col">Last Name</th> */}
                                 <th scope="col">Email</th>
                                 <th scope="col">industry</th>
                                 <th scope="col">P.P</th>
+                                <th scope="col">Add Result</th>
                                 <th scope="col">Edit</th>
                                 <th scope="col">Delete</th>
                             </tr>
                         </thead>
-                        <tbody>
-                            {searchTeam.length > 1
-                                ? filteredResult.map((item) => {
-                                      return (
-                                          <tr key={item.id}>
-                                              <td>{item.id}</td>
-                                              <td>{item.first_Name}</td>
-                                              <td>{item.last_Name}</td>
-                                              <td>{item.email}</td>
-                                              <td>{item.industry}</td>
-                                              <td>
-                                                  <img
-                                                      src={
-                                                          "http://localhost:8001/images/students/" +
-                                                          item.profile_photo
-                                                      }
-                                                      alt={item.last_Name}
-                                                      loading="lazy"
-                                                      width="100px"
-                                                  />
-                                              </td>
-                                              <td>
-                                                  <Link
-                                                      to={`edit-student/${item.id}`}
-                                                      className="btn"
-                                                  >
-                                                      <i className="fas fa-edit"></i>
-                                                  </Link>
-                                              </td>
-                                              <td>
-                                                  <button
-                                                      onClick={(e) =>
-                                                          deleteStudent(
-                                                              e,
-                                                              item.id
-                                                          )
-                                                      }
-                                                      className="btn"
-                                                  >
-                                                      <i className="fas fa-window-close"></i>
-                                                  </button>
-                                              </td>
-                                          </tr>
-                                      );
-                                  })
-                                : allstudents.map((item) => {
-                                      return (
-                                          <tr key={item.id}>
-                                              <td>{item.id}</td>
-                                              <td>{item.first_Name}</td>
-                                              <td>{item.last_Name}</td>
-                                              <td>{item.email}</td>
-                                              <td>{item.industry}</td>
-                                              <td>
-                                                  <img
-                                                      src={
-                                                          "http://localhost:8001/images/students/" +
-                                                          item.profile_photo
-                                                      }
-                                                      alt={item.last_Name}
-                                                      loading="lazy"
-                                                      width="100px"
-                                                  />
-                                              </td>
-                                              <td>
-                                                  <Link
-                                                      to={`edit-student/${item.id}`}
-                                                      className="btn"
-                                                  >
-                                                      <i className="fas fa-edit"></i>
-                                                  </Link>
-                                              </td>
-                                              <td>
-                                                  <button
-                                                      onClick={(e) =>
-                                                          deleteStudent(
-                                                              e,
-                                                              item.id
-                                                          )
-                                                      }
-                                                      className="btn"
-                                                  >
-                                                      <i className="fas fa-window-close"></i>
-                                                  </button>
-                                              </td>
-                                          </tr>
-                                      );
-                                  })}
-                        </tbody>
+                        <tbody>{student_HTMLTABLE}</tbody>
                     </table>
                 </div>
             </div>

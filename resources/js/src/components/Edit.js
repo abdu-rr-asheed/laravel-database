@@ -50,7 +50,6 @@ const Edit = (props) => {
             .post(`/api/updatestudent/${student_Id}`, formdata)
             .then((res) => {
                 if (res.data.status === 200) {
-                    // console.log(res.data.message);
                     swal("Success", res.data.message, "success");
                 }
             });

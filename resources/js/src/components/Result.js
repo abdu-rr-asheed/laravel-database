@@ -1,9 +1,19 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Navbar from "./Navbar";
 import Search from "./Search";
 import BtnResult from "./btnResult";
+import axios from "axios";
 
 const Result = () => {
+    const [viewresult, setResult] = useState([]);
+
+    useEffect(() => {
+        axios.get(`/api/view-result`).then((res) => {
+            if (res.data.status === 200) {
+                setResult(res.data.result);
+            }
+        });
+    }, []);
     return (
         <>
             <Navbar />
@@ -29,10 +39,11 @@ const Result = () => {
                         <thead>
                             <tr>
                                 <th scope="col">#</th>
-                                <th scope="col">First Name</th>
-                                <th scope="col">Last Name</th>
+                                <th scope="col">Full Name</th>
                                 <th scope="col">Know.Area</th>
                                 <th scope="col">Assessor</th>
+                                <th scope="col">Level</th>
+                                <th scope="col">Score</th>
                                 <th scope="col">Overall</th>
                                 <th scope="col">Date</th>
                                 <th scope="col">Delete</th>
@@ -40,156 +51,29 @@ const Result = () => {
                             </tr>
                         </thead>
                         <tbody>
-                            <tr>
-                                <th scope="row">1</th>
-                                <td>Abdur</td>
-                                <td>Rasheed</td>
-                                <td>abdurrasheed430@gmail.com</td>
-                                <td>Gampola</td>
-                                <td>Gampola</td>
-                                <td>11.11.2021</td>
-                                <td>
-                                    <i className="fas fa-window-close"></i>
-                                </td>
-                                <td>
-                                    <i className="fas fa-edit"></i>
-                                </td>
-                            </tr>
-                            <tr>
-                                <th scope="row">2</th>
-                                <td>Abdur</td>
-                                <td>Rasheed</td>
-                                <td>abdurrasheed430@gmail.com</td>
-                                <td>Gampola</td>
-                                <td>Gampola</td>
-                                <td>11.11.2021</td>
-                                <td>
-                                    <i className="fas fa-window-close"></i>
-                                </td>
-                                <td>
-                                    <i className="fas fa-edit"></i>
-                                </td>
-                            </tr>
-                            <tr>
-                                <th scope="row">3</th>
-                                <td>Abdur</td>
-                                <td>Rasheed</td>
-                                <td>abdurrasheed430@gmail.com</td>
-                                <td>Gampola</td>
-                                <td>Gampola</td>
-                                <td>11.11.2021</td>
-                                <td>
-                                    <i className="fas fa-window-close"></i>
-                                </td>
-                                <td>
-                                    <i className="fas fa-edit"></i>
-                                </td>
-                            </tr>
-                            <tr>
-                                <th scope="row">4</th>
-                                <td>Abdur</td>
-                                <td>Rasheed</td>
-                                <td>abdurrasheed430@gmail.com</td>
-                                <td>Gampola</td>
-                                <td>Gampola</td>
-                                <td>11.11.2021</td>
-                                <td>
-                                    <i className="fas fa-window-close"></i>
-                                </td>
-                                <td>
-                                    <i className="fas fa-edit"></i>
-                                </td>
-                            </tr>
-                            <tr>
-                                <th scope="row">5</th>
-                                <td>Abdur</td>
-                                <td>Rasheed</td>
-                                <td>abdurrasheed430@gmail.com</td>
-                                <td>Gampola</td>
-                                <td>Gampola</td>
-                                <td>11.11.2021</td>
-                                <td>
-                                    <i className="fas fa-window-close"></i>
-                                </td>
-                                <td>
-                                    <i className="fas fa-edit"></i>
-                                </td>
-                            </tr>
-                            <tr>
-                                <th scope="row">6</th>
-                                <td>Abdur</td>
-                                <td>Rasheed</td>
-                                <td>abdurrasheed430@gmail.com</td>
-                                <td>Gampola</td>
-                                <td>Gampola</td>
-                                <td>11.11.2021</td>
-                                <td>
-                                    <i className="fas fa-window-close"></i>
-                                </td>
-                                <td>
-                                    <i className="fas fa-edit"></i>
-                                </td>
-                            </tr>
-                            <tr>
-                                <th scope="row">7</th>
-                                <td>Abdur</td>
-                                <td>Rasheed</td>
-                                <td>abdurrasheed430@gmail.com</td>
-                                <td>Gampola</td>
-                                <td>Gampola</td>
-                                <td>11.11.2021</td>
-                                <td>
-                                    <i className="fas fa-window-close"></i>
-                                </td>
-                                <td>
-                                    <i className="fas fa-edit"></i>
-                                </td>
-                            </tr>
-                            <tr>
-                                <th scope="row">8</th>
-                                <td>Abdur</td>
-                                <td>Rasheed</td>
-                                <td>abdurrasheed430@gmail.com</td>
-                                <td>Gampola</td>
-                                <td>Gampola</td>
-                                <td>11.11.2021</td>
-                                <td>
-                                    <i className="fas fa-window-close"></i>
-                                </td>
-                                <td>
-                                    <i className="fas fa-edit"></i>
-                                </td>
-                            </tr>
-                            <tr>
-                                <th scope="row">9</th>
-                                <td>Abdur</td>
-                                <td>Rasheed</td>
-                                <td>abdurrasheed430@gmail.com</td>
-                                <td>Gampola</td>
-                                <td>Gampola</td>
-                                <td>11.11.2021</td>
-                                <td>
-                                    <i className="fas fa-window-close"></i>
-                                </td>
-                                <td>
-                                    <i className="fas fa-edit"></i>
-                                </td>
-                            </tr>
-                            <tr>
-                                <th scope="row">10</th>
-                                <td>Abdur</td>
-                                <td>Rasheed</td>
-                                <td>abdurrasheed430@gmail.com</td>
-                                <td>Gampola</td>
-                                <td>Gampola</td>
-                                <td>11.11.2021</td>
-                                <td>
-                                    <i className="fas fa-window-close"></i>
-                                </td>
-                                <td>
-                                    <i className="fas fa-edit"></i>
-                                </td>
-                            </tr>
+                            {viewresult.map((item) => {
+                                return (
+                                    <tr key={item.id}>
+                                        <th scope="row">{item.id}</th>
+                                        <td>
+                                            {item.student.first_Name}&nbsp;
+                                            {item.student.last_Name}
+                                        </td>
+                                        <td>{item.knowledge_area}</td>
+                                        <td>{item.level}</td>
+                                        <td>{item.score}</td>
+                                        <td>{item.assessor}</td>
+                                        <td>{item.overrall}</td>
+                                        <td>{item.updated_at}</td>
+                                        <td>
+                                            <i className="fas fa-window-close"></i>
+                                        </td>
+                                        <td>
+                                            <i className="fas fa-edit"></i>
+                                        </td>
+                                    </tr>
+                                );
+                            })}
                         </tbody>
                     </table>
                 </div>

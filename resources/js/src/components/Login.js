@@ -59,7 +59,7 @@ const Login = () => {
                             <h1 className="text-light ml-1 mb-4">Login</h1>
                             <div className="form-floating my-2">
                                 <input
-                                    type="text"
+                                    type="email"
                                     name="email"
                                     onChange={handleInput}
                                     value={loginInput.email}

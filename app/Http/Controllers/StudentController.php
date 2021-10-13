@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
-use App\Models\result;
+// use App\Models\result;
 use App\Models\Student;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\File;
@@ -188,13 +188,13 @@ class StudentController extends Controller
     public function destroy($id)
     {
         $student = Student::find($id);
-        $result = result::where('student_id',$id)->first();
+        // $result = result::where('student_id',$id)->first();
         $destination = 'images/students/'.$student->profile_photo;
             if (File::exists($destination)) {
                 File::delete($destination);
             }
         $student->delete();
-        $result->delete();
+        // $result->delete();
         return response()->json([
             'status' => 200,
             'message' => 'Student Deleted successfully',
@@ -202,6 +202,6 @@ class StudentController extends Controller
     }
     public function search($name)
     {
-        return Student::where('first_Name', 'Like', '%'.$name.'%')->get();
+        return Student::where('last_Name', 'Like', '%'.$name.'%')->get();
     }
 }

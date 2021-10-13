@@ -18,34 +18,39 @@ const Index = () => {
             }
         });
     }, []);
-    const searchData = (value) => {
-        setSearchTeam(value);
+    const searchData = (e) => {
+        e.preventDefault();
         if (searchTeam !== "") {
-            const filterdata = allstudents.filter((item) => {
-                return Object.values(item)
-                    .join("")
-                    .toLowerCase("")
-                    .includes(searchTeam.toLowerCase());
+            axios.get(`/api/students/search/${searchTeam}`).then((res) => {
+                setFilteredResult(res.data);
             });
-            setFilteredResult(filterdata);
-        } else {
-            setFilteredResult(allstudents);
         }
     };
 
+    console.log(filteredResult);
     const deleteStudent = (e, id) => {
         e.preventDefault();
 
         const thisClicked = e.currentTarget;
         thisClicked.disable = true;
 
-        axios.delete(`/api/delete-student/${id}`).then((res) => {
-            if (res.data.status === 200) {
-                thisClicked.closest("tr").remove();
-                swal("Success", res.data.message, "success");
-            } else if (res.data.status === 404) {
-                swal("Warning", res.data.message, "warning");
-                thisClicked.disable = true;
+        swal({
+            title: "Are you sure?",
+            text: "Once deleted, you will not be able to recover this Student Details",
+            icon: "warning",
+            buttons: true,
+            dangerMode: true,
+        }).then((willDelete) => {
+            if (willDelete) {
+                axios.delete(`/api/delete-student/${id}`).then((res) => {
+                    if (res.data.status === 200) {
+                        thisClicked.closest("tr").remove();
+                        swal("Success", res.data.message, "success");
+                    } else if (res.data.status === 404) {
+                        swal("Warning", res.data.message, "warning");
+                        thisClicked.disable = true;
+                    }
+                });
             }
         });
     };
@@ -73,14 +78,6 @@ const Index = () => {
                                   loading="lazy"
                                   width="100px"
                               />
-                          </td>
-                          <td>
-                              <Link
-                                  to={`Addresult/${item.id}`}
-                                  className="btn btn-sm btn-primary"
-                              >
-                                  Result
-                              </Link>
                           </td>
                           <td>
                               <Link
@@ -124,14 +121,6 @@ const Index = () => {
                           </td>
                           <td>
                               <Link
-                                  to={`Addresult/${item.id}`}
-                                  className="btn btn-sm btn-primary"
-                              >
-                                  Result
-                              </Link>
-                          </td>
-                          <td>
-                              <Link
                                   to={`edit-student/${item.id}`}
                                   className="btn"
                               >
@@ -155,27 +144,27 @@ const Index = () => {
             <div className="row">
                 {/* Search Bar  */}
                 <div className="col-md-4 col-12 searchbar my-md-5 my-2">
-                    {/* <form onSubmit={searchSubmit}> */}
-                    <div className="input-group mb-3">
-                        <input
-                            type="text"
-                            className="form-control"
-                            placeholder="Search..."
-                            aria-label="Search..."
-                            aria-describedby="button-addon2"
-                            onChange={(e) => searchData(e.target.value)}
-                            // value={searchInput.name}
-                        />
-                        <button
-                            className="btn btn-primary text-white"
-                            type="submit"
-                            id="button-addon2"
-                            // onClick={searchData}
-                        >
-                            <i className="fas fa-search"></i>
-                        </button>
-                    </div>
-                    {/* </form> */}
+                    <form onSubmit={searchData}>
+                        <div className="input-group mb-3">
+                            <input
+                                type="text"
+                                className="form-control"
+                                placeholder="Search..."
+                                aria-label="Search..."
+                                aria-describedby="button-addon2"
+                                onChange={(e) => setSearchTeam(e.target.value)}
+                                // value={searchInput.name}
+                            />
+                            <button
+                                className="btn btn-primary text-white"
+                                type="submit"
+                                id="button-addon2"
+                                // onClick={searchData}
+                            >
+                                <i className="fas fa-search"></i>
+                            </button>
+                        </div>
+                    </form>
                 </div>
                 <div className="col-md-8 col-12 my-md-5 my-2">
                     <div className="addbtn float-end ">
@@ -196,7 +185,6 @@ const Index = () => {
                                 <th scope="col">Email</th>
                                 <th scope="col">industry</th>
                                 <th scope="col">P.P</th>
-                                <th scope="col">Add Result</th>
                                 <th scope="col">Edit</th>
                                 <th scope="col">Delete</th>
                             </tr>

@@ -1,6 +1,5 @@
 <?php
 
-use App\Http\Controllers\ProductController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\ResultController;
 use App\Http\Controllers\StudentController;
@@ -30,7 +29,6 @@ Route::post('/updatestudent/{id}' , [StudentController::class, 'update']);
 Route::delete('/delete-student/{id}' , [StudentController::class, 'destroy']);
 Route::get('/students/search/{name}', [StudentController::class, 'search']);
 
-
-Route::middleware('auth:api')->get('/user', function (Request $request) {
-    return $request->user();
-});
+// Route::middleware('auth:api')->get('/user', function (Request $request) {
+//     return $request->user();
+// });

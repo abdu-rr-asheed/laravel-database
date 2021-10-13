@@ -2858,30 +2858,39 @@ var Index = function Index() {
     });
   }, []);
 
-  var searchData = function searchData(value) {
-    setSearchTeam(value);
+  var searchData = function searchData(e) {
+    e.preventDefault();
 
     if (searchTeam !== "") {
-      var filterdata = allstudents.filter(function (item) {
-        return Object.values(item).join("").toLowerCase("").includes(searchTeam.toLowerCase());
+      axios__WEBPACK_IMPORTED_MODULE_3___default().get("/api/students/search/".concat(searchTeam)).then(function (res) {
+        setFilteredResult(res.data);
       });
-      setFilteredResult(filterdata);
-    } else {
-      setFilteredResult(allstudents);
     }
   };
+
+  console.log(filteredResult);
 
   var deleteStudent = function deleteStudent(e, id) {
     e.preventDefault();
     var thisClicked = e.currentTarget;
     thisClicked.disable = true;
-    axios__WEBPACK_IMPORTED_MODULE_3___default().delete("/api/delete-student/".concat(id)).then(function (res) {
-      if (res.data.status === 200) {
-        thisClicked.closest("tr").remove();
-        sweetalert__WEBPACK_IMPORTED_MODULE_4___default()("Success", res.data.message, "success");
-      } else if (res.data.status === 404) {
-        sweetalert__WEBPACK_IMPORTED_MODULE_4___default()("Warning", res.data.message, "warning");
-        thisClicked.disable = true;
+    sweetalert__WEBPACK_IMPORTED_MODULE_4___default()({
+      title: "Are you sure?",
+      text: "Once deleted, you will not be able to recover this Student Details",
+      icon: "warning",
+      buttons: true,
+      dangerMode: true
+    }).then(function (willDelete) {
+      if (willDelete) {
+        axios__WEBPACK_IMPORTED_MODULE_3___default().delete("/api/delete-student/".concat(id)).then(function (res) {
+          if (res.data.status === 200) {
+            thisClicked.closest("tr").remove();
+            sweetalert__WEBPACK_IMPORTED_MODULE_4___default()("Success", res.data.message, "success");
+          } else if (res.data.status === 404) {
+            sweetalert__WEBPACK_IMPORTED_MODULE_4___default()("Warning", res.data.message, "warning");
+            thisClicked.disable = true;
+          }
+        });
       }
     });
   };
@@ -2903,12 +2912,6 @@ var Index = function Index() {
           alt: item.last_Name,
           loading: "lazy",
           width: "100px"
-        })
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("td", {
-        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_6__.Link, {
-          to: "Addresult/".concat(item.id),
-          className: "btn btn-sm btn-primary",
-          children: "Result"
         })
       }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("td", {
         children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_6__.Link, {
@@ -2949,12 +2952,6 @@ var Index = function Index() {
         })
       }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("td", {
         children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_6__.Link, {
-          to: "Addresult/".concat(item.id),
-          className: "btn btn-sm btn-primary",
-          children: "Result"
-        })
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("td", {
-        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_6__.Link, {
           to: "edit-student/".concat(item.id),
           className: "btn",
           children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("i", {
@@ -2979,27 +2976,30 @@ var Index = function Index() {
       className: "row",
       children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("div", {
         className: "col-md-4 col-12 searchbar my-md-5 my-2",
-        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("div", {
-          className: "input-group mb-3",
-          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("input", {
-            type: "text",
-            className: "form-control",
-            placeholder: "Search...",
-            "aria-label": "Search...",
-            "aria-describedby": "button-addon2",
-            onChange: function onChange(e) {
-              return searchData(e.target.value);
-            } // value={searchInput.name}
+        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("form", {
+          onSubmit: searchData,
+          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("div", {
+            className: "input-group mb-3",
+            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("input", {
+              type: "text",
+              className: "form-control",
+              placeholder: "Search...",
+              "aria-label": "Search...",
+              "aria-describedby": "button-addon2",
+              onChange: function onChange(e) {
+                return setSearchTeam(e.target.value);
+              } // value={searchInput.name}
 
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("button", {
-            className: "btn btn-primary text-white",
-            type: "submit",
-            id: "button-addon2" // onClick={searchData}
-            ,
-            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("i", {
-              className: "fas fa-search"
-            })
-          })]
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("button", {
+              className: "btn btn-primary text-white",
+              type: "submit",
+              id: "button-addon2" // onClick={searchData}
+              ,
+              children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("i", {
+                className: "fas fa-search"
+              })
+            })]
+          })
         })
       }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("div", {
         className: "col-md-8 col-12 my-md-5 my-2",
@@ -3031,9 +3031,6 @@ var Index = function Index() {
               }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("th", {
                 scope: "col",
                 children: "P.P"
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("th", {
-                scope: "col",
-                children: "Add Result"
               }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("th", {
                 scope: "col",
                 children: "Edit"
@@ -3162,7 +3159,7 @@ var Login = function Login() {
             }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("div", {
               className: "form-floating my-2",
               children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("input", {
-                type: "text",
+                type: "email",
                 name: "email",
                 onChange: handleInput,
                 value: loginInput.email,
@@ -3485,7 +3482,8 @@ var Register = function Register() {
                 name: "name",
                 onChange: handleInput,
                 value: registerInput.name,
-                className: "form-control"
+                className: "form-control",
+                placeholder: "Name"
               }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("label", {
                 children: "Name"
               })]
@@ -3499,7 +3497,8 @@ var Register = function Register() {
                 name: "email",
                 onChange: handleInput,
                 value: registerInput.email,
-                className: "form-control"
+                className: "form-control",
+                placeholder: "Email"
               }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("label", {
                 children: "Email"
               })]
@@ -3513,7 +3512,8 @@ var Register = function Register() {
                 name: "password",
                 onChange: handleInput,
                 value: registerInput.password,
-                className: "form-control"
+                className: "form-control",
+                placeholder: "password"
               }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("label", {
                 children: "Pasword"
               })]

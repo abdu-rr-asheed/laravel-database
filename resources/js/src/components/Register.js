@@ -59,6 +59,7 @@ const Register = () => {
                                     onChange={handleInput}
                                     value={registerInput.name}
                                     className="form-control"
+                                    placeholder="Name"
                                 />
                                 <label>Name</label>
                             </div>
@@ -73,6 +74,7 @@ const Register = () => {
                                     onChange={handleInput}
                                     value={registerInput.email}
                                     className="form-control"
+                                    placeholder="Email"
                                 />
                                 <label>Email</label>
                             </div>
@@ -87,6 +89,7 @@ const Register = () => {
                                     onChange={handleInput}
                                     value={registerInput.password}
                                     className="form-control"
+                                    placeholder="password"
                                 />
                                 <label>Pasword</label>
                             </div>

@@ -153,3 +153,18 @@ input[type="file"]::file-selector-button:hover {
 .container-sm {
     padding-right: var(--bs-gutter-x, 0.75rem) !important;
 }
+.page-item.active .page-link,
+.page-link:hover {
+    color: var(--font-color);
+    background-color: #e53170;
+    border-color: #e53170;
+}
+.page-link {
+    color: var(--font-color);
+    background-color: var(--main-color);
+    border-color: var(--main-color);
+}
+.page-link:focus {
+    color: var(--font-color);
+    background-color: var(--main-color);
+}

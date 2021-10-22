@@ -13,7 +13,7 @@ class StudentController extends Controller
 {
     public function index()
     {
-        $student = Student::all();
+        $student = Student::paginate(6);
         return response()->json([
             'status' => 200,
             'students' => $student,

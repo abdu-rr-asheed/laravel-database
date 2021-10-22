@@ -12,10 +12,11 @@ import Add from "./components/Addcandidate";
 import Edit from "./components/Edit";
 import Result from "./components/Result";
 import Addresult from "./components/Addresult";
-import UpdateCandidate from "./components/UpdateCandidate";
 import Login from "./components/Login";
 import Register from "./components/Register";
 import axios from "axios";
+import Searchresult from "./components/Searchresult";
+import Try from "./components/Try";
 
 axios.defaults.baseURL = "http://localhost:8001";
 axios.defaults.headers.post["Content-Type"] = "application/json";
@@ -34,9 +35,10 @@ const App = () => {
                 <Route exact path="/" component={Index} />
                 <Route path="/AddCandidate" component={Add} />
                 <Route path="/edit-student/:id" component={Edit} />
-                <Route path="/Addresult" component={Addresult} />
+                <Route path="/try" component={Try} />
                 <Route path="/result" component={Result} />
-                <Route path="/updateCandidate" component={UpdateCandidate} />
+                <Route path="/searchresult" component={Searchresult} />
+                <Route path="/add-result/:id" component={Addresult} />
 
                 <Route path="/login">
                     {localStorage.getItem("auth_token") ? (

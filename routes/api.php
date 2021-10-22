@@ -28,6 +28,7 @@ Route::get('/edit-student/{id}' , [StudentController::class, 'edit']);
 Route::post('/updatestudent/{id}' , [StudentController::class, 'update']);
 Route::delete('/delete-student/{id}' , [StudentController::class, 'destroy']);
 Route::get('/students/search/{name}', [StudentController::class, 'search']);
+Route::get('/add-result/{id}' , [StudentController::class, 'addresult']);
 
 // Route::middleware('auth:api')->get('/user', function (Request $request) {
 //     return $request->user();

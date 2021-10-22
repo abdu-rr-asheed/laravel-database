@@ -1,8 +1,7 @@
 import React, { useEffect, useState } from "react";
 import Navbar from "./Navbar";
-import Search from "./Search";
-import BtnResult from "./btnResult";
 import axios from "axios";
+import { Link } from "react-router-dom";
 
 const Result = () => {
     const [viewresult, setResult] = useState([]);
@@ -18,15 +17,13 @@ const Result = () => {
         <>
             <Navbar />
             <div className="row">
-                {/* Search Bar  */}
-                <div className="col-md-4 col-12 searchbar my-md-5 my-2">
-                    <div className="input-group mb-3">
-                        <Search />
-                    </div>
-                </div>
-                <div className="col-md-8 col-12 my-md-5 my-2">
+                <div className="col-md-12 col-12 my-md-5 my-2">
                     <div className="addbtn float-end ">
-                        <BtnResult />
+                        <button type="button" className="btn btn-primary">
+                            <Link to="/searchresult">
+                                <i className="fas fa-plus-square"></i>Add Result
+                            </Link>
+                        </button>
                     </div>
                 </div>
             </div>

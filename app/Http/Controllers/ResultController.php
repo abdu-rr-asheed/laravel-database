@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\result;
+use App\Models\Student;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 
@@ -17,16 +18,24 @@ class ResultController extends Controller
         ]);
     }
 
+    public function addresult($id)
+    {
+        $student = Student::find($id);
+        return response()->json([
+            'status'=> 200,
+            'student'=> $student,
+        ]);
+    }
+
     public function store(Request $request)
     {
 
         $validator = Validator::make($request->all(),[
-            'student_id'=>'required',
+            // 'student_id'=>'required',
             'knowledge_area'=>'required',
             'level'=>'required',
             'score'=>'required',
             'assessor'=>'required',
-            'overrall'=>'required',
         ]);
 
         if ($validator->fails()) {

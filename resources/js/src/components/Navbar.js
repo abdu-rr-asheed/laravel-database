@@ -24,17 +24,17 @@ const Navbar = () => {
         AuthButton = (
             <>
                 <li className="nav-item">
-                    <NavLink to="/login" className="nav-link">
-                        <span>
-                            <i className="fas fa-user"></i>
+                    <NavLink to="/login" className="nav-link text-white">
+                        <span className="me-2">
+                            <i className="fas fa-user ml-2"></i>
                         </span>
                         Login
                     </NavLink>
                 </li>
                 <li className="nav-item">
-                    <NavLink to="/register" className="nav-link">
-                        <span>
-                            <i className="fas fa-user-plus"></i>
+                    <NavLink to="/register" className="nav-link text-white">
+                        <span className="me-2">
+                            <i className="fas fa-user-plus mr-2"></i>
                         </span>
                         Register
                     </NavLink>
@@ -50,7 +50,7 @@ const Navbar = () => {
                     className="nav-link btn btn-sm"
                     to="/"
                 >
-                    <span>
+                    <span className="me-2">
                         <i className="fas fa-sign-out-alt"></i>
                     </span>
                     Log Out
@@ -62,7 +62,7 @@ const Navbar = () => {
     return (
         <>
             {/* Navbar  */}
-            <nav className="navbar navbar-expand-lg navbar-light">
+            <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
                 <div className="container">
                     <Link to="/" className="navbar-brand" to="/">
                         <div className="logo d-flex align-items-center">
@@ -95,7 +95,7 @@ const Navbar = () => {
                                     stroke="black"
                                 />
                             </svg>
-                            <div className="Logo-title">E-Learning</div>
+                            <div className="Logo-title fs-5">E-Learning</div>
                         </div>
                     </Link>
                     <button
@@ -113,11 +113,14 @@ const Navbar = () => {
                         className="collapse navbar-collapse"
                         id="navbarSupportedContent"
                     >
-                        <ul className="navbar-nav ms-lg-auto">
+                        <ul className="navbar-nav ms-lg-auto fs-5">
                             <li className="nav-item">
-                                <NavLink to="/result" className="nav-link">
-                                    <span>
-                                        <i className="fas fa-star"></i>
+                                <NavLink
+                                    to="/result"
+                                    className="nav-link text-white"
+                                >
+                                    <span className="me-2">
+                                        <i className="fas fa-star ml-2"></i>
                                     </span>
                                     Result
                                 </NavLink>

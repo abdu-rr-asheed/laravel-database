@@ -3,7 +3,8 @@
     padding: 0;
     font-family: "Poppins", sans-serif;
 }
-input:-internal-autofill-selected {
+
+/* input:-internal-autofill-selected {
     background-image: none !important;
     background-color: #211f31 !important;
     color: #fffffe !important;
@@ -113,10 +114,10 @@ table .fa-edit {
 }
 .navbar-light .navbar-toggler-icon {
     background-image: url(../images/bars-solid.svg) !important;
-    /* background-image: url(/images/bars-solid.svg); */
-}
+} */
+/* background-image: url(/images/bars-solid.svg); */
 
-.addForm .form-control {
+/* .addForm .form-control {
     color: #fffffe;
     background-color: #211f31;
     border: 1px solid #ff8906;
@@ -167,4 +168,4 @@ input[type="file"]::file-selector-button:hover {
 .page-link:focus {
     color: var(--font-color);
     background-color: var(--main-color);
-}
+} */

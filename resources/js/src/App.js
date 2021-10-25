@@ -17,6 +17,7 @@ import Register from "./components/Register";
 import axios from "axios";
 import Searchresult from "./components/Searchresult";
 import Try from "./components/Try";
+import EditResult from "./components/EditResult";
 
 axios.defaults.baseURL = "http://localhost:8001";
 axios.defaults.headers.post["Content-Type"] = "application/json";
@@ -39,6 +40,7 @@ const App = () => {
                 <Route path="/result" component={Result} />
                 <Route path="/searchresult" component={Searchresult} />
                 <Route path="/add-result/:id" component={Addresult} />
+                <Route path="/edit-result/:id" component={EditResult} />
 
                 <Route path="/login">
                     {localStorage.getItem("auth_token") ? (

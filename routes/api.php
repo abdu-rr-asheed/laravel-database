@@ -10,6 +10,9 @@ use Illuminate\Support\Facades\Route;
     Route::post('/register', [AuthController::class, 'register']);
     Route::post('/login', [AuthController::class, 'login']);
     Route::post('/result', [ResultController::class, 'store']);
+    Route::get('/editResult/{id}', [ResultController::class, 'edit']);
+    Route::post('/updateresult/{id}' , [ResultController::class, 'update']);
+    Route::delete('/resultDelete/{id}', [ResultController::class, 'destroy']);
     Route::get('view-result', [ResultController::class, 'index']);
 
 // Admin

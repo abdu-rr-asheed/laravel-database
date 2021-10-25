@@ -45,6 +45,7 @@ const Addcandidate = () => {
                     industry: "",
                 });
                 setError([]);
+                document.getElementById("myForm").reset();
                 swal("Success", res.data.message, "success");
             } else if (res.data.status === 422) {
                 swal("Validation Error", "", "warning");
@@ -60,6 +61,7 @@ const Addcandidate = () => {
                 <h1 className="text-light ml-1 mb-4">Add a new Student</h1>
                 <form
                     className="d-flex flex-wrap"
+                    id="myForm"
                     onSubmit={saveStudent}
                     encType="multipart/form-data"
                 >

@@ -104,12 +104,10 @@ const Searchresult = () => {
                   );
               });
 
-    console.log(links);
-
     var Pagination_HTML = "";
 
-    if (links.length === 0) {
-        return <></>;
+    if (links.length === 3) {
+        Pagination_HTML = <></>;
     } else {
         Pagination_HTML =
             searchTeam.length > 1 ? (
@@ -154,13 +152,11 @@ const Searchresult = () => {
                                 aria-label="Search..."
                                 aria-describedby="button-addon2"
                                 onChange={(e) => setSearchTeam(e.target.value)}
-                                // value={searchInput.name}
                             />
                             <button
                                 className="btn btn-primary text-white"
                                 type="submit"
                                 id="button-addon2"
-                                // onClick={searchData}
                             >
                                 <i className="fas fa-search"></i>
                             </button>

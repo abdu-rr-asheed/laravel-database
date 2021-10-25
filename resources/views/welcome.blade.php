@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
+<html lang="{{ str_replace('_', '-', app()->getLocale()) }}" class="bg-dark">
     <head>
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -11,7 +11,7 @@
         <link rel="shortcut icon" href="../../public/images/logo.png">
         <link rel="stylesheet" href="./css/app.css" />
     </head>
-    <body class="container">
+    <body class="container bg-dark">
         <div id="app"></div>
         <script src="./js/app.js"></script>
         <script

@@ -2359,23 +2359,28 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 var Addresult = function Addresult(props) {
   var history = (0,react_router__WEBPACK_IMPORTED_MODULE_4__.useHistory)();
 
-  var _useState = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)({
+  var _useState = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(true),
+      _useState2 = _slicedToArray(_useState, 2),
+      loading = _useState2[0],
+      setLoading = _useState2[1];
+
+  var _useState3 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)({
     knowledge_area: "",
     level: "",
     score: "",
     assessor: "",
     overrall: ""
   }),
-      _useState2 = _slicedToArray(_useState, 2),
-      resultInput = _useState2[0],
-      setresult = _useState2[1];
+      _useState4 = _slicedToArray(_useState3, 2),
+      resultInput = _useState4[0],
+      setresult = _useState4[1];
 
-  var _useState3 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)({
+  var _useState5 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)({
     student_id: props.match.params.id
   }),
-      _useState4 = _slicedToArray(_useState3, 2),
-      studentID = _useState4[0],
-      setstudentID = _useState4[1];
+      _useState6 = _slicedToArray(_useState5, 2),
+      studentID = _useState6[0],
+      setstudentID = _useState6[1];
 
   var handleInput = function handleInput(e) {
     e.persist();
@@ -2389,16 +2394,17 @@ var Addresult = function Addresult(props) {
     });
   };
 
-  var _useState5 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)([]),
-      _useState6 = _slicedToArray(_useState5, 2),
-      studentInput = _useState6[0],
-      setstudent = _useState6[1];
+  var _useState7 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)([]),
+      _useState8 = _slicedToArray(_useState7, 2),
+      studentInput = _useState8[0],
+      setstudent = _useState8[1];
 
   (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
     var student_Id = props.match.params.id;
     axios__WEBPACK_IMPORTED_MODULE_1___default().get("/api/edit-student/".concat(student_Id)).then(function (res) {
       if (res.data.status === 200) {
         setstudent(res.data.student);
+        setLoading(false);
       }
     });
   }, [props.match.params.id]);
@@ -2427,6 +2433,23 @@ var Addresult = function Addresult(props) {
       }
     });
   };
+
+  if (loading) {
+    return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("div", {
+      className: "d-flex justify-content-center align-items-center",
+      style: {
+        height: "100vh"
+      },
+      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("div", {
+        className: "spinner-border text-warning",
+        role: "status",
+        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("span", {
+          className: "visually-hidden",
+          children: "Loading..."
+        })
+      })
+    });
+  }
 
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.Fragment, {
     children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(_Navbar__WEBPACK_IMPORTED_MODULE_2__.default, {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("div", {
@@ -3045,14 +3068,13 @@ var EditResult = function EditResult(props) {
             className: "form-floating mx-1",
             children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("input", {
               type: "text",
-              className: "form-control",
-              id: "floatingInputValue2",
+              className: "form-control bg-dark text-white border-warning",
               name: "knowledge_area",
               onChange: handleInput,
               value: resultInput.knowledge_area,
               placeholder: "Knowlage Area"
             }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("label", {
-              htmlFor: "floatingInputValue2",
+              className: "text-warning",
               children: "Knowlage Area"
             })]
           })
@@ -3062,14 +3084,13 @@ var EditResult = function EditResult(props) {
             className: "form-floating mx-1",
             children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("input", {
               type: "text",
-              className: "form-control",
-              id: "floatingInputValue3",
+              className: "form-control bg-dark text-white border-warning",
               name: "level",
               onChange: handleInput,
               value: resultInput.level,
               placeholder: "Level"
             }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("label", {
-              htmlFor: "floatingInputValue3",
+              className: "text-warning",
               children: "Level"
             })]
           })
@@ -3079,14 +3100,13 @@ var EditResult = function EditResult(props) {
             className: "form-floating mx-1",
             children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("input", {
               type: "text",
-              className: "form-control",
-              id: "floatingInputValue4",
+              className: "form-control bg-dark text-white border-warning",
               name: "score",
               onChange: handleInput,
               value: resultInput.score,
               placeholder: "Score"
             }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("label", {
-              htmlFor: "floatingInputValue4",
+              className: "text-warning",
               children: "Score"
             })]
           })
@@ -3096,14 +3116,13 @@ var EditResult = function EditResult(props) {
             className: "form-floating mx-1",
             children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("input", {
               type: "text",
-              className: "form-control",
-              id: "floatingInputValue5",
+              className: "form-control bg-dark text-white border-warning",
               name: "assessor",
               onChange: handleInput,
               value: resultInput.assessor,
               placeholder: "Assessor"
             }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("label", {
-              htmlFor: "floatingInputValue5",
+              className: "text-warning",
               children: "Assessor"
             })]
           })
@@ -3113,14 +3132,13 @@ var EditResult = function EditResult(props) {
             className: "form-floating mx-1",
             children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("input", {
               type: "text",
-              className: "form-control",
-              id: "floatingInputValue6",
+              className: "form-control bg-dark text-white border-warning",
               name: "overrall",
               onChange: handleInput,
               value: resultInput.overrall,
               placeholder: "overrall"
             }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("label", {
-              htmlFor: "floatingInputValue6",
+              className: "text-warning",
               children: "Overrall"
             })]
           })
@@ -3128,7 +3146,7 @@ var EditResult = function EditResult(props) {
           className: "w-100 my-3",
           children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("button", {
             type: "submit",
-            className: "btn btn-primary float-end",
+            className: "btn btn-danger text-white float-end",
             children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("i", {
               className: "fas fa-save"
             }), " Update Result"]
@@ -3351,7 +3369,7 @@ var Index = function Index() {
         return false;
       } else {
         return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("div", {
-          className: item.active ? "page-item active bg-primary" : "page-item",
+          className: item.active ? "page-item active" : "page-item",
           onClick: function onClick(e) {
             return urlid(item.url);
           },
@@ -3714,7 +3732,7 @@ var Navbar = function Navbar() {
       children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("button", {
         type: "button",
         onClick: logoutSubmit,
-        className: "nav-link btn btn-sm",
+        className: "nav-link btn btn-sm fs-5",
         to: "/",
         children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("span", {
           className: "me-2",
@@ -4241,12 +4259,18 @@ var Searchresult = function Searchresult() {
       links = _useState8[0],
       setAllLinks = _useState8[1];
 
+  var _useState9 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(true),
+      _useState10 = _slicedToArray(_useState9, 2),
+      loading = _useState10[0],
+      setLoading = _useState10[1];
+
   (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
     document.title = "E-learning System";
     axios__WEBPACK_IMPORTED_MODULE_2___default().get("/api/students?page=1").then(function (res) {
       if (res.data.status === 200) {
         setAllstudents(res.data.students.data);
         setAllLinks(res.data.students.links);
+        setLoading(false);
       }
     });
   }, []);
@@ -4316,7 +4340,7 @@ var Searchresult = function Searchresult() {
       }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("td", {
         children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_4__.Link, {
           to: "add-result/".concat(item.id),
-          className: "btn btn-primary btn-sm",
+          className: "btn bg-warning text-dark btn-sm",
           children: "Add Result"
         })
       })]
@@ -4345,6 +4369,23 @@ var Searchresult = function Searchresult() {
     });
   }
 
+  if (loading) {
+    return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("div", {
+      className: "d-flex justify-content-center align-items-center",
+      style: {
+        height: "100vh"
+      },
+      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("div", {
+        className: "spinner-border text-warning",
+        role: "status",
+        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("span", {
+          className: "visually-hidden",
+          children: "Loading..."
+        })
+      })
+    });
+  }
+
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.Fragment, {
     children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(_Navbar__WEBPACK_IMPORTED_MODULE_1__.default, {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("div", {
       className: "row justify-content-center",
@@ -4356,7 +4397,7 @@ var Searchresult = function Searchresult() {
             className: "input-group mb-3",
             children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("input", {
               type: "text",
-              className: "form-control bg-primary text-white border-primary",
+              className: "form-control bg-warning text-dark border-warning",
               placeholder: "Search...",
               "aria-label": "Search...",
               "aria-describedby": "button-addon2",
@@ -4364,7 +4405,7 @@ var Searchresult = function Searchresult() {
                 return setSearchTeam(e.target.value);
               }
             }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("button", {
-              className: "btn btn-primary text-white",
+              className: "btn btn-warning text-dark",
               type: "submit",
               id: "button-addon2",
               children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("i", {
@@ -4541,7 +4582,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "* {\r\n    margin: 0;\r\n    padding: 0;\r\n    font-family: \"Poppins\", sans-serif;\r\n}\r\n.searchbar input::-moz-placeholder {\r\n    color: #000;\r\n}\r\n.searchbar input:-ms-input-placeholder {\r\n    color: #000;\r\n}\r\n.searchbar input::placeholder {\r\n    color: #000;\r\n}\r\ninput[type=\"file\"] {\r\n    padding-top: 30px !important;\r\n}\r\n\r\n/* input:-internal-autofill-selected {\r\n    background-image: none !important;\r\n    background-color: #211f31 !important;\r\n    color: #fffffe !important;\r\n}\r\na {\r\n    text-decoration: none;\r\n}\r\nbody {\r\n    background: #0f0e17;\r\n    --main-color: #ff8906;\r\n    --font-color: #fffffe;\r\n    font-size: 1rem;\r\n}\r\n.btn-primary {\r\n    background: var(--main-color);\r\n    border-color: #ff8906;\r\n}\r\n.btn-primary a {\r\n    color: #fffffe;\r\n}\r\n.btn-primary:hover {\r\n    color: #fff;\r\n    background-color: #e53170;\r\n    border-color: #e53170;\r\n}\r\n\r\n.Logo-title {\r\n    color: var(--font-color);\r\n    font-size: 25px;\r\n    font-weight: 600;\r\n    margin-left: 10px;\r\n}\r\n.nav-link {\r\n    color: var(--font-color);\r\n    font-weight: 600;\r\n    font-size: 20px;\r\n}\r\n.nav-link > span {\r\n    margin-right: 10px;\r\n}\r\n\r\n.nav-item {\r\n    position: relative;\r\n    padding: 0 10px;\r\n}\r\n\r\n.nav-item::after {\r\n    content: \"|\";\r\n    position: absolute;\r\n    right: 0;\r\n    top: 12px;\r\n    color: #fff;\r\n}\r\n.navbar-light .navbar-nav .nav-item:last-child button {\r\n    color: #ff8906;\r\n}\r\n.nav-item:last-child::after {\r\n    display: none;\r\n}\r\n.navbar-light .navbar-nav .show > .nav-link,\r\n.navbar-light .navbar-nav .nav-link.active {\r\n    color: #e53170;\r\n}\r\n.navbar-light .navbar-nav .nav-link {\r\n    color: rgb(255 255 255);\r\n}\r\n.navbar-light .navbar-nav .nav-link:hover,\r\n.navbar-light .navbar-nav .nav-link:focus {\r\n    color: #e53170;\r\n}\r\n\r\n.searchbar .form-control {\r\n    background-color: #ff8906 !important;\r\n    border: 1px solid #ff8906;\r\n    border-radius: 0.25rem 0 0 0.25rem;\r\n}\r\n.searchbar .input-group {\r\n    align-items: flex-start;\r\n}\r\n.searchbar input::placeholder {\r\n    color: #000;\r\n}\r\n\r\n.btn-check:checked + .btn-primary,\r\n.btn-check:active + .btn-primary,\r\n.btn-primary:active,\r\n.btn-primary.active,\r\n.show > .btn-primary.dropdown-toggle {\r\n    color: #fff;\r\n    background-color: #ff8906;\r\n    border-color: #ff8906;\r\n}\r\n.addbtn .fa-plus-square {\r\n    margin-right: 10px;\r\n}\r\ntable {\r\n    vertical-align: middle !important;\r\n}\r\ntable .fa-clone {\r\n    color: #ff8906;\r\n}\r\ntable .fa-window-close {\r\n    color: #f25f4c;\r\n}\r\ntable .fa-edit {\r\n    color: #e53170;\r\n}\r\n.navbar-light .navbar-toggler-icon {\r\n    background-image: url(../images/bars-solid.svg) !important;\r\n} */\r\n/* background-image: url(/images/bars-solid.svg); */\r\n\r\n/* .addForm .form-control {\r\n    color: #fffffe;\r\n    background-color: #211f31;\r\n    border: 1px solid #ff8906;\r\n}\r\n.addForm label {\r\n    color: #fffffe;\r\n}\r\n.addForm .form-control:focus {\r\n    color: #fffffe;\r\n    background-color: #211f31;\r\n    border-color: #ff8906;\r\n}\r\ninput[type=\"file\"] {\r\n    padding-top: 30px !important;\r\n}\r\ninput[type=\"file\"]::file-selector-button {\r\n    color: #fffffe;\r\n    background-color: #0f0e17;\r\n}\r\ninput[type=\"file\"]::file-selector-button:hover {\r\n    color: #fffffe;\r\n    background-color: #0f0e17;\r\n}\r\n\r\n.modal-open {\r\n    overflow: visible !important;\r\n}\r\n.container,\r\n.container-fluid,\r\n.container-xxl,\r\n.container-xl,\r\n.container-lg,\r\n.container-md,\r\n.container-sm {\r\n    padding-right: var(--bs-gutter-x, 0.75rem) !important;\r\n}\r\n.page-item.active .page-link,\r\n.page-link:hover {\r\n    color: var(--font-color);\r\n    background-color: #e53170;\r\n    border-color: #e53170;\r\n}\r\n.page-link {\r\n    color: var(--font-color);\r\n    background-color: var(--main-color);\r\n    border-color: var(--main-color);\r\n}\r\n.page-link:focus {\r\n    color: var(--font-color);\r\n    background-color: var(--main-color);\r\n} */\r\n", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, "* {\r\n    margin: 0;\r\n    padding: 0;\r\n    font-family: \"Poppins\", sans-serif;\r\n}\r\n.searchbar input::-moz-placeholder {\r\n    color: #000;\r\n}\r\n.searchbar input:-ms-input-placeholder {\r\n    color: #000;\r\n}\r\n.searchbar input::placeholder {\r\n    color: #000;\r\n}\r\ninput[type=\"file\"] {\r\n    padding-top: 30px !important;\r\n}\r\n\r\n.page-link {\r\n    position: relative;\r\n    display: block;\r\n    color: #000000;\r\n    text-decoration: none;\r\n    background-color: #ffed4a;\r\n    border: 1px solid #ffed4a;\r\n    transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out,\r\n        border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;\r\n}\r\n.page-link:hover {\r\n    color: #fff;\r\n    background-color: #3490dc;\r\n    border-color: #3490dc;\r\n}\r\n\r\n/* input:-internal-autofill-selected {\r\n    background-image: none !important;\r\n    background-color: #211f31 !important;\r\n    color: #fffffe !important;\r\n}\r\na {\r\n    text-decoration: none;\r\n}\r\nbody {\r\n    background: #0f0e17;\r\n    --main-color: #ff8906;\r\n    --font-color: #fffffe;\r\n    font-size: 1rem;\r\n}\r\n.btn-primary {\r\n    background: var(--main-color);\r\n    border-color: #ff8906;\r\n}\r\n.btn-primary a {\r\n    color: #fffffe;\r\n}\r\n.btn-primary:hover {\r\n    color: #fff;\r\n    background-color: #e53170;\r\n    border-color: #e53170;\r\n}\r\n\r\n.Logo-title {\r\n    color: var(--font-color);\r\n    font-size: 25px;\r\n    font-weight: 600;\r\n    margin-left: 10px;\r\n}\r\n.nav-link {\r\n    color: var(--font-color);\r\n    font-weight: 600;\r\n    font-size: 20px;\r\n}\r\n.nav-link > span {\r\n    margin-right: 10px;\r\n}\r\n\r\n.nav-item {\r\n    position: relative;\r\n    padding: 0 10px;\r\n}\r\n\r\n.nav-item::after {\r\n    content: \"|\";\r\n    position: absolute;\r\n    right: 0;\r\n    top: 12px;\r\n    color: #fff;\r\n}\r\n.navbar-light .navbar-nav .nav-item:last-child button {\r\n    color: #ff8906;\r\n}\r\n.nav-item:last-child::after {\r\n    display: none;\r\n}\r\n.navbar-light .navbar-nav .show > .nav-link,\r\n.navbar-light .navbar-nav .nav-link.active {\r\n    color: #e53170;\r\n}\r\n.navbar-light .navbar-nav .nav-link {\r\n    color: rgb(255 255 255);\r\n}\r\n.navbar-light .navbar-nav .nav-link:hover,\r\n.navbar-light .navbar-nav .nav-link:focus {\r\n    color: #e53170;\r\n}\r\n\r\n.searchbar .form-control {\r\n    background-color: #ff8906 !important;\r\n    border: 1px solid #ff8906;\r\n    border-radius: 0.25rem 0 0 0.25rem;\r\n}\r\n.searchbar .input-group {\r\n    align-items: flex-start;\r\n}\r\n.searchbar input::placeholder {\r\n    color: #000;\r\n}\r\n\r\n.btn-check:checked + .btn-primary,\r\n.btn-check:active + .btn-primary,\r\n.btn-primary:active,\r\n.btn-primary.active,\r\n.show > .btn-primary.dropdown-toggle {\r\n    color: #fff;\r\n    background-color: #ff8906;\r\n    border-color: #ff8906;\r\n}\r\n.addbtn .fa-plus-square {\r\n    margin-right: 10px;\r\n}\r\ntable {\r\n    vertical-align: middle !important;\r\n}\r\ntable .fa-clone {\r\n    color: #ff8906;\r\n}\r\ntable .fa-window-close {\r\n    color: #f25f4c;\r\n}\r\ntable .fa-edit {\r\n    color: #e53170;\r\n}\r\n.navbar-light .navbar-toggler-icon {\r\n    background-image: url(../images/bars-solid.svg) !important;\r\n} */\r\n/* background-image: url(/images/bars-solid.svg); */\r\n\r\n/* .addForm .form-control {\r\n    color: #fffffe;\r\n    background-color: #211f31;\r\n    border: 1px solid #ff8906;\r\n}\r\n.addForm label {\r\n    color: #fffffe;\r\n}\r\n.addForm .form-control:focus {\r\n    color: #fffffe;\r\n    background-color: #211f31;\r\n    border-color: #ff8906;\r\n}\r\ninput[type=\"file\"] {\r\n    padding-top: 30px !important;\r\n}\r\ninput[type=\"file\"]::file-selector-button {\r\n    color: #fffffe;\r\n    background-color: #0f0e17;\r\n}\r\ninput[type=\"file\"]::file-selector-button:hover {\r\n    color: #fffffe;\r\n    background-color: #0f0e17;\r\n}\r\n\r\n.modal-open {\r\n    overflow: visible !important;\r\n}\r\n.container,\r\n.container-fluid,\r\n.container-xxl,\r\n.container-xl,\r\n.container-lg,\r\n.container-md,\r\n.container-sm {\r\n    padding-right: var(--bs-gutter-x, 0.75rem) !important;\r\n}\r\n.page-item.active .page-link,\r\n.page-link:hover {\r\n    color: var(--font-color);\r\n    background-color: #e53170;\r\n    border-color: #e53170;\r\n}\r\n.page-link {\r\n    color: var(--font-color);\r\n    background-color: var(--main-color);\r\n    border-color: var(--main-color);\r\n}\r\n.page-link:focus {\r\n    color: var(--font-color);\r\n    background-color: var(--main-color);\r\n} */\r\n", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 

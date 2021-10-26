@@ -47,7 +47,7 @@ const Navbar = () => {
                 <button
                     type="button"
                     onClick={logoutSubmit}
-                    className="nav-link btn btn-sm"
+                    className="nav-link btn btn-sm fs-5"
                     to="/"
                 >
                     <span className="me-2">

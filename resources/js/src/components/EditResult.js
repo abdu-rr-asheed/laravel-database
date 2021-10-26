@@ -148,14 +148,13 @@ const EditResult = (props) => {
                         <div className="form-floating mx-1">
                             <input
                                 type="text"
-                                className="form-control"
-                                id="floatingInputValue2"
+                                className="form-control bg-dark text-white border-warning"
                                 name="knowledge_area"
                                 onChange={handleInput}
                                 value={resultInput.knowledge_area}
                                 placeholder="Knowlage Area"
                             />
-                            <label htmlFor="floatingInputValue2">
+                            <label className="text-warning">
                                 Knowlage Area
                             </label>
                         </div>
@@ -164,66 +163,58 @@ const EditResult = (props) => {
                         <div className="form-floating mx-1">
                             <input
                                 type="text"
-                                className="form-control"
-                                id="floatingInputValue3"
+                                className="form-control bg-dark text-white border-warning"
                                 name="level"
                                 onChange={handleInput}
                                 value={resultInput.level}
                                 placeholder="Level"
                             />
-                            <label htmlFor="floatingInputValue3">Level</label>
+                            <label className="text-warning">Level</label>
                         </div>
                     </div>
                     <div className="col-md-4 col-12 my-2">
                         <div className="form-floating mx-1">
                             <input
                                 type="text"
-                                className="form-control"
-                                id="floatingInputValue4"
+                                className="form-control bg-dark text-white border-warning"
                                 name="score"
                                 onChange={handleInput}
                                 value={resultInput.score}
                                 placeholder="Score"
                             />
-                            <label htmlFor="floatingInputValue4">Score</label>
+                            <label className="text-warning">Score</label>
                         </div>
                     </div>
                     <div className="col-md-4 col-12 my-2">
                         <div className="form-floating mx-1">
                             <input
                                 type="text"
-                                className="form-control"
-                                id="floatingInputValue5"
+                                className="form-control bg-dark text-white border-warning"
                                 name="assessor"
                                 onChange={handleInput}
                                 value={resultInput.assessor}
                                 placeholder="Assessor"
                             />
-                            <label htmlFor="floatingInputValue5">
-                                Assessor
-                            </label>
+                            <label className="text-warning">Assessor</label>
                         </div>
                     </div>
                     <div className="col-md-4 col-12 my-2">
                         <div className="form-floating mx-1">
                             <input
                                 type="text"
-                                className="form-control"
-                                id="floatingInputValue6"
+                                className="form-control bg-dark text-white border-warning"
                                 name="overrall"
                                 onChange={handleInput}
                                 value={resultInput.overrall}
                                 placeholder="overrall"
                             />
-                            <label htmlFor="floatingInputValue6">
-                                Overrall
-                            </label>
+                            <label className="text-warning">Overrall</label>
                         </div>
                     </div>
                     <div className="w-100 my-3">
                         <button
                             type="submit"
-                            className="btn btn-primary float-end"
+                            className="btn btn-danger text-white float-end"
                         >
                             <i className="fas fa-save"></i> Update Result
                         </button>

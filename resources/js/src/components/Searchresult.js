@@ -8,6 +8,7 @@ const Searchresult = () => {
     const [filteredResult, setFilteredResult] = useState([]);
     const [allstudents, setAllstudents] = useState([]);
     const [links, setAllLinks] = useState([]);
+    const [loading, setLoading] = useState(true);
 
     useEffect(() => {
         document.title = "E-learning System";
@@ -15,6 +16,7 @@ const Searchresult = () => {
             if (res.data.status === 200) {
                 setAllstudents(res.data.students.data);
                 setAllLinks(res.data.students.links);
+                setLoading(false);
             }
         });
     }, []);
@@ -95,7 +97,7 @@ const Searchresult = () => {
                           <td>
                               <Link
                                   to={`add-result/${item.id}`}
-                                  className="btn btn-primary btn-sm"
+                                  className="btn bg-warning text-dark btn-sm"
                               >
                                   Add Result
                               </Link>
@@ -137,6 +139,19 @@ const Searchresult = () => {
             );
     }
 
+    if (loading) {
+        return (
+            <div
+                className="d-flex justify-content-center align-items-center"
+                style={{ height: "100vh" }}
+            >
+                <div className="spinner-border text-warning" role="status">
+                    <span className="visually-hidden">Loading...</span>
+                </div>
+            </div>
+        );
+    }
+
     return (
         <>
             <Navbar />
@@ -147,14 +162,14 @@ const Searchresult = () => {
                         <div className="input-group mb-3">
                             <input
                                 type="text"
-                                className="form-control bg-primary text-white border-primary"
+                                className="form-control bg-warning text-dark border-warning"
                                 placeholder="Search..."
                                 aria-label="Search..."
                                 aria-describedby="button-addon2"
                                 onChange={(e) => setSearchTeam(e.target.value)}
                             />
                             <button
-                                className="btn btn-primary text-white"
+                                className="btn btn-warning text-dark"
                                 type="submit"
                                 id="button-addon2"
                             >

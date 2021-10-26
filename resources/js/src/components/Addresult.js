@@ -5,6 +5,7 @@ import { useHistory } from "react-router";
 
 const Addresult = (props) => {
     const history = useHistory();
+    const [loading, setLoading] = useState(true);
 
     const [resultInput, setresult] = useState({
         knowledge_area: "",
@@ -34,6 +35,7 @@ const Addresult = (props) => {
         axios.get(`/api/edit-student/${student_Id}`).then((res) => {
             if (res.data.status === 200) {
                 setstudent(res.data.student);
+                setLoading(false);
             }
         });
     }, [props.match.params.id]);
@@ -67,6 +69,19 @@ const Addresult = (props) => {
             }
         });
     };
+
+    if (loading) {
+        return (
+            <div
+                className="d-flex justify-content-center align-items-center"
+                style={{ height: "100vh" }}
+            >
+                <div className="spinner-border text-warning" role="status">
+                    <span className="visually-hidden">Loading...</span>
+                </div>
+            </div>
+        );
+    }
 
     return (
         <>

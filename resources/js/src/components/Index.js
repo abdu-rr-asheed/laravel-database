@@ -166,7 +166,7 @@ const Index = () => {
                             <div
                                 className={
                                     item.active
-                                        ? "page-item active bg-primary"
+                                        ? "page-item active"
                                         : "page-item"
                                 }
                                 onClick={(e) => urlid(item.url)}

@@ -3,6 +3,12 @@
     padding: 0;
     font-family: "Poppins", sans-serif;
 }
+.searchbar input::placeholder {
+    color: #000;
+}
+input[type="file"] {
+    padding-top: 30px !important;
+}
 
 /* input:-internal-autofill-selected {
     background-image: none !important;

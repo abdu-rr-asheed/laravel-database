@@ -63,10 +63,10 @@ const Login = () => {
                                     name="email"
                                     onChange={handleInput}
                                     value={loginInput.email}
-                                    className="form-control"
+                                    className="form-control bg-dark text-white border-warning"
                                     placeholder="Email"
                                 />
-                                <label>Email</label>
+                                <label className="text-warning">Email</label>
                             </div>
                             <div className="text-warning">
                                 {loginInput.error_list.email}
@@ -77,10 +77,10 @@ const Login = () => {
                                     name="password"
                                     onChange={handleInput}
                                     value={loginInput.password}
-                                    className="form-control"
+                                    className="form-control bg-dark text-white border-warning"
                                     placeholder="Email"
                                 />
-                                <label>Pasword</label>
+                                <label className="text-warning">Pasword</label>
                             </div>
                             <div className="text-warning">
                                 {loginInput.error_list.password}
@@ -88,7 +88,7 @@ const Login = () => {
                             <div className="savebtn mt-3 mx-1 w-100">
                                 <button
                                     type="submit"
-                                    className="btn btn-primary float-end"
+                                    className="btn btn-danger text-white float-end"
                                 >
                                     <i className="fas fa-save"></i> Login
                                 </button>

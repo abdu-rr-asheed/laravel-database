@@ -11,7 +11,7 @@
         <link rel="shortcut icon" href="../../public/images/logo.png">
         <link rel="stylesheet" href="./css/app.css" />
     </head>
-    <body class="container bg-dark">
+    <body class="container bg-dark mb-4">
         <div id="app"></div>
         <script src="./js/app.js"></script>
         <script

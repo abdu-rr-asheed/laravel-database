@@ -147,7 +147,7 @@ const Searchresult = () => {
                         <div className="input-group mb-3">
                             <input
                                 type="text"
-                                className="form-control"
+                                className="form-control bg-primary text-white border-primary"
                                 placeholder="Search..."
                                 aria-label="Search..."
                                 aria-describedby="button-addon2"
@@ -168,7 +168,7 @@ const Searchresult = () => {
             {/* Table */}
             <div className="Chart">
                 <div className="table-responsive">
-                    <table className="table table-dark table-striped text-center text-nowrap">
+                    <table className="table table-dark table-striped text-center text-nowrap align-middle">
                         <thead>
                             <tr>
                                 <th scope="col">#</th>

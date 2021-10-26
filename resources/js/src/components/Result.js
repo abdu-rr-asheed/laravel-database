@@ -62,8 +62,12 @@ const Result = () => {
                 <div className="col-md-12 col-12 my-md-5 my-2">
                     <div className="addbtn float-end ">
                         <button type="button" className="btn btn-primary">
-                            <Link to="/searchresult">
-                                <i className="fas fa-plus-square"></i>Add Result
+                            <Link
+                                to="/searchresult"
+                                className="text-white text-decoration-none"
+                            >
+                                <i className="fas fa-plus-square me-2"></i>Add
+                                Result
                             </Link>
                         </button>
                     </div>
@@ -116,7 +120,7 @@ const Result = () => {
                                                 onClick={(e) =>
                                                     deleteResult(e, item.id)
                                                 }
-                                                className="btn"
+                                                className="btn text-danger"
                                             >
                                                 <i className="fas fa-window-close"></i>
                                             </button>

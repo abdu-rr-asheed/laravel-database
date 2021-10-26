@@ -58,10 +58,10 @@ const Register = () => {
                                     name="name"
                                     onChange={handleInput}
                                     value={registerInput.name}
-                                    className="form-control"
+                                    className="form-control bg-dark text-white border-warning"
                                     placeholder="Name"
                                 />
-                                <label>Name</label>
+                                <label className="text-warning">Name</label>
                             </div>
 
                             <div className="text-warning">
@@ -73,10 +73,10 @@ const Register = () => {
                                     name="email"
                                     onChange={handleInput}
                                     value={registerInput.email}
-                                    className="form-control"
+                                    className="form-control bg-dark text-white border-warning"
                                     placeholder="Email"
                                 />
-                                <label>Email</label>
+                                <label className="text-warning">Email</label>
                             </div>
 
                             <div className="text-warning">
@@ -88,10 +88,10 @@ const Register = () => {
                                     name="password"
                                     onChange={handleInput}
                                     value={registerInput.password}
-                                    className="form-control"
+                                    className="form-control bg-dark text-white border-warning"
                                     placeholder="password"
                                 />
-                                <label>Pasword</label>
+                                <label className="text-warning">Pasword</label>
                             </div>
 
                             <div className="text-warning">
@@ -100,7 +100,7 @@ const Register = () => {
                             <div className="savebtn mt-3 mx-1 w-100">
                                 <button
                                     type="submit"
-                                    className="btn btn-primary float-end"
+                                    className="btn btn-danger text-white float-end"
                                 >
                                     <i className="fas fa-save"></i> Register
                                 </button>

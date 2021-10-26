@@ -111,7 +111,7 @@ const Index = () => {
             : allstudents.map((item) => {
                   return (
                       <tr key={item.id}>
-                          <td className="align-middle">{item.id}</td>
+                          <td>{item.id}</td>
                           <td>
                               {item.first_Name}&nbsp;
                               {item.last_Name}
@@ -163,10 +163,10 @@ const Index = () => {
                         return false;
                     } else {
                         return (
-                            <li
+                            <div
                                 className={
                                     item.active
-                                        ? "page-item active"
+                                        ? "page-item active bg-primary"
                                         : "page-item"
                                 }
                                 onClick={(e) => urlid(item.url)}
@@ -175,7 +175,7 @@ const Index = () => {
                                 <button className="page-link">
                                     {item.label}
                                 </button>
-                            </li>
+                            </div>
                         );
                     }
                 })
@@ -205,14 +205,14 @@ const Index = () => {
                         <div className="input-group mb-3">
                             <input
                                 type="text"
-                                className="form-control"
+                                className="form-control bg-warning text-dark border-warning"
                                 placeholder="Search..."
                                 aria-label="Search..."
                                 aria-describedby="button-addon2"
                                 onChange={(e) => setSearchTeam(e.target.value)}
                             />
                             <button
-                                className="btn btn-primary text-white"
+                                className="btn btn-warning text-dark"
                                 type="submit"
                                 id="button-addon2"
                             >
@@ -225,11 +225,11 @@ const Index = () => {
                     <div className="addbtn float-end ">
                         <button
                             type="button"
-                            className="btn btn-sm btn-primary"
+                            className="btn btn-sm btn-warning"
                         >
                             <Link
                                 to="/AddCandidate"
-                                className="text-white text-decoration-none"
+                                className="text-dark text-decoration-none"
                             >
                                 <i className="fas fa-plus-square me-2"></i>Add
                                 Candidate
@@ -258,9 +258,9 @@ const Index = () => {
                     </table>
                 </div>
                 <nav>
-                    <ul className="pagination pagination-sm justify-content-end">
+                    <div className="pagination pagination-sm justify-content-end">
                         {Pagination_HTML}
-                    </ul>
+                    </div>
                 </nav>
             </div>
         </>

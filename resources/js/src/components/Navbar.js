@@ -24,7 +24,7 @@ const Navbar = () => {
         AuthButton = (
             <>
                 <li className="nav-item">
-                    <NavLink to="/login" className="nav-link text-white">
+                    <NavLink to="/login" className="nav-link">
                         <span className="me-2">
                             <i className="fas fa-user ml-2"></i>
                         </span>
@@ -32,7 +32,7 @@ const Navbar = () => {
                     </NavLink>
                 </li>
                 <li className="nav-item">
-                    <NavLink to="/register" className="nav-link text-white">
+                    <NavLink to="/register" className="nav-link">
                         <span className="me-2">
                             <i className="fas fa-user-plus mr-2"></i>
                         </span>
@@ -115,10 +115,7 @@ const Navbar = () => {
                     >
                         <ul className="navbar-nav ms-lg-auto fs-5">
                             <li className="nav-item">
-                                <NavLink
-                                    to="/result"
-                                    className="nav-link text-white"
-                                >
+                                <NavLink to="/result" className="nav-link">
                                     <span className="me-2">
                                         <i className="fas fa-star ml-2"></i>
                                     </span>

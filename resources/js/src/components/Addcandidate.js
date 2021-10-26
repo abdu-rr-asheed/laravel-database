@@ -60,6 +60,7 @@ const Addcandidate = () => {
             <div className="row addForm mt-5">
                 <h1 className="text-light ml-1 mb-4">Add a new Student</h1>
                 <form
+                    autoComplete="off"
                     className="d-flex flex-wrap"
                     id="myForm"
                     onSubmit={saveStudent}
@@ -72,10 +73,10 @@ const Addcandidate = () => {
                                 name="first_Name"
                                 onChange={handleInput}
                                 value={studentInput.first_Name}
-                                className="form-control"
+                                className="form-control bg-dark text-white border-warning"
                                 placeholder="Fast Name"
                             />
-                            <label>Fast Name</label>
+                            <label className="text-warning">Fast Name</label>
                         </div>
                         <div className="text-warning">
                             {error_list.first_Name}
@@ -88,10 +89,10 @@ const Addcandidate = () => {
                                 name="last_Name"
                                 onChange={handleInput}
                                 value={studentInput.last_Name}
-                                className="form-control"
+                                className="form-control bg-dark text-white border-warning"
                                 placeholder="Last Name"
                             />
-                            <label>Last Name</label>
+                            <label className="text-warning">Last Name</label>
                         </div>
                         <span className="text-warning">
                             {error_list.last_Name}
@@ -104,17 +105,17 @@ const Addcandidate = () => {
                                 name="email"
                                 onChange={handleInput}
                                 value={studentInput.email}
-                                className="form-control"
+                                className="form-control bg-dark text-white border-warning"
                                 placeholder="Email"
                             />
-                            <label>Email</label>
+                            <label className="text-warning">Email</label>
                         </div>
                         <span className="text-warning">{error_list.email}</span>
                     </div>
                     <div className="col-md-4 col-12 my-2">
                         <div className="form-floating mx-1">
                             <select
-                                className="form-select form-control"
+                                className="form-select form-control bg-dark text-white border-warning"
                                 name="industry"
                                 onChange={handleInput}
                                 value={studentInput.industry}
@@ -124,7 +125,7 @@ const Addcandidate = () => {
                                 <option value="Business">Business</option>
                                 <option value="ICT">ICT</option>
                             </select>
-                            <label>Industry</label>
+                            <label className="text-warning">Industry</label>
                         </div>
                         <span className="text-warning">
                             {error_list.industry}
@@ -137,11 +138,13 @@ const Addcandidate = () => {
                                 type="file"
                                 name="profile_photo"
                                 onChange={handleImage}
-                                className="form-control"
+                                className="form-control bg-dark text-white border-warning"
                                 placeholder="Profile Photo"
                                 accept="image/png, image/jpg, image/jpeg"
                             />
-                            <label>Profile Photo</label>
+                            <label className="text-warning">
+                                Profile Photo
+                            </label>
                         </div>
                         <span className="text-warning">
                             {error_list.profile_photo}
@@ -151,7 +154,7 @@ const Addcandidate = () => {
                     <div className="savebtn mt-3 mx-1 w-100">
                         <button
                             type="submit"
-                            className="btn btn-primary float-end"
+                            className="btn btn-danger text-white float-end"
                         >
                             <i className="fas fa-save"></i> Save Candidate
                         </button>

@@ -95,7 +95,9 @@ const Navbar = () => {
                                     stroke="black"
                                 />
                             </svg>
-                            <div className="Logo-title fs-5">E-Learning</div>
+                            <div className="Logo-title fw-bolder ms-2 fs-4">
+                                E-Learning
+                            </div>
                         </div>
                     </Link>
                     <button

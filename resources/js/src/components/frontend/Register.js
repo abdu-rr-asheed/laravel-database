@@ -2,7 +2,6 @@ import axios from "axios";
 import React, { useState } from "react";
 import { useHistory } from "react-router";
 import swal from "sweetalert";
-import Navbar from "./Navbar";
 
 const Register = () => {
     const history = useHistory();
@@ -46,7 +45,6 @@ const Register = () => {
 
     return (
         <>
-            <Navbar />
             <div className="row addForm mt-5">
                 <form onSubmit={submitresgiser}>
                     <div className="row justify-content-center">

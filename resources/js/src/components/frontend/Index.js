@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import Navbar from "./Navbar";
 import axios from "axios";
+import swal from "sweetalert";
 
-const Searchresult = () => {
+const Index = () => {
     const [searchTeam, setSearchTeam] = useState("");
     const [filteredResult, setFilteredResult] = useState([]);
     const [allstudents, setAllstudents] = useState([]);
@@ -28,12 +28,38 @@ const Searchresult = () => {
             });
         }
     };
-
     const urlid = (utl_id) => {
         axios.get(`${utl_id}`).then((res) => {
             if (res.data.status === 200) {
                 setAllstudents(res.data.students.data);
                 setAllLinks(res.data.students.links);
+            }
+        });
+    };
+
+    const deleteStudent = (e, id) => {
+        e.preventDefault();
+
+        const thisClicked = e.currentTarget;
+        thisClicked.disable = true;
+
+        swal({
+            title: "Are you sure?",
+            text: "Once deleted, you will not be able to recover this Student Details",
+            icon: "warning",
+            buttons: true,
+            dangerMode: true,
+        }).then((willDelete) => {
+            if (willDelete) {
+                axios.delete(`/api/delete-student/${id}`).then((res) => {
+                    if (res.data.status === 200) {
+                        thisClicked.closest("tr").remove();
+                        window.location.reload(false);
+                    } else if (res.data.status === 404) {
+                        swal("Warning", res.data.message, "warning");
+                        thisClicked.disable = true;
+                    }
+                });
             }
         });
     };
@@ -44,7 +70,7 @@ const Searchresult = () => {
             ? filteredResult.map((item) => {
                   return (
                       <tr key={item.id}>
-                          <td>{item.id}</td>
+                          <td className="align-middle">{item.id}</td>
                           <td>
                               {item.first_Name}&nbsp;
                               {item.last_Name}
@@ -64,11 +90,19 @@ const Searchresult = () => {
                           </td>
                           <td>
                               <Link
-                                  to={`add-result/${item.id}`}
-                                  className="btn btn-primary btn-sm"
+                                  to={`edit-student/${item.id}`}
+                                  className="btn text-primary"
                               >
-                                  Add Result
+                                  <i className="fas fa-edit"></i>
                               </Link>
+                          </td>
+                          <td>
+                              <button
+                                  onClick={(e) => deleteStudent(e, item.id)}
+                                  className="btn text-danger"
+                              >
+                                  <i className="fas fa-window-close"></i>
+                              </button>
                           </td>
                       </tr>
                   );
@@ -96,11 +130,19 @@ const Searchresult = () => {
                           </td>
                           <td>
                               <Link
-                                  to={`add-result/${item.id}`}
-                                  className="btn bg-warning text-dark btn-sm"
+                                  to={`edit-student/${item.id}`}
+                                  className="btn text-primary"
                               >
-                                  Add Result
+                                  <i className="fas fa-edit"></i>
                               </Link>
+                          </td>
+                          <td>
+                              <button
+                                  onClick={(e) => deleteStudent(e, item.id)}
+                                  className="btn text-danger"
+                              >
+                                  <i className="fas fa-window-close"></i>
+                              </button>
                           </td>
                       </tr>
                   );
@@ -120,7 +162,7 @@ const Searchresult = () => {
                         return false;
                     } else {
                         return (
-                            <li
+                            <div
                                 className={
                                     item.active
                                         ? "page-item active"
@@ -132,7 +174,7 @@ const Searchresult = () => {
                                 <button className="page-link">
                                     {item.label}
                                 </button>
-                            </li>
+                            </div>
                         );
                     }
                 })
@@ -154,10 +196,9 @@ const Searchresult = () => {
 
     return (
         <>
-            <Navbar />
-            <div className="row justify-content-center">
+            <div className="row">
                 {/* Search Bar  */}
-                <div className="col-md-8 col-12 searchbar my-md-5 my-2">
+                <div className="col-md-4 col-12 searchbar my-md-5 my-2">
                     <form onSubmit={searchData}>
                         <div className="input-group mb-3">
                             <input
@@ -178,6 +219,22 @@ const Searchresult = () => {
                         </div>
                     </form>
                 </div>
+                <div className="col-md-8 col-12 my-md-5 my-2">
+                    <div className="addbtn float-end ">
+                        <button
+                            type="button"
+                            className="btn btn-sm btn-warning"
+                        >
+                            <Link
+                                to="/AddCandidate"
+                                className="text-dark text-decoration-none"
+                            >
+                                <i className="fas fa-plus-square me-2"></i>Add
+                                Candidate
+                            </Link>
+                        </button>
+                    </div>
+                </div>
             </div>
 
             {/* Table */}
@@ -188,23 +245,24 @@ const Searchresult = () => {
                             <tr>
                                 <th scope="col">#</th>
                                 <th scope="col">Name</th>
-                                {/* <th scope="col">Last Name</th> */}
                                 <th scope="col">Email</th>
                                 <th scope="col">industry</th>
                                 <th scope="col">P.P</th>
-                                <th scope="col">Result</th>
+                                <th scope="col">Edit</th>
+                                <th scope="col">Delete</th>
                             </tr>
                         </thead>
                         <tbody>{student_HTMLTABLE}</tbody>
                     </table>
                 </div>
                 <nav>
-                    <ul className="pagination pagination-sm justify-content-end">
+                    <div className="pagination pagination-sm justify-content-end">
                         {Pagination_HTML}
-                    </ul>
+                    </div>
                 </nav>
             </div>
         </>
     );
 };
-export default Searchresult;
+
+export default Index;

@@ -7,17 +7,21 @@ import {
     Route,
     Redirect,
 } from "react-router-dom";
-import Index from "./components/Index";
-import Add from "./components/Addcandidate";
-import Edit from "./components/Edit";
-import Result from "./components/Result";
-import Addresult from "./components/Addresult";
-import Login from "./components/Login";
-import Register from "./components/Register";
+// import Index from "./components/frontend/Index";
+// import Add from "./components/frontend/Addcandidate";
+// import Edit from "./components/frontend/Edit";
+// import Result from "./components/frontend/Result";
+// import Addresult from "./components/frontend/Addresult";
+// import Login from "./components/frontend/Login";
+// import Register from "./components/frontend/Register";
 import axios from "axios";
-import Searchresult from "./components/Searchresult";
-import Try from "./components/Try";
-import EditResult from "./components/EditResult";
+// import Searchresult from "./components/frontend/Searchresult";
+// import Try from "./components/frontend/Try";
+// import EditResult from "./components/frontend/EditResult";
+import IndexAdmin from "./components/admin/IndexAdmin";
+import PublicRoute from "./PublicRoute";
+import Login from "./components/frontend/Login";
+import Register from "./components/frontend/Register";
 
 axios.defaults.baseURL = "http://localhost:8001";
 axios.defaults.headers.post["Content-Type"] = "application/json";
@@ -33,14 +37,16 @@ const App = () => {
     return (
         <Router>
             <Switch>
-                <Route exact path="/" component={Index} />
+                {/* <Route exact path="/" component={Index} />
                 <Route path="/AddCandidate" component={Add} />
                 <Route path="/edit-student/:id" component={Edit} />
                 <Route path="/try" component={Try} />
                 <Route path="/result" component={Result} />
                 <Route path="/searchresult" component={Searchresult} />
                 <Route path="/add-result/:id" component={Addresult} />
-                <Route path="/edit-result/:id" component={EditResult} />
+                <Route path="/edit-result/:id" component={EditResult} /> */}
+
+                <PublicRoute path="/" name="Home" />
 
                 <Route path="/login">
                     {localStorage.getItem("auth_token") ? (
@@ -57,8 +63,7 @@ const App = () => {
                     )}
                 </Route>
 
-                {/* <Route path="/login" component={Login} />
-                <Route path="/register" component={Register} /> */}
+                <Route path="/admin" component={IndexAdmin} />
             </Switch>
         </Router>
     );

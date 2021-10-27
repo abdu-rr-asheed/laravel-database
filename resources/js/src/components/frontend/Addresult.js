@@ -1,59 +1,56 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-import Navbar from "./Navbar";
 import { useHistory } from "react-router";
 
-const EditResult = (props) => {
+const Addresult = (props) => {
     const history = useHistory();
+    const [loading, setLoading] = useState(true);
 
     const [resultInput, setresult] = useState({
-        student_id: "",
         knowledge_area: "",
         level: "",
         score: "",
         assessor: "",
         overrall: "",
     });
-    const [loading, setLoading] = useState(true);
+    const [studentID, setstudentID] = useState({
+        student_id: props.match.params.id,
+    });
 
     const handleInput = (e) => {
         e.persist();
         setresult({ ...resultInput, [e.target.name]: e.target.value });
     };
 
+    const handleId = (e) => {
+        e.persist();
+        setstudentID({ student_id: e.target.name });
+    };
+
+    const [studentInput, setstudent] = useState([]);
+
     useEffect(() => {
-        const result_Id = props.match.params.id;
-        axios.get(`/api/editResult/${result_Id}`).then((res) => {
+        const student_Id = props.match.params.id;
+        axios.get(`/api/edit-student/${student_Id}`).then((res) => {
             if (res.data.status === 200) {
-                setresult(res.data.result);
+                setstudent(res.data.student);
                 setLoading(false);
             }
         });
     }, [props.match.params.id]);
 
-    const updateResult = (e) => {
+    const saveResult = (e) => {
         e.preventDefault();
 
-        const result_Id = props.match.params.id;
-
         const formdata = new FormData();
-        formdata.append("student_id", resultInput.student_id);
+        formdata.append("student_id", studentID.student_id);
         formdata.append("knowledge_area", resultInput.knowledge_area);
         formdata.append("level", resultInput.level);
         formdata.append("score", resultInput.score);
         formdata.append("assessor", resultInput.assessor);
         formdata.append("overrall", resultInput.overrall);
 
-        const data = {
-            student_id: resultInput.student_id,
-            knowledge_area: resultInput.knowledge_area,
-            level: resultInput.level,
-            score: resultInput.score,
-            assessor: resultInput.assessor,
-            overrall: resultInput.overrall,
-        };
-
-        axios.post(`/api/updateresult/${result_Id}`, data).then((res) => {
+        axios.post(`/api/result`, formdata).then((res) => {
             if (res.data.status === 200) {
                 swal("Success", res.data.message, "success");
                 setresult({
@@ -64,8 +61,10 @@ const EditResult = (props) => {
                     assessor: "",
                 });
                 history.push("/result");
+                // setError([]);
             } else if (res.data.status === 422) {
                 swal("Validation Error", "", "warning");
+                // setError(res.data.errors);
             }
         });
     };
@@ -85,8 +84,6 @@ const EditResult = (props) => {
 
     return (
         <>
-            <Navbar />
-
             <div className="row justify-content-center">
                 <div className="col-md-6">
                     <div
@@ -102,27 +99,27 @@ const EditResult = (props) => {
                                 <img
                                     src={
                                         "http://localhost:8001/images/students/" +
-                                        resultInput.student.profile_photo
+                                        studentInput.profile_photo
                                     }
                                     className="img-fluid rounded-start"
-                                    alt={resultInput.student.last_name}
+                                    alt={studentInput.last_Name}
                                 />
                             </div>
                             <div className="col-md-8">
                                 <div className="card-body">
                                     <h5 className="card-title">
-                                        {resultInput.student.first_Name}&nbsp;
-                                        {resultInput.student.last_Name}
+                                        {studentInput.first_Name}&nbsp;
+                                        {studentInput.last_Name}
                                     </h5>
                                     <p className="card-text">
-                                        {resultInput.student.email}
+                                        {studentInput.email}
                                     </p>
                                     <p className="card-text">
-                                        {resultInput.student.industry}
+                                        {studentInput.industry}
                                     </p>
                                     <p className="card-text">
                                         <small className="text-muted">
-                                            id : {resultInput.student.id}
+                                            id : {studentInput.id}
                                         </small>
                                     </p>
                                 </div>
@@ -135,13 +132,13 @@ const EditResult = (props) => {
             {/* <!-- Form --> */}
 
             <div className="row addForm">
-                <form className="d-flex flex-wrap" onSubmit={updateResult}>
+                <form className="d-flex flex-wrap" onSubmit={saveResult}>
                     <input
                         type="hidden"
-                        className="form-control"
+                        className="form-control bg-dark text-white border-warning"
                         name="student_id"
-                        onChange={handleInput}
-                        value={resultInput.student_id}
+                        onChange={handleId}
+                        value={studentID.student_id}
                         placeholder="Knowlage Area"
                     />
                     <div className="col-md-4 col-12 my-2">
@@ -216,7 +213,7 @@ const EditResult = (props) => {
                             type="submit"
                             className="btn btn-danger text-white float-end"
                         >
-                            <i className="fas fa-save"></i> Update Result
+                            <i className="fas fa-save"></i> Save Result
                         </button>
                     </div>
                 </form>
@@ -225,4 +222,4 @@ const EditResult = (props) => {
     );
 };
 
-export default EditResult;
+export default Addresult;

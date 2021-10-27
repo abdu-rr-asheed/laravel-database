@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react";
-import Navbar from "./Navbar";
 import axios from "axios";
 import { Link } from "react-router-dom";
 
@@ -57,7 +56,6 @@ const Result = () => {
 
     return (
         <>
-            <Navbar />
             <div className="row">
                 <div className="col-md-12 col-12 my-md-5 my-2">
                     <div className="addbtn float-end ">

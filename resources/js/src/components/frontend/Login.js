@@ -2,6 +2,7 @@ import axios from "axios";
 import React, { useState } from "react";
 import { useHistory } from "react-router";
 import swal from "sweetalert";
+import Navbar from "./Navbar";
 
 const Login = () => {
     const history = useHistory();
@@ -32,9 +33,9 @@ const Login = () => {
                     localStorage.setItem("auth_name", res.data.username);
                     swal("Success", res.data.message, "success");
                     if (res.data.role === "admin") {
-                        history.push("/admin/dashboard");
+                        history.push("/admin");
                     } else {
-                        history.push("/");
+                        history.push("/user/candidate");
                     }
                 } else if (res.data.status === 401) {
                     swal("Warning", res.data.message, "warning");
@@ -50,6 +51,7 @@ const Login = () => {
 
     return (
         <>
+            <Navbar />
             <div className="row addForm mt-5">
                 <form onSubmit={loginsubmit}>
                     <div className="row justify-content-center">

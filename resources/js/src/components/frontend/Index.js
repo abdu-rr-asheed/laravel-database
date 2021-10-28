@@ -1,7 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
 import axios from "axios";
-import swal from "sweetalert";
 
 const Index = () => {
     const [searchTeam, setSearchTeam] = useState("");
@@ -37,74 +35,39 @@ const Index = () => {
         });
     };
 
-    const deleteStudent = (e, id) => {
-        e.preventDefault();
-
-        const thisClicked = e.currentTarget;
-        thisClicked.disable = true;
-
-        swal({
-            title: "Are you sure?",
-            text: "Once deleted, you will not be able to recover this Student Details",
-            icon: "warning",
-            buttons: true,
-            dangerMode: true,
-        }).then((willDelete) => {
-            if (willDelete) {
-                axios.delete(`/api/delete-student/${id}`).then((res) => {
-                    if (res.data.status === 200) {
-                        thisClicked.closest("tr").remove();
-                        window.location.reload(false);
-                    } else if (res.data.status === 404) {
-                        swal("Warning", res.data.message, "warning");
-                        thisClicked.disable = true;
-                    }
-                });
-            }
-        });
-    };
-
     var student_HTMLTABLE = "";
     student_HTMLTABLE =
         searchTeam.length > 1
-            ? filteredResult.map((item) => {
+            ? filteredResult.map((item, idx) => {
                   return (
-                      <tr key={item.id}>
-                          <td className="align-middle">{item.id}</td>
-                          <td>
-                              {item.first_Name}&nbsp;
-                              {item.last_Name}
-                          </td>
-                          <td>{item.email}</td>
-                          <td>{item.industry}</td>
-                          <td>
-                              <img
-                                  src={
-                                      "http://localhost:8001/images/students/" +
-                                      item.profile_photo
-                                  }
-                                  alt={item.last_Name}
-                                  loading="lazy"
-                                  width="100px"
-                              />
-                          </td>
-                          <td>
-                              <Link
-                                  to={`edit-student/${item.id}`}
-                                  className="btn text-primary"
-                              >
-                                  <i className="fas fa-edit"></i>
-                              </Link>
-                          </td>
-                          <td>
-                              <button
-                                  onClick={(e) => deleteStudent(e, item.id)}
-                                  className="btn text-danger"
-                              >
-                                  <i className="fas fa-window-close"></i>
-                              </button>
-                          </td>
-                      </tr>
+                      <React.Fragment key={idx}>
+                          {item.map((subitem, subidx) => {
+                              return (
+                                  <tr key={subidx}>
+                                      <td className="align-middle">
+                                          {subitem.id}
+                                      </td>
+                                      <td>
+                                          {subitem.first_Name}&nbsp;
+                                          {subitem.last_Name}
+                                      </td>
+                                      <td>{subitem.email}</td>
+                                      <td>{subitem.industry}</td>
+                                      <td>
+                                          <img
+                                              src={
+                                                  "http://localhost:8001/images/students/" +
+                                                  subitem.profile_photo
+                                              }
+                                              alt={subitem.last_Name}
+                                              loading="lazy"
+                                              width="100px"
+                                          />
+                                      </td>
+                                  </tr>
+                              );
+                          })}
+                      </React.Fragment>
                   );
               })
             : allstudents.map((item) => {
@@ -127,22 +90,6 @@ const Index = () => {
                                   loading="lazy"
                                   width="100px"
                               />
-                          </td>
-                          <td>
-                              <Link
-                                  to={`edit-student/${item.id}`}
-                                  className="btn text-primary"
-                              >
-                                  <i className="fas fa-edit"></i>
-                              </Link>
-                          </td>
-                          <td>
-                              <button
-                                  onClick={(e) => deleteStudent(e, item.id)}
-                                  className="btn text-danger"
-                              >
-                                  <i className="fas fa-window-close"></i>
-                              </button>
                           </td>
                       </tr>
                   );
@@ -196,9 +143,9 @@ const Index = () => {
 
     return (
         <>
-            <div className="row">
+            <div className="row justify-content-center">
                 {/* Search Bar  */}
-                <div className="col-md-4 col-12 searchbar my-md-5 my-2">
+                <div className="col-md-8 col-12 searchbar my-md-5 my-2">
                     <form onSubmit={searchData}>
                         <div className="input-group mb-3">
                             <input
@@ -219,22 +166,6 @@ const Index = () => {
                         </div>
                     </form>
                 </div>
-                <div className="col-md-8 col-12 my-md-5 my-2">
-                    <div className="addbtn float-end ">
-                        <button
-                            type="button"
-                            className="btn btn-sm btn-warning"
-                        >
-                            <Link
-                                to="/AddCandidate"
-                                className="text-dark text-decoration-none"
-                            >
-                                <i className="fas fa-plus-square me-2"></i>Add
-                                Candidate
-                            </Link>
-                        </button>
-                    </div>
-                </div>
             </div>
 
             {/* Table */}
@@ -248,8 +179,6 @@ const Index = () => {
                                 <th scope="col">Email</th>
                                 <th scope="col">industry</th>
                                 <th scope="col">P.P</th>
-                                <th scope="col">Edit</th>
-                                <th scope="col">Delete</th>
                             </tr>
                         </thead>
                         <tbody>{student_HTMLTABLE}</tbody>

@@ -31,7 +31,7 @@ class ResultController extends Controller
     {
 
         $validator = Validator::make($request->all(),[
-            'student_id'=>'required',
+            'student_id'=>'required|unique:result_st,student_id',
             'knowledge_area'=>'required',
             'level'=>'required',
             'score'=>'required',

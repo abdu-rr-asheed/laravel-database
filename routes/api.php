@@ -20,6 +20,7 @@ Route::middleware(['auth:sanctum'])->group(function() {
     Route::get('/checkingAuthenticated', function(){
         return response()->json(['message'=>'You are in', 'status'=>200], 200);
     });
+    Route::get('/students' , [StudentController::class, 'index']);
     Route::post('logout' ,  [AuthController::class, 'logout']);
 });
 

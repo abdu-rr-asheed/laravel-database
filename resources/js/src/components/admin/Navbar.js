@@ -13,34 +13,14 @@ const Navbar = () => {
             if (res.data.status === 200) {
                 localStorage.removeItem("auth_token");
                 localStorage.removeItem("auth_name");
-                history.push("/");
                 swal("Success", res.data.message, "success");
+                history.push("/");
             }
         });
     };
 
     var AuthButton = "";
     if (localStorage.getItem("auth_token")) {
-        // AuthButton = (
-        //     <>
-        //         <li className="nav-item">
-        //             <NavLink to="/login" className="nav-link">
-        //                 <span className="me-2">
-        //                     <i className="fas fa-user ml-2"></i>
-        //                 </span>
-        //                 Login
-        //             </NavLink>
-        //         </li>
-        //         <li className="nav-item">
-        //             <NavLink to="/register" className="nav-link">
-        //                 <span className="me-2">
-        //                     <i className="fas fa-user-plus mr-2"></i>
-        //                 </span>
-        //                 Register
-        //             </NavLink>
-        //         </li>
-        //     </>
-        // );
         AuthButton = (
             <li className="nav-item">
                 <button
@@ -56,29 +36,29 @@ const Navbar = () => {
                 </button>
             </li>
         );
-    } else {
-        AuthButton = (
-            <li className="nav-item">
-                <NavLink
-                    to="register"
-                    className="nav-link btn btn-warning btn-sm text-dark fs-6"
-                    // className="btn btn-warning btn-sm text-dark text-decoration-none float-end"
-                >
-                    <span className="me-2">
-                        <i className="fas fa-user-plus mr-2"></i>
-                    </span>
-                    Register
-                </NavLink>
-            </li>
-        );
     }
+    // else {
+    //     AuthButton = (
+    //         <li className="nav-item">
+    //             <NavLink
+    //                 to="/register"
+    //                 className="nav-link btn btn-warning btn-sm text-dark fs-6"
+    //             >
+    //                 <span className="me-2">
+    //                     <i className="fas fa-user-plus mr-2"></i>
+    //                 </span>
+    //                 Register
+    //             </NavLink>
+    //         </li>
+    //     );
+    // }
 
     return (
         <>
             {/* Navbar  */}
             <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
                 <div className="container">
-                    <Link to="/" className="navbar-brand" to="/">
+                    <Link to="/admin" className="navbar-brand">
                         <div className="logo d-flex align-items-center">
                             <svg
                                 width="76"
@@ -110,7 +90,7 @@ const Navbar = () => {
                                 />
                             </svg>
                             <div className="Logo-title fw-bolder ms-2 fs-4">
-                                E-Learning
+                                Admin Dashboard
                             </div>
                         </div>
                     </Link>
@@ -131,10 +111,7 @@ const Navbar = () => {
                     >
                         <ul className="navbar-nav ms-lg-auto fs-5">
                             <li className="nav-item">
-                                <NavLink
-                                    to="/user/candidate"
-                                    className="nav-link"
-                                >
+                                <NavLink to="/admin" className="nav-link">
                                     <span className="me-2">
                                         <i className="fas fa-user ml-2"></i>
                                     </span>
@@ -142,7 +119,7 @@ const Navbar = () => {
                                 </NavLink>
                             </li>
                             <li className="nav-item">
-                                <NavLink to="/user/result" className="nav-link">
+                                <NavLink to="/result" className="nav-link">
                                     <span className="me-2">
                                         <i className="fas fa-star ml-2"></i>
                                     </span>

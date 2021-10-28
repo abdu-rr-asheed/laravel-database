@@ -1,14 +1,14 @@
 import React from "react";
-import { Route, Redirect } from "react-router-dom";
-import FrontendLayout from "./components/frontend/FrontendLayout";
+import { Redirect, Route } from "react-router-dom";
+import AdminLayout from "./admin/AdminLayout";
 
-const PublicRoute = ({ ...rest }) => {
+const AdminRoute = ({ ...rest }) => {
     return (
         <Route
             {...rest}
             render={({ props, location }) =>
                 localStorage.getItem("auth_token") ? (
-                    <FrontendLayout {...props} />
+                    <AdminLayout {...props} />
                 ) : (
                     <Redirect
                         to={{ pathname: "/", state: { from: location } }}
@@ -18,4 +18,5 @@ const PublicRoute = ({ ...rest }) => {
         />
     );
 };
-export default PublicRoute;
+
+export default AdminRoute;

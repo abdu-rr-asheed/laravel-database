@@ -142,6 +142,16 @@ class StudentController extends Controller
     }
     public function search($name)
     {
-        return Student::where('last_Name', 'Like', '%'.$name.'%')->get();
+        $fname = Student::where('last_Name', 'Like', '%'.$name.'%')->get();
+        $lname = Student::where('first_Name', 'Like', '%'.$name.'%')->get();
+        $id = Student::where('id', 'Like', '%'.$name.'%')->get();
+        // $fulname = $fname.$lname;
+        
+
+        return response()->json([
+            $fname,
+            $lname,
+            $id,
+        ]);
     }
 }

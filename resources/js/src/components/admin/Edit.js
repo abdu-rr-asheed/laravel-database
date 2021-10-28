@@ -83,10 +83,10 @@ const Edit = (props) => {
                                 name="first_Name"
                                 onChange={handleInput}
                                 value={studentInput.first_Name}
-                                className="form-control"
+                                className="form-control bg-dark text-white border-warning"
                                 placeholder="Fast Name"
                             />
-                            <label>Fast Name</label>
+                            <label className="text-warning">Fast Name</label>
                         </div>
                     </div>
                     <div className="col-md-4 col-12 my-2">
@@ -96,10 +96,10 @@ const Edit = (props) => {
                                 name="last_Name"
                                 onChange={handleInput}
                                 value={studentInput.last_Name}
-                                className="form-control"
+                                className="form-control bg-dark text-white border-warning"
                                 placeholder="Last Name"
                             />
-                            <label>Last Name</label>
+                            <label className="text-warning">Last Name</label>
                         </div>
                     </div>
                     <div className="col-md-4 col-12 my-2">
@@ -109,16 +109,16 @@ const Edit = (props) => {
                                 name="email"
                                 onChange={handleInput}
                                 value={studentInput.email}
-                                className="form-control"
+                                className="form-control bg-dark text-white border-warning"
                                 placeholder="Email"
                             />
-                            <label>Email</label>
+                            <label className="text-warning">Email</label>
                         </div>
                     </div>
                     <div className="col-md-4 col-12 my-2">
                         <div className="form-floating mx-1">
                             <select
-                                className="form-select form-control"
+                                className="form-select form-control bg-dark text-white border-warning"
                                 name="industry"
                                 onChange={handleInput}
                                 value={studentInput.industry}
@@ -128,7 +128,7 @@ const Edit = (props) => {
                                 <option value="Business">Business</option>
                                 <option value="ICT">ICT</option>
                             </select>
-                            <label>Industry</label>
+                            <label className="text-warning">Industry</label>
                         </div>
                     </div>
                     <div className="col-md-4 col-12 my-2">
@@ -138,11 +138,13 @@ const Edit = (props) => {
                                 type="file"
                                 name="profile_photo"
                                 onChange={handleImage}
-                                className="form-control"
+                                className="form-control bg-dark text-white border-warning"
                                 placeholder="Profile Photo"
                                 accept="image/png, image/jpg, image/jpeg"
                             />
-                            <label>Profile Photo</label>
+                            <label className="text-warning">
+                                Profile Photo
+                            </label>
                         </div>
                     </div>
                     <div className="col-md-4 col-12 my-2">
@@ -155,7 +157,7 @@ const Edit = (props) => {
                     <div className="savebtn mt-3 mx-1 w-100">
                         <button
                             type="submit"
-                            className="btn btn-primary float-end"
+                            className="btn btn-danger text-white float-end"
                         >
                             <i className="fas fa-save"></i> Update Candidate
                         </button>

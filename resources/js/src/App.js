@@ -18,10 +18,11 @@ import axios from "axios";
 // import Searchresult from "./components/frontend/Searchresult";
 // import Try from "./components/frontend/Try";
 // import EditResult from "./components/frontend/EditResult";
-import IndexAdmin from "./components/admin/IndexAdmin";
+// import IndexAdmin from "./components/admin/IndexAdmin";
 import PublicRoute from "./PublicRoute";
 import Login from "./components/frontend/Login";
 import Register from "./components/frontend/Register";
+import AdminRoute from "./components/AdminRoute";
 
 axios.defaults.baseURL = "http://localhost:8001";
 axios.defaults.headers.post["Content-Type"] = "application/json";
@@ -46,24 +47,26 @@ const App = () => {
                 <Route path="/add-result/:id" component={Addresult} />
                 <Route path="/edit-result/:id" component={EditResult} /> */}
 
-                <PublicRoute path="/" name="Home" />
+                <AdminRoute path="/admin" name="Admin" />
 
-                <Route path="/login">
+                <PublicRoute path="/user" name="User" />
+
+                <Route path="/">
                     {localStorage.getItem("auth_token") ? (
-                        <Redirect to="/" />
+                        <Redirect to="/user/candidate" />
                     ) : (
                         <Login />
                     )}
                 </Route>
                 <Route path="/register">
                     {localStorage.getItem("auth_token") ? (
-                        <Redirect to="/" />
+                        <Redirect to="/user/candidate" />
                     ) : (
                         <Register />
                     )}
                 </Route>
 
-                <Route path="/admin" component={IndexAdmin} />
+                {/* <Route path="/admin" component={IndexAdmin} /> */}
             </Switch>
         </Router>
     );

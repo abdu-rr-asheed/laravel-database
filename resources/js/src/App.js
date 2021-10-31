@@ -1,6 +1,8 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import "../../css/app.css";
+import "../../../node_modules/bootstrap/dist/css/bootstrap.css";
+import "../../../node_modules/bootstrap/dist/js/bootstrap.bundle";
 import {
     BrowserRouter as Router,
     Switch,
@@ -46,14 +48,14 @@ const App = () => {
                 <Route path="/searchresult" component={Searchresult} />
                 <Route path="/add-result/:id" component={Addresult} />
                 <Route path="/edit-result/:id" component={EditResult} /> */}
-
                 <AdminRoute path="/admin" name="Admin" />
-
                 <PublicRoute path="/user" name="User" />
+                <Route path="/register" component={Register} />
+                <Route path="/" component={Login} />
 
                 <Route path="/">
                     {localStorage.getItem("auth_token") ? (
-                        <Redirect to="/user/candidate" />
+                        <Redirect to="/admin" />
                     ) : (
                         <Login />
                     )}
@@ -65,8 +67,6 @@ const App = () => {
                         <Register />
                     )}
                 </Route>
-
-                {/* <Route path="/admin" component={IndexAdmin} /> */}
             </Switch>
         </Router>
     );

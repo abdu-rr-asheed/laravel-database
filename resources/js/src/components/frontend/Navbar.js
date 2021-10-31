@@ -1,5 +1,6 @@
 import React from "react";
 import { Link, NavLink, useHistory } from "react-router-dom";
+// import { Redirect } from "react-router";
 import axios from "axios";
 import swal from "sweetalert";
 
@@ -13,63 +14,47 @@ const Navbar = () => {
             if (res.data.status === 200) {
                 localStorage.removeItem("auth_token");
                 localStorage.removeItem("auth_name");
-                history.push("/");
                 swal("Success", res.data.message, "success");
+                // <Redirect to="/" />;
+                history.push("/");
             }
         });
     };
 
     var AuthButton = "";
     if (localStorage.getItem("auth_token")) {
-        // AuthButton = (
-        //     <>
-        //         <li className="nav-item">
-        //             <NavLink to="/login" className="nav-link">
-        //                 <span className="me-2">
-        //                     <i className="fas fa-user ml-2"></i>
-        //                 </span>
-        //                 Login
-        //             </NavLink>
-        //         </li>
-        //         <li className="nav-item">
-        //             <NavLink to="/register" className="nav-link">
-        //                 <span className="me-2">
-        //                     <i className="fas fa-user-plus mr-2"></i>
-        //                 </span>
-        //                 Register
-        //             </NavLink>
-        //         </li>
-        //     </>
-        // );
         AuthButton = (
-            <li className="nav-item">
-                <button
-                    type="button"
-                    onClick={logoutSubmit}
-                    className="nav-link btn btn-sm fs-5"
-                    to="/"
-                >
-                    <span className="me-2">
-                        <i className="fas fa-sign-out-alt"></i>
-                    </span>
-                    Log Out
-                </button>
-            </li>
-        );
-    } else {
-        AuthButton = (
-            <li className="nav-item">
-                <NavLink
-                    to="register"
-                    className="nav-link btn btn-warning btn-sm text-dark fs-6"
-                    // className="btn btn-warning btn-sm text-dark text-decoration-none float-end"
-                >
-                    <span className="me-2">
-                        <i className="fas fa-user-plus mr-2"></i>
-                    </span>
-                    Register
-                </NavLink>
-            </li>
+            <>
+                <li className="nav-item">
+                    <NavLink to="/user/candidate" className="nav-link">
+                        <span className="me-2">
+                            <i className="fas fa-user ml-2"></i>
+                        </span>
+                        Candidate
+                    </NavLink>
+                </li>
+                <li className="nav-item">
+                    <NavLink to="/user/result" className="nav-link">
+                        <span className="me-2">
+                            <i className="fas fa-star ml-2"></i>
+                        </span>
+                        Result
+                    </NavLink>
+                </li>
+                <li className="nav-item">
+                    <button
+                        type="button"
+                        onClick={logoutSubmit}
+                        className="nav-link btn btn-sm btn-warning text-dark fs-6"
+                        to="/"
+                    >
+                        <span className="me-2">
+                            <i className="fas fa-sign-out-alt"></i>
+                        </span>
+                        Log Out
+                    </button>
+                </li>
+            </>
         );
     }
 
@@ -130,25 +115,6 @@ const Navbar = () => {
                         id="navbarSupportedContent"
                     >
                         <ul className="navbar-nav ms-lg-auto fs-5">
-                            <li className="nav-item">
-                                <NavLink
-                                    to="/user/candidate"
-                                    className="nav-link"
-                                >
-                                    <span className="me-2">
-                                        <i className="fas fa-user ml-2"></i>
-                                    </span>
-                                    Candidate
-                                </NavLink>
-                            </li>
-                            <li className="nav-item">
-                                <NavLink to="/user/result" className="nav-link">
-                                    <span className="me-2">
-                                        <i className="fas fa-star ml-2"></i>
-                                    </span>
-                                    Result
-                                </NavLink>
-                            </li>
                             {AuthButton}
                         </ul>
                     </div>

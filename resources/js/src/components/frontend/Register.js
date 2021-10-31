@@ -1,6 +1,7 @@
 import axios from "axios";
 import React, { useState } from "react";
 import { useHistory } from "react-router";
+import { Link } from "react-router-dom";
 import swal from "sweetalert";
 import Navbar from "./Navbar";
 
@@ -105,6 +106,15 @@ const Register = () => {
                                     <i className="fas fa-save"></i> Register
                                 </button>
                             </div>
+                            <div className="clearfix"></div>
+                            <p className="text-center">
+                                <Link
+                                    to="/"
+                                    className="text-white my-4 text-decoration-none m-auto"
+                                >
+                                    Already have an account? Sign in
+                                </Link>
+                            </p>
                         </div>
                     </div>
                 </form>

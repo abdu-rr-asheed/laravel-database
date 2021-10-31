@@ -1,6 +1,7 @@
 import axios from "axios";
 import React, { useState } from "react";
 import { useHistory } from "react-router";
+import { Link } from "react-router-dom";
 import swal from "sweetalert";
 import Navbar from "./Navbar";
 
@@ -31,7 +32,7 @@ const Login = () => {
                 if (res.data.status === 200) {
                     localStorage.setItem("auth_token", res.data.token);
                     localStorage.setItem("auth_name", res.data.username);
-                    swal("Success", res.data.message, "success");
+                    // swal("Success", res.data.message, "success");
                     if (res.data.role === "admin") {
                         history.push("/admin");
                     } else {
@@ -93,6 +94,15 @@ const Login = () => {
                                     <i className="fas fa-save"></i> Login
                                 </button>
                             </div>
+                            <div className="clearfix"></div>
+                            <p className="text-center">
+                                <Link
+                                    to="/register"
+                                    className="text-white my-4 text-decoration-none m-auto"
+                                >
+                                    New User? Sign Up
+                                </Link>
+                            </p>
                         </div>
                     </div>
                 </form>

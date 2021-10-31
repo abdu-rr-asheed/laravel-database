@@ -2096,10 +2096,21 @@ var PublicRoute = function PublicRoute(_ref) {
   var rest = _extends({}, _ref);
 
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_3__.Route, _objectSpread(_objectSpread({}, rest), {}, {
-    render: function render(props) {
-      return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(_components_frontend_FrontendLayout__WEBPACK_IMPORTED_MODULE_1__.default, _objectSpread({}, props));
+    render: function render(_ref2) {
+      var props = _ref2.props,
+          location = _ref2.location;
+      return localStorage.getItem("auth_token") ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(_components_frontend_FrontendLayout__WEBPACK_IMPORTED_MODULE_1__.default, _objectSpread({}, props)) : /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(Redirect, {
+        to: {
+          pathname: "/",
+          state: {
+            from: location
+          }
+        }
+      });
     }
-  }));
+  })); // return (
+  //     <Route {...rest} render={(props) => <FrontendLayout {...props} />} />
+  // );
 };
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (PublicRoute);
@@ -4522,7 +4533,7 @@ var Register = function Register() {
           localStorage.setItem("auth_token", res.data.token);
           localStorage.setItem("auth_name", res.data.username);
           sweetalert__WEBPACK_IMPORTED_MODULE_2___default()("Success", res.data.message, "success");
-          history.push("/candidate");
+          history.push("/user/candidate");
         } else {
           setRegister(_objectSpread(_objectSpread({}, registerInput), {}, {
             error_list: res.data.validation_errors

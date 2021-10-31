@@ -33,7 +33,7 @@ const Register = () => {
                     localStorage.setItem("auth_token", res.data.token);
                     localStorage.setItem("auth_name", res.data.username);
                     swal("Success", res.data.message, "success");
-                    history.push("/candidate");
+                    history.push("/user/candidate");
                 } else {
                     setRegister({
                         ...registerInput,

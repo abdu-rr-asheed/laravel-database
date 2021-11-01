@@ -61,7 +61,7 @@ const Result = () => {
                     <div className="addbtn float-end ">
                         <button type="button" className="btn btn-primary">
                             <Link
-                                to="/searchresult"
+                                to="/user/searchresult"
                                 className="text-white text-decoration-none"
                             >
                                 <i className="fas fa-plus-square me-2"></i>Add

@@ -60,7 +60,7 @@ const Addresult = (props) => {
                     score: "",
                     assessor: "",
                 });
-                history.push("/result");
+                history.push("/user/result");
                 // setError([]);
             } else if (res.data.status === 422) {
                 swal("Validation Error", "", "warning");

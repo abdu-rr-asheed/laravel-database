@@ -1,6 +1,6 @@
-import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { Route, Redirect, useHistory } from "react-router-dom";
+import axios from "axios";
 import AdminLayout from "./admin/AdminLayout";
 
 const AdminRoute = ({ ...rest }) => {

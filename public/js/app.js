@@ -2028,6 +2028,14 @@ var App = function App() {
         path: "/user",
         name: "User"
       }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_12__.Route, {
+        path: "/register",
+        exact: true,
+        component: _components_frontend_Register__WEBPACK_IMPORTED_MODULE_8__.default
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_12__.Route, {
+        path: "/",
+        exact: true,
+        component: _components_frontend_Login__WEBPACK_IMPORTED_MODULE_7__.default
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_12__.Route, {
         path: "/",
         children: localStorage.getItem("auth_token") ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_12__.Redirect, {
           to: "/user/candidate"
@@ -2037,14 +2045,6 @@ var App = function App() {
         children: localStorage.getItem("auth_token") ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_12__.Redirect, {
           to: "/user/candidate"
         }) : /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)(_components_frontend_Register__WEBPACK_IMPORTED_MODULE_8__.default, {})
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_12__.Route, {
-        path: "/register",
-        exact: true,
-        component: _components_frontend_Register__WEBPACK_IMPORTED_MODULE_8__.default
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_12__.Route, {
-        path: "/",
-        exact: true,
-        component: _components_frontend_Login__WEBPACK_IMPORTED_MODULE_7__.default
       })]
     })
   });
@@ -2090,7 +2090,7 @@ var PublicRoute = function PublicRoute(_ref) {
     render: function render(_ref2) {
       var props = _ref2.props,
           location = _ref2.location;
-      return localStorage.getItem("auth_token") ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(_components_frontend_FrontendLayout__WEBPACK_IMPORTED_MODULE_1__.default, _objectSpread({}, props)) : /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(Redirect, {
+      return localStorage.getItem("auth_token") ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(_components_frontend_FrontendLayout__WEBPACK_IMPORTED_MODULE_1__.default, _objectSpread({}, props)) : /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_3__.Redirect, {
         to: {
           pathname: "/",
           state: {
@@ -2099,9 +2099,7 @@ var PublicRoute = function PublicRoute(_ref) {
         }
       });
     }
-  })); // return (
-  //     <Route {...rest} render={(props) => <FrontendLayout {...props} />} />
-  // );
+  }));
 };
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (PublicRoute);
@@ -2119,10 +2117,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
-/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
-/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router/esm/react-router.js");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_1__);
 /* harmony import */ var _admin_AdminLayout__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./admin/AdminLayout */ "./resources/js/src/components/admin/AdminLayout.js");
 /* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
 function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) { symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); } keys.push.apply(keys, symbols); } return keys; }
@@ -2156,18 +2154,18 @@ var AdminRoute = function AdminRoute(_ref) {
 
   var history = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_4__.useHistory)();
 
-  var _useState = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(false),
+  var _useState = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(false),
       _useState2 = _slicedToArray(_useState, 2),
       Authenticated = _useState2[0],
       setAuthenticated = _useState2[1];
 
-  var _useState3 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(true),
+  var _useState3 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(true),
       _useState4 = _slicedToArray(_useState3, 2),
       loading = _useState4[0],
       setloading = _useState4[1];
 
-  (0,react__WEBPACK_IMPORTED_MODULE_1__.useEffect)(function () {
-    axios__WEBPACK_IMPORTED_MODULE_0___default().get("/api/checkingAuthenticated").then(function (res) {
+  (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
+    axios__WEBPACK_IMPORTED_MODULE_1___default().get("/api/checkingAuthenticated").then(function (res) {
       if (res.status === 200) {
         setAuthenticated(true);
       }
@@ -2178,7 +2176,7 @@ var AdminRoute = function AdminRoute(_ref) {
       setAuthenticated(false);
     };
   }, []);
-  axios__WEBPACK_IMPORTED_MODULE_0___default().interceptors.response.use(undefined, function axiosRetryInterceptor(err) {
+  axios__WEBPACK_IMPORTED_MODULE_1___default().interceptors.response.use(undefined, function axiosRetryInterceptor(err) {
     if (err.response.status === 401) {
       swal("Unauthorized", err.response.data.message, "warning");
       history.push("/");
@@ -2186,7 +2184,7 @@ var AdminRoute = function AdminRoute(_ref) {
 
     return Promise.reject(err);
   });
-  axios__WEBPACK_IMPORTED_MODULE_0___default().interceptors.response.use(function (response) {
+  axios__WEBPACK_IMPORTED_MODULE_1___default().interceptors.response.use(function (response) {
     return response;
   }, function (error) {
     if (error.response.status === 403) {

@@ -31,6 +31,8 @@ const App = () => {
             <Switch>
                 <AdminRoute path="/admin" name="Admin" />
                 <PublicRoute path="/user" name="User" />
+                <Route path="/register" exact component={Register} />
+                <Route path="/" exact component={Login} />
                 <Route path="/">
                     {localStorage.getItem("auth_token") ? (
                         <Redirect to="/user/candidate" />
@@ -45,8 +47,6 @@ const App = () => {
                         <Register />
                     )}
                 </Route>
-                <Route path="/register" exact component={Register} />
-                <Route path="/" exact component={Login} />
             </Switch>
         </Router>
     );

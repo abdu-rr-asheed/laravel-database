@@ -2000,18 +2000,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
- // import Index from "./components/frontend/Index";
-// import Add from "./components/frontend/Addcandidate";
-// import Edit from "./components/frontend/Edit";
-// import Result from "./components/frontend/Result";
-// import Addresult from "./components/frontend/Addresult";
-// import Login from "./components/frontend/Login";
-// import Register from "./components/frontend/Register";
 
- // import Searchresult from "./components/frontend/Searchresult";
-// import Try from "./components/frontend/Try";
-// import EditResult from "./components/frontend/EditResult";
-// import IndexAdmin from "./components/admin/IndexAdmin";
 
 
 

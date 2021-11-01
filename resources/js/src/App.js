@@ -9,18 +9,7 @@ import {
     Route,
     Redirect,
 } from "react-router-dom";
-// import Index from "./components/frontend/Index";
-// import Add from "./components/frontend/Addcandidate";
-// import Edit from "./components/frontend/Edit";
-// import Result from "./components/frontend/Result";
-// import Addresult from "./components/frontend/Addresult";
-// import Login from "./components/frontend/Login";
-// import Register from "./components/frontend/Register";
 import axios from "axios";
-// import Searchresult from "./components/frontend/Searchresult";
-// import Try from "./components/frontend/Try";
-// import EditResult from "./components/frontend/EditResult";
-// import IndexAdmin from "./components/admin/IndexAdmin";
 import PublicRoute from "./PublicRoute";
 import Login from "./components/frontend/Login";
 import Register from "./components/frontend/Register";
@@ -40,14 +29,6 @@ const App = () => {
     return (
         <Router>
             <Switch>
-                {/* <Route exact path="/" component={Index} />
-                <Route path="/AddCandidate" component={Add} />
-                <Route path="/edit-student/:id" component={Edit} />
-                <Route path="/try" component={Try} />
-                <Route path="/result" component={Result} />
-                <Route path="/searchresult" component={Searchresult} />
-                <Route path="/add-result/:id" component={Addresult} />
-                <Route path="/edit-result/:id" component={EditResult} /> */}
                 <AdminRoute path="/admin" name="Admin" />
                 <PublicRoute path="/user" name="User" />
                 <Route path="/register" component={Register} />

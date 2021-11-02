@@ -107,9 +107,7 @@ const Result = () => {
                                         <td>{item.overrall}</td>
                                         <td>{item.updated_at}</td>
                                         <td>
-                                            <Link
-                                                to={`/edit-result/${item.id}`}
-                                            >
+                                            <Link to={`edit-result/${item.id}`}>
                                                 <i className="fas fa-edit"></i>
                                             </Link>
                                         </td>

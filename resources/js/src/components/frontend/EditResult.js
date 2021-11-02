@@ -62,7 +62,7 @@ const EditResult = (props) => {
                     score: "",
                     assessor: "",
                 });
-                history.push("/result");
+                history.push("/user/result");
             } else if (res.data.status === 422) {
                 swal("Validation Error", "", "warning");
             }

@@ -2028,23 +2028,13 @@ var App = function App() {
         path: "/user",
         name: "User"
       }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_12__.Route, {
-        path: "/register",
-        exact: true,
-        component: _components_frontend_Register__WEBPACK_IMPORTED_MODULE_8__.default
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_12__.Route, {
         path: "/",
         exact: true,
         component: _components_frontend_Login__WEBPACK_IMPORTED_MODULE_7__.default
       }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_12__.Route, {
-        path: "/",
-        children: localStorage.getItem("auth_token") ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_12__.Redirect, {
-          to: "/user/candidate"
-        }) : /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)(_components_frontend_Login__WEBPACK_IMPORTED_MODULE_7__.default, {})
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_12__.Route, {
         path: "/register",
-        children: localStorage.getItem("auth_token") ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_12__.Redirect, {
-          to: "/user/candidate"
-        }) : /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)(_components_frontend_Register__WEBPACK_IMPORTED_MODULE_8__.default, {})
+        exact: true,
+        component: _components_frontend_Register__WEBPACK_IMPORTED_MODULE_8__.default
       })]
     })
   });
@@ -4249,6 +4239,10 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 var Login = function Login() {
   var history = (0,react_router__WEBPACK_IMPORTED_MODULE_5__.useHistory)();
 
+  if (localStorage.getItem("auth_token")) {
+    history.push("/user/candidate");
+  }
+
   var _useState = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)({
     email: "",
     password: "",
@@ -4576,6 +4570,10 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 var Register = function Register() {
   var history = (0,react_router__WEBPACK_IMPORTED_MODULE_5__.useHistory)();
+
+  if (localStorage.getItem("auth_token")) {
+    history.push("/user/candidate");
+  }
 
   var _useState = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)({
     name: "",

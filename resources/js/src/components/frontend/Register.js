@@ -7,6 +7,11 @@ import Navbar from "./Navbar";
 
 const Register = () => {
     const history = useHistory();
+
+    if (localStorage.getItem("auth_token")) {
+        history.push("/user/candidate");
+    }
+
     const [registerInput, setRegister] = useState({
         name: "",
         email: "",

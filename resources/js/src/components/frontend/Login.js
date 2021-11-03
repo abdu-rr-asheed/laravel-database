@@ -8,6 +8,10 @@ import Navbar from "./Navbar";
 const Login = () => {
     const history = useHistory();
 
+    if (localStorage.getItem("auth_token")) {
+        history.push("/user/candidate");
+    }
+
     const [loginInput, setLogin] = useState({
         email: "",
         password: "",

@@ -2917,8 +2917,7 @@ var IndexAdmin = function IndexAdmin() {
       if (willDelete) {
         axios__WEBPACK_IMPORTED_MODULE_1___default().delete("/api/delete-student/".concat(id)).then(function (res) {
           if (res.data.status === 200) {
-            thisClicked.closest("tr").remove();
-            window.location.reload(false);
+            thisClicked.closest("tr").remove(); // window.location.reload(false);
           } else if (res.data.status === 404) {
             sweetalert__WEBPACK_IMPORTED_MODULE_2___default()("Warning", res.data.message, "warning");
             thisClicked.disable = true;
@@ -2926,9 +2925,9 @@ var IndexAdmin = function IndexAdmin() {
         });
       }
     });
-  }; // console.log(filteredResult[0][0].id);
+  };
 
-
+  console.log(allstudents);
   var student_HTMLTABLE = "";
   student_HTMLTABLE = searchTeam.length > 1 ? filteredResult.map(function (item, idx) {
     return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(react__WEBPACK_IMPORTED_MODULE_0__.Fragment, {
@@ -2950,6 +2949,8 @@ var IndexAdmin = function IndexAdmin() {
               loading: "lazy",
               width: "100px"
             })
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("td", {
+            children: item.created_at
           }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("td", {
             children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_4__.Link, {
               to: "edit-student/".concat(subitem.id),
@@ -2989,6 +2990,8 @@ var IndexAdmin = function IndexAdmin() {
           loading: "lazy",
           width: "100px"
         })
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("td", {
+        children: item.created_at
       }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("td", {
         children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_4__.Link, {
           to: "admin/edit-student/".concat(item.id),
@@ -3118,6 +3121,9 @@ var IndexAdmin = function IndexAdmin() {
               }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("th", {
                 scope: "col",
                 children: "P.P"
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("th", {
+                scope: "col",
+                children: "Date"
               }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("th", {
                 scope: "col",
                 children: "Edit"
@@ -3328,6 +3334,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_1__);
 /* harmony import */ var react_router__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react-router */ "./node_modules/react-router/esm/react-router.js");
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
 /* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
 function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) { symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); } keys.push.apply(keys, symbols); } return keys; }
 
@@ -3346,6 +3353,7 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
 function _iterableToArrayLimit(arr, i) { var _i = arr == null ? null : typeof Symbol !== "undefined" && arr[Symbol.iterator] || arr["@@iterator"]; if (_i == null) return; var _arr = []; var _n = true; var _d = false; var _s, _e; try { for (_i = _i.call(arr); !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
 
 function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
+
 
 
 
@@ -3410,7 +3418,7 @@ var Addresult = function Addresult(props) {
   var saveResult = function saveResult(e) {
     e.preventDefault();
     var formdata = new FormData();
-    formdata.append("student_id", studentID.student_id);
+    formdata.append("student_id", studentInput.id);
     formdata.append("knowledge_area", resultInput.knowledge_area);
     formdata.append("level", resultInput.level);
     formdata.append("score", resultInput.score);
@@ -3495,19 +3503,12 @@ var Addresult = function Addresult(props) {
           })
         })
       })
-    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("div", {
-      className: "row addForm",
-      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("form", {
-        className: "d-flex flex-wrap",
-        onSubmit: saveResult,
-        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("input", {
-          type: "hidden",
-          className: "form-control bg-dark text-white border-warning",
-          name: "student_id",
-          onChange: handleId,
-          value: studentID.student_id,
-          placeholder: "Knowlage Area"
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("div", {
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("form", {
+      className: "d-flex flex-wrap",
+      onSubmit: saveResult,
+      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
+        className: "row addForm",
+        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("div", {
           className: "col-md-4 col-12 my-2",
           children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
             className: "form-floating mx-1",
@@ -3587,17 +3588,29 @@ var Addresult = function Addresult(props) {
               children: "Overrall"
             })]
           })
+        })]
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
+        className: "row justify-content-end w-100",
+        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("div", {
+          className: "col-1 my-3 align-self-end",
+          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)(react_router_dom__WEBPACK_IMPORTED_MODULE_4__.Link, {
+            to: "/user/searchresult",
+            className: "btn btn-warning text-dark text-nowrap",
+            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("i", {
+              className: "fas fa-angle-left"
+            }), " Back"]
+          })
         }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("div", {
-          className: "w-100 my-3",
+          className: "col-2 my-3",
           children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("button", {
             type: "submit",
-            className: "btn btn-danger text-white float-end",
+            className: "btn btn-danger text-white text-nowrap",
             children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("i", {
               className: "fas fa-save"
             }), " Save Result"]
           })
         })]
-      })
+      })]
     })]
   });
 };
@@ -4022,6 +4035,8 @@ var Index = function Index() {
     }
   };
 
+  console.log(links);
+
   var urlid = function urlid(utl_id) {
     axios__WEBPACK_IMPORTED_MODULE_1___default().get("".concat(utl_id)).then(function (res) {
       if (res.data.status === 200) {
@@ -4036,9 +4051,9 @@ var Index = function Index() {
     return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(react__WEBPACK_IMPORTED_MODULE_0__.Fragment, {
       children: item.map(function (subitem, subidx) {
         return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("tr", {
-          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("td", {
+          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("td", {
             className: "align-middle",
-            children: subitem.id
+            children: [subitem.id, "+", idx]
           }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("td", {
             children: [subitem.first_Name, "\xA0", subitem.last_Name]
           }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("td", {
@@ -4085,16 +4100,41 @@ var Index = function Index() {
       if (item.url === null) {
         return false;
       } else {
-        return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("div", {
-          className: item.active ? "page-item active" : "page-item",
-          onClick: function onClick(e) {
-            return urlid(item.url);
-          },
-          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("button", {
-            className: "page-link",
-            children: item.label
-          })
-        }, idx);
+        if (idx == 0) {
+          return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("div", {
+            className: item.active ? "page-item active" : "page-item",
+            onClick: function onClick(e) {
+              return urlid(item.url);
+            } // onClick={(e) => urlid(item.url)}
+            ,
+            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("button", {
+              className: "page-link",
+              children: "Previous"
+            })
+          }, idx);
+        } else if (idx == links.length - 1) {
+          return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("div", {
+            className: item.active ? "page-item active" : "page-item",
+            onClick: function onClick(e) {
+              return urlid(item.url);
+            },
+            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("button", {
+              className: "page-link",
+              children: "Next"
+            })
+          }, idx);
+        } else {
+          return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("div", {
+            className: item.active ? "page-item active" : "page-item",
+            onClick: function onClick(e) {
+              return urlid(item.url);
+            },
+            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("button", {
+              className: "page-link",
+              children: item.label
+            })
+          }, idx);
+        }
       }
     });
   }
@@ -4447,7 +4487,7 @@ var Navbar = function Navbar() {
             children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("i", {
               className: "fas fa-sign-out-alt"
             })
-          }), "Log Out"]
+          }), localStorage.getItem("auth_name")]
         })
       })]
     });
@@ -4974,7 +5014,7 @@ var Searchresult = function Searchresult() {
 
   (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
     document.title = "E-learning System";
-    axios__WEBPACK_IMPORTED_MODULE_1___default().get("/api/students?page=1").then(function (res) {
+    axios__WEBPACK_IMPORTED_MODULE_1___default().get("/api/studentsstatus?page=1").then(function (res) {
       if (res.data.status === 200) {
         setAllstudents(res.data.students.data);
         setAllLinks(res.data.students.links);

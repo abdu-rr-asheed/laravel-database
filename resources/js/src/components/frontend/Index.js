@@ -26,6 +26,9 @@ const Index = () => {
             });
         }
     };
+
+    console.log(links)
+
     const urlid = (utl_id) => {
         axios.get(`${utl_id}`).then((res) => {
             if (res.data.status === 200) {
@@ -45,7 +48,7 @@ const Index = () => {
                               return (
                                   <tr key={subidx}>
                                       <td className="align-middle">
-                                          {subitem.id}
+                                          {subitem.id}+{idx}
                                       </td>
                                       <td>
                                           {subitem.first_Name}&nbsp;
@@ -108,21 +111,56 @@ const Index = () => {
                     if (item.url === null) {
                         return false;
                     } else {
-                        return (
-                            <div
-                                className={
-                                    item.active
-                                        ? "page-item active"
-                                        : "page-item"
-                                }
-                                onClick={(e) => urlid(item.url)}
-                                key={idx}
-                            >
-                                <button className="page-link">
-                                    {item.label}
-                                </button>
-                            </div>
-                        );
+                        if (idx == 0) {
+                            return (
+                                <div
+                                    className={
+                                        item.active
+                                            ? "page-item active"
+                                            : "page-item"
+                                    }
+                                    onClick={(e) => urlid(item.url)}
+                                    // onClick={(e) => urlid(item.url)}
+                                    key={idx}
+                                >
+                                    <button className="page-link">
+                                    Previous
+                                    </button>
+                                </div>
+                            );
+                        } else if (idx == links.length - 1){
+                            return (
+                                <div
+                                    className={
+                                        item.active
+                                            ? "page-item active"
+                                            : "page-item"
+                                    }
+                                    onClick={(e) => urlid(item.url)}
+                                    key={idx}
+                                >
+                                    <button className="page-link">
+                                    Next
+                                    </button>
+                                </div>
+                            );
+                        } else {
+                            return (
+                                <div
+                                    className={
+                                        item.active
+                                            ? "page-item active"
+                                            : "page-item"
+                                    }
+                                    onClick={(e) => urlid(item.url)}
+                                    key={idx}
+                                >
+                                    <button className="page-link">
+                                        {item.label}
+                                    </button>
+                                </div>
+                            );
+                        }
                     }
                 })
             );

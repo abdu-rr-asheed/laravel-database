@@ -54,7 +54,7 @@ const IndexAdmin = () => {
                 axios.delete(`/api/delete-student/${id}`).then((res) => {
                     if (res.data.status === 200) {
                         thisClicked.closest("tr").remove();
-                        window.location.reload(false);
+                        // window.location.reload(false);
                     } else if (res.data.status === 404) {
                         swal("Warning", res.data.message, "warning");
                         thisClicked.disable = true;
@@ -63,7 +63,7 @@ const IndexAdmin = () => {
             }
         });
     };
-    // console.log(filteredResult[0][0].id);
+    console.log(allstudents);
 
     var student_HTMLTABLE = "";
     student_HTMLTABLE =
@@ -94,6 +94,7 @@ const IndexAdmin = () => {
                                               width="100px"
                                           />
                                       </td>
+                                      <td>{item.created_at}</td>
                                       <td>
                                           <Link
                                               to={`edit-student/${subitem.id}`}
@@ -139,6 +140,7 @@ const IndexAdmin = () => {
                                   width="100px"
                               />
                           </td>
+                          <td>{item.created_at}</td>
                           <td>
                               <Link
                                   to={`admin/edit-student/${item.id}`}
@@ -259,6 +261,7 @@ const IndexAdmin = () => {
                                 <th scope="col">Email</th>
                                 <th scope="col">industry</th>
                                 <th scope="col">P.P</th>
+                                <th scope="col">Date</th>
                                 <th scope="col">Edit</th>
                                 <th scope="col">Delete</th>
                             </tr>

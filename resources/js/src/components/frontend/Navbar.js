@@ -51,7 +51,7 @@ const Navbar = () => {
                         <span className="me-2">
                             <i className="fas fa-sign-out-alt"></i>
                         </span>
-                        Log Out
+                        {localStorage.getItem("auth_name")}
                     </button>
                 </li>
             </>

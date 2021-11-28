@@ -2,7 +2,8 @@
 
 namespace App\Models;
 
-use DateTimeInterface;
+use Carbon\Carbon;
+// use DateTimeInterface;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
@@ -15,7 +16,9 @@ class Student extends Model
         'last_Name',
         'email',
         'industry',
-        'profile_photo'
+        'profile_photo',
+        'edit_status',
     ];
-    
+
+    protected $dateFormat = 'd/m/Y';
 }

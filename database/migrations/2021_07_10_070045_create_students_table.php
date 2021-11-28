@@ -20,6 +20,7 @@ class CreateStudentsTable extends Migration
             $table->string('email');
             $table->string('industry');
             $table->string('profile_photo');
+            $table->tinyInteger('edit_status')->default("0");
             $table->timestamps();
         });
     }

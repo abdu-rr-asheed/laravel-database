@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { useHistory } from "react-router";
+import { Link } from "react-router-dom";
 
 const Addresult = (props) => {
     const history = useHistory();
@@ -43,7 +44,7 @@ const Addresult = (props) => {
         e.preventDefault();
 
         const formdata = new FormData();
-        formdata.append("student_id", studentID.student_id);
+        formdata.append("student_id", studentInput.id);
         formdata.append("knowledge_area", resultInput.knowledge_area);
         formdata.append("level", resultInput.level);
         formdata.append("score", resultInput.score);
@@ -131,16 +132,16 @@ const Addresult = (props) => {
 
             {/* <!-- Form --> */}
 
-            <div className="row addForm">
-                <form className="d-flex flex-wrap" onSubmit={saveResult}>
-                    <input
+            <form className="d-flex flex-wrap" onSubmit={saveResult}>
+                {/* <input
                         type="hidden"
                         className="form-control bg-dark text-white border-warning"
                         name="student_id"
                         onChange={handleId}
                         value={studentID.student_id}
                         placeholder="Knowlage Area"
-                    />
+                    /> */}
+                <div className="row addForm">
                     <div className="col-md-4 col-12 my-2">
                         <div className="form-floating mx-1">
                             <input
@@ -208,16 +209,26 @@ const Addresult = (props) => {
                             <label className="text-warning">Overrall</label>
                         </div>
                     </div>
-                    <div className="w-100 my-3">
+                </div>
+                <div className="row justify-content-end w-100">
+                    <div className="col-1 my-3 align-self-end">
+                        <Link
+                            to="/user/searchresult"
+                            className="btn btn-warning text-dark text-nowrap"
+                        >
+                            <i className="fas fa-angle-left"></i> Back
+                        </Link>
+                    </div>
+                    <div className="col-2 my-3">
                         <button
                             type="submit"
-                            className="btn btn-danger text-white float-end"
+                            className="btn btn-danger text-white text-nowrap"
                         >
                             <i className="fas fa-save"></i> Save Result
                         </button>
                     </div>
-                </form>
-            </div>
+                </div>
+            </form>
         </>
     );
 };

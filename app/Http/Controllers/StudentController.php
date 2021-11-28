@@ -19,6 +19,14 @@ class StudentController extends Controller
             'students' => $student,
         ]);
     }
+    public function indexstatus()
+    {
+        $student = Student::where('edit_status','0')->paginate(6);
+        return response()->json([
+            'status' => 200,
+            'students' => $student,
+        ]);
+    }
 
     public function store(Request $request)
     {
@@ -142,9 +150,9 @@ class StudentController extends Controller
     }
     public function search($name)
     {
-        $fname = Student::where('last_Name', 'Like', '%'.$name.'%')->get();
-        $lname = Student::where('first_Name', 'Like', '%'.$name.'%')->get();
-        $id = Student::where('id', 'Like', '%'.$name.'%')->get();
+        $fname = Student::where('edit_status','0')::where('last_Name', 'Like', '%'.$name.'%')->get();
+        $lname = Student::where('edit_status','0')::where('first_Name', 'Like', '%'.$name.'%')->get();
+        $id = Student::where('edit_status','0')::where('id', 'Like', '%'.$name.'%')->get();
         // $fulname = $fname.$lname;
         
 

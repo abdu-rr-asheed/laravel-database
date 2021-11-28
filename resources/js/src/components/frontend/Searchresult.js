@@ -11,7 +11,7 @@ const Searchresult = () => {
 
     useEffect(() => {
         document.title = "E-learning System";
-        axios.get("/api/students?page=1").then((res) => {
+        axios.get("/api/studentsstatus?page=1").then((res) => {
             if (res.data.status === 200) {
                 setAllstudents(res.data.students.data);
                 setAllLinks(res.data.students.links);

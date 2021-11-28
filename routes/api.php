@@ -35,13 +35,11 @@ use Illuminate\Support\Facades\Route;
         Route::get('/editResult/{id}', [ResultController::class, 'edit']);
         Route::get('view-result', [ResultController::class, 'index']);
         Route::delete('/resultDelete/{id}', [ResultController::class, 'destroy']);
-
         Route::get('/students' , [StudentController::class, 'index']);
-
-    Route::post('logout' ,  [AuthController::class, 'logout']);
+        Route::get('/studentsstatus' , [StudentController::class, 'indexstatus']);
+        
+        Route::post('logout' ,  [AuthController::class, 'logout']);
     });
-
-
 
 
 // Route::middleware('auth:api')->get('/user', function (Request $request) {

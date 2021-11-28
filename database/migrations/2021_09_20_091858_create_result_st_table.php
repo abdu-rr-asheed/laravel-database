@@ -18,7 +18,7 @@ class CreateResultStTable extends Migration
             $table->string('student_id');
             $table->string('knowledge_area');
             $table->string('level');
-            $table->string('score');
+            $table->integer('score');
             $table->string('assessor');
             $table->string('overrall');
             $table->timestamps();

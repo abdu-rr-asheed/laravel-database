@@ -1,5 +1,6 @@
 import axios from "axios";
 import React, { useState } from "react";
+import { Link } from "react-router-dom";
 import swal from "sweetalert";
 
 const Addcandidate = () => {
@@ -149,13 +150,23 @@ const Addcandidate = () => {
                         </span>
                     </div>
                     <br />
-                    <div className="savebtn mt-3 mx-1 w-100">
-                        <button
-                            type="submit"
-                            className="btn btn-danger text-white float-end"
-                        >
-                            <i className="fas fa-save"></i> Save Candidate
-                        </button>
+                    <div className="row justify-content-end w-100">
+                        <div className="col-1 my-3 align-self-end">
+                            <Link
+                                to="/admin"
+                                className="btn btn-warning text-dark text-nowrap"
+                            >
+                                <i className="fas fa-angle-left"></i> Back
+                            </Link>
+                        </div>
+                        <div className="col-2 my-3">
+                            <button
+                                type="submit"
+                                className="btn btn-danger text-white text-nowrap"
+                            >
+                                <i className="fas fa-save"></i> Save Candidate
+                            </button>
+                        </div>
                     </div>
                 </form>
             </div>

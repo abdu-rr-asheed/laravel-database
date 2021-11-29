@@ -33,9 +33,10 @@ class ResultController extends Controller
         $validator = Validator::make($request->all(), [
             'student_id' => 'required',
             'knowledge_area' => 'required',
-            'level' => 'required',
-            'score' => 'required',
+            'level' => 'required|in:level 1,level 2,level 3,level 4,level 5',
+            'score' => 'required|numeric',
             'assessor' => 'required',
+            'overrall' => 'required|in:pass,fail',
         ]);
 
         if ($validator->fails()) {
@@ -51,7 +52,7 @@ class ResultController extends Controller
             $result->level = $request->input('level');
             $result->score = $request->input('score');
             $result->assessor = $request->input('assessor');
-            $result->overrall = $request->input('overrall') == true ? 'pass' : 'fail';
+            $result->overrall = $request->input('overrall');
 
             // $asd = ($result->student_id = $request->input('student_id'));
             // $editStatus = Student::find($asd);
@@ -59,7 +60,7 @@ class ResultController extends Controller
 
 
             $result->save();
-            $editStatus->update();
+            // $editStatus->update();
 
             return response()->json([
                 'status' => 200,
@@ -74,9 +75,10 @@ class ResultController extends Controller
         $validator = Validator::make($request->all(), [
             'student_id' => 'required',
             'knowledge_area' => 'required',
-            'level' => 'required',
-            'score' => 'required',
+            'level' => 'required|in:level 1,level 2,level 3,level 4,level 5',
+            'score' => 'required|numeric',
             'assessor' => 'required',
+            'overrall' => 'required|in:pass,fail',
         ]);
 
         if ($validator->fails()) {
@@ -93,7 +95,7 @@ class ResultController extends Controller
                 $result->level = $request->input('level');
                 $result->score = $request->input('score');
                 $result->assessor = $request->input('assessor');
-                $result->overrall = $request->input('overrall') == true ? 'pass' : 'fail';
+                $result->overrall = $request->input('overrall');
             }
             $result->update();
 

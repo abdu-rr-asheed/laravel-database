@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 import axios from "axios";
 
-const Index = () => {
+const SearchresultAd = () => {
     const [searchTeam, setSearchTeam] = useState("");
     const [filteredResult, setFilteredResult] = useState([]);
     const [allstudents, setAllstudents] = useState([]);
@@ -39,36 +40,45 @@ const Index = () => {
     var student_HTMLTABLE = "";
     student_HTMLTABLE =
         searchTeam.length > 1
-            ? filteredResult.map((item, idx) => {
+            ? filteredResult.map((item) => {
                   return (
-                      <React.Fragment key={idx}>
-                          {item.map((subitem, subidx) => {
-                              return (
-                                  <tr key={subidx}>
-                                      <td className="align-middle">
-                                          {subitem.id}+{idx}
-                                      </td>
-                                      <td>
-                                          {subitem.first_Name}&nbsp;
-                                          {subitem.last_Name}
-                                      </td>
-                                      <td>{subitem.email}</td>
-                                      <td>{subitem.industry}</td>
-                                      <td>
-                                          <img
-                                              src={
-                                                  "http://localhost:8001/images/students/" +
-                                                  subitem.profile_photo
-                                              }
-                                              alt={subitem.last_Name}
-                                              loading="lazy"
-                                              width="100px"
-                                          />
-                                      </td>
-                                  </tr>
-                              );
-                          })}
-                      </React.Fragment>
+                      <tr key={item.id}>
+                          <td>{item.id}</td>
+                          <td>
+                              {item.first_Name}&nbsp;
+                              {item.last_Name}
+                          </td>
+                          <td>{item.email}</td>
+                          <td>{item.industry}</td>
+                          <td>
+                              <img
+                                  src={
+                                      "http://localhost:8001/images/students/" +
+                                      item.profile_photo
+                                  }
+                                  alt={item.last_Name}
+                                  loading="lazy"
+                                  width="100px"
+                              />
+                          </td>
+                          <td>
+                              {item.edit_status == 1 ? (
+                                  <Link
+                                      to={`add-result/${item.id}`}
+                                      className="btn bg-danger text-white btn-sm"
+                                  >
+                                      Add more Result
+                                  </Link>
+                              ) : (
+                                  <Link
+                                      to={`add-result/${item.id}`}
+                                      className="btn bg-warning text-dark btn-sm"
+                                  >
+                                      Add Result
+                                  </Link>
+                              )}
+                          </td>
+                      </tr>
                   );
               })
             : allstudents.map((item) => {
@@ -92,6 +102,23 @@ const Index = () => {
                                   width="100px"
                               />
                           </td>
+                          <td>
+                              {item.edit_status == 1 ? (
+                                  <Link
+                                  to={`add-result/${item.id}`}
+                                  className="btn bg-danger text-white btn-sm"
+                              >
+                                  Add more Result
+                              </Link>
+                              ) : (
+                                  <Link
+                                      to={`add-result/${item.id}`}
+                                      className="btn bg-warning text-dark btn-sm"
+                                  >
+                                      Add Result
+                                  </Link>
+                              )}
+                          </td>
                       </tr>
                   );
               });
@@ -109,56 +136,21 @@ const Index = () => {
                     if (item.url === null) {
                         return false;
                     } else {
-                        if (idx == 0) {
-                            return (
-                                <div
-                                    className={
-                                        item.active
-                                            ? "page-item active"
-                                            : "page-item"
-                                    }
-                                    onClick={(e) => urlid(item.url)}
-                                    // onClick={(e) => urlid(item.url)}
-                                    key={idx}
-                                >
-                                    <button className="page-link">
-                                    Previous
-                                    </button>
-                                </div>
-                            );
-                        } else if (idx == links.length - 1){
-                            return (
-                                <div
-                                    className={
-                                        item.active
-                                            ? "page-item active"
-                                            : "page-item"
-                                    }
-                                    onClick={(e) => urlid(item.url)}
-                                    key={idx}
-                                >
-                                    <button className="page-link">
-                                    Next
-                                    </button>
-                                </div>
-                            );
-                        } else {
-                            return (
-                                <div
-                                    className={
-                                        item.active
-                                            ? "page-item active"
-                                            : "page-item"
-                                    }
-                                    onClick={(e) => urlid(item.url)}
-                                    key={idx}
-                                >
-                                    <button className="page-link">
-                                        {item.label}
-                                    </button>
-                                </div>
-                            );
-                        }
+                        return (
+                            <li
+                                className={
+                                    item.active
+                                        ? "page-item active"
+                                        : "page-item"
+                                }
+                                onClick={(e) => urlid(item.url)}
+                                key={idx}
+                            >
+                                <button className="page-link">
+                                    {item.label}
+                                </button>
+                            </li>
+                        );
                     }
                 })
             );
@@ -212,22 +204,23 @@ const Index = () => {
                             <tr>
                                 <th scope="col">#</th>
                                 <th scope="col">Name</th>
+                                {/* <th scope="col">Last Name</th> */}
                                 <th scope="col">Email</th>
                                 <th scope="col">industry</th>
                                 <th scope="col">P.P</th>
+                                <th scope="col">Result</th>
                             </tr>
                         </thead>
                         <tbody>{student_HTMLTABLE}</tbody>
                     </table>
                 </div>
                 <nav>
-                    <div className="pagination pagination-sm justify-content-end">
+                    <ul className="pagination pagination-sm justify-content-end">
                         {Pagination_HTML}
-                    </div>
+                    </ul>
                 </nav>
             </div>
         </>
     );
 };
-
-export default Index;
+export default SearchresultAd;

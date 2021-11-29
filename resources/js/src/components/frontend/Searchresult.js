@@ -11,7 +11,7 @@ const Searchresult = () => {
 
     useEffect(() => {
         document.title = "E-learning System";
-        axios.get("/api/studentsstatus?page=1").then((res) => {
+        axios.get("/api/students?page=1").then((res) => {
             if (res.data.status === 200) {
                 setAllstudents(res.data.students.data);
                 setAllLinks(res.data.students.links);
@@ -62,12 +62,21 @@ const Searchresult = () => {
                               />
                           </td>
                           <td>
-                              <Link
-                                  to={`add-result/${item.id}`}
-                                  className="btn btn-primary btn-sm"
-                              >
-                                  Add Result
-                              </Link>
+                              {item.edit_status == 1 ? (
+                                  <Link
+                                      to={`add-result/${item.id}`}
+                                      className="btn bg-danger text-white btn-sm"
+                                  >
+                                      Add more Result
+                                  </Link>
+                              ) : (
+                                  <Link
+                                      to={`add-result/${item.id}`}
+                                      className="btn bg-warning text-dark btn-sm"
+                                  >
+                                      Add Result
+                                  </Link>
+                              )}
                           </td>
                       </tr>
                   );
@@ -94,12 +103,21 @@ const Searchresult = () => {
                               />
                           </td>
                           <td>
-                              <Link
+                              {item.edit_status == 1 ? (
+                                  <Link
                                   to={`add-result/${item.id}`}
-                                  className="btn bg-warning text-dark btn-sm"
+                                  className="btn bg-danger text-white btn-sm"
                               >
-                                  Add Result
+                                  Add more Result
                               </Link>
+                              ) : (
+                                  <Link
+                                      to={`add-result/${item.id}`}
+                                      className="btn bg-warning text-dark btn-sm"
+                                  >
+                                      Add Result
+                                  </Link>
+                              )}
                           </td>
                       </tr>
                   );

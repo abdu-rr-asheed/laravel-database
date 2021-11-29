@@ -3,19 +3,17 @@ import axios from "axios";
 import { useHistory } from "react-router";
 import { Link } from "react-router-dom";
 
-const EditResult = (props) => {
+const AddresultAd = (props) => {
     const history = useHistory();
+    const [loading, setLoading] = useState(true);
 
     const [resultInput, setresult] = useState({
-        student_id: "",
         knowledge_area: "",
         level: "",
         score: "",
         assessor: "",
         overrall: "",
     });
-    const [loading, setLoading] = useState(true);
-
     const [error_list, setError] = useState([]);
 
     const handleInput = (e) => {
@@ -23,39 +21,30 @@ const EditResult = (props) => {
         setresult({ ...resultInput, [e.target.name]: e.target.value });
     };
 
+    const [studentInput, setstudent] = useState([]);
+
     useEffect(() => {
-        const result_Id = props.match.params.id;
-        axios.get(`/api/editResult/${result_Id}`).then((res) => {
+        const student_Id = props.match.params.id;
+        axios.get(`/api/edit-student/${student_Id}`).then((res) => {
             if (res.data.status === 200) {
-                setresult(res.data.result);
+                setstudent(res.data.student);
                 setLoading(false);
             }
         });
     }, [props.match.params.id]);
 
-    const updateResult = (e) => {
+    const saveResult = (e) => {
         e.preventDefault();
 
-        const result_Id = props.match.params.id;
-
         const formdata = new FormData();
-        formdata.append("student_id", resultInput.student.id);
+        formdata.append("student_id", studentInput.id);
         formdata.append("knowledge_area", resultInput.knowledge_area);
         formdata.append("level", resultInput.level);
         formdata.append("score", resultInput.score);
         formdata.append("assessor", resultInput.assessor);
         formdata.append("overrall", resultInput.overrall);
 
-        // const data = {
-        //     student_id: studentInput.id,
-        //     knowledge_area: resultInput.knowledge_area,
-        //     level: resultInput.level,
-        //     score: resultInput.score,
-        //     assessor: resultInput.assessor,
-        //     overrall: resultInput.overrall,
-        // };
-
-        axios.post(`/api/updateresult/${result_Id}`, formdata).then((res) => {
+        axios.post(`/api/result`, formdata).then((res) => {
             if (res.data.status === 200) {
                 swal("Success", res.data.message, "success");
                 setresult({
@@ -104,27 +93,27 @@ const EditResult = (props) => {
                                 <img
                                     src={
                                         "http://localhost:8001/images/students/" +
-                                        resultInput.student.profile_photo
+                                        studentInput.profile_photo
                                     }
                                     className="img-fluid rounded-start"
-                                    alt={resultInput.student.last_name}
+                                    alt={studentInput.last_Name}
                                 />
                             </div>
                             <div className="col-md-8">
                                 <div className="card-body">
                                     <h5 className="card-title">
-                                        {resultInput.student.first_Name}&nbsp;
-                                        {resultInput.student.last_Name}
+                                        {studentInput.first_Name}&nbsp;
+                                        {studentInput.last_Name}
                                     </h5>
                                     <p className="card-text">
-                                        {resultInput.student.email}
+                                        {studentInput.email}
                                     </p>
                                     <p className="card-text">
-                                        {resultInput.student.industry}
+                                        {studentInput.industry}
                                     </p>
                                     <p className="card-text">
                                         <small className="text-muted">
-                                            id : {resultInput.student.id}
+                                            id : {studentInput.id}
                                         </small>
                                     </p>
                                 </div>
@@ -136,16 +125,8 @@ const EditResult = (props) => {
 
             {/* <!-- Form --> */}
 
-            <div className="row addForm">
-                <form className="d-flex flex-wrap" onSubmit={updateResult}>
-                    {/* <input
-                        type="hidden"
-                        className="form-control"
-                        name="student_id"
-                        onChange={handleInput}
-                        value={resultInput.student_id}
-                        placeholder="Knowlage Area"
-                    /> */}
+            <form className="d-flex flex-wrap" onSubmit={saveResult}>
+                <div className="row addForm">
                     <div className="col-md-4 col-12 my-2">
                         <div className="form-floating mx-1">
                             <input
@@ -233,28 +214,28 @@ const EditResult = (props) => {
                             {error_list.overrall}
                         </div>
                     </div>
-                    <div className="row justify-content-end w-100">
-                        <div className="col-1 my-3 align-self-end">
-                            <Link
-                                to="/user/result"
-                                className="btn btn-warning text-dark text-nowrap"
-                            >
-                                <i className="fas fa-angle-left"></i> Back
-                            </Link>
-                        </div>
-                        <div className="col-2 my-3">
-                            <button
-                                type="submit"
-                                className="btn btn-danger text-white text-nowrap"
-                            >
-                                <i className="fas fa-save"></i> Update Result
-                            </button>
-                        </div>
+                </div>
+                <div className="row justify-content-end w-100">
+                    <div className="col-1 my-3 align-self-end">
+                        <Link
+                            to="/admin/searchresult"
+                            className="btn btn-warning text-dark text-nowrap"
+                        >
+                            <i className="fas fa-angle-left"></i> Back
+                        </Link>
                     </div>
-                </form>
-            </div>
+                    <div className="col-2 my-3">
+                        <button
+                            type="submit"
+                            className="btn btn-danger text-white text-nowrap"
+                        >
+                            <i className="fas fa-save"></i> Save Result
+                        </button>
+                    </div>
+                </div>
+            </form>
         </>
     );
 };
 
-export default EditResult;
+export default AddresultAd;

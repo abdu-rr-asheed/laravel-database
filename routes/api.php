@@ -36,7 +36,7 @@ use Illuminate\Support\Facades\Route;
         Route::get('view-result', [ResultController::class, 'index']);
         Route::delete('/resultDelete/{id}', [ResultController::class, 'destroy']);
         Route::get('/students' , [StudentController::class, 'index']);
-        Route::get('/studentsstatus' , [StudentController::class, 'indexstatus']);
+        // Route::get('/studentsstatus' , [StudentController::class, 'indexstatus']);
         
         Route::post('logout' ,  [AuthController::class, 'logout']);
     });

@@ -3,7 +3,7 @@ import axios from "axios";
 import { useHistory } from "react-router";
 import { Link } from "react-router-dom";
 
-const EditResult = (props) => {
+const EditResultAd = (props) => {
     const history = useHistory();
 
     const [resultInput, setresult] = useState({
@@ -236,7 +236,7 @@ const EditResult = (props) => {
                     <div className="row justify-content-end w-100">
                         <div className="col-1 my-3 align-self-end">
                             <Link
-                                to="/user/result"
+                                to="/admin/result"
                                 className="btn btn-warning text-dark text-nowrap"
                             >
                                 <i className="fas fa-angle-left"></i> Back
@@ -257,4 +257,4 @@ const EditResult = (props) => {
     );
 };
 
-export default EditResult;
+export default EditResultAd;

@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import swal from "sweetalert";
 import axios from "axios";
+import { Link } from "react-router-dom";
 
 const Edit = (props) => {
     const [studentInput, setstudent] = useState({
@@ -9,6 +10,8 @@ const Edit = (props) => {
         email: "",
         industry: "",
     });
+
+    const [error_list, setError] = useState([]);
 
     const [pic, setpic] = useState([]);
     const [loading, setLoading] = useState(true);
@@ -50,6 +53,10 @@ const Edit = (props) => {
             .then((res) => {
                 if (res.data.status === 200) {
                     swal("Success", res.data.message, "success");
+                    setError([]);
+                } else if (res.data.status === 422) {
+                    swal("Validation Error", "", "warning");
+                    setError(res.data.errors);
                 }
             });
     };
@@ -88,6 +95,9 @@ const Edit = (props) => {
                             />
                             <label className="text-warning">Fast Name</label>
                         </div>
+                        <div className="text-warning">
+                            {error_list.first_Name}
+                        </div>
                     </div>
                     <div className="col-md-4 col-12 my-2">
                         <div className="form-floating mx-1">
@@ -101,6 +111,9 @@ const Edit = (props) => {
                             />
                             <label className="text-warning">Last Name</label>
                         </div>
+                        <span className="text-warning">
+                            {error_list.last_Name}
+                        </span>
                     </div>
                     <div className="col-md-4 col-12 my-2">
                         <div className="form-floating mx-1">
@@ -114,6 +127,7 @@ const Edit = (props) => {
                             />
                             <label className="text-warning">Email</label>
                         </div>
+                        <span className="text-warning">{error_list.email}</span>
                     </div>
                     <div className="col-md-4 col-12 my-2">
                         <div className="form-floating mx-1">
@@ -130,6 +144,9 @@ const Edit = (props) => {
                             </select>
                             <label className="text-warning">Industry</label>
                         </div>
+                        <span className="text-warning">
+                            {error_list.industry}
+                        </span>
                     </div>
                     <div className="col-md-4 col-12 my-2">
                         <div className="form-floating mx-1">
@@ -146,6 +163,9 @@ const Edit = (props) => {
                                 Profile Photo
                             </label>
                         </div>
+                        <span className="text-warning">
+                            {error_list.profile_photo}
+                        </span>
                     </div>
                     <div className="col-md-4 col-12 my-2">
                         <img
@@ -154,13 +174,23 @@ const Edit = (props) => {
                         />
                     </div>
                     <br />
-                    <div className="savebtn mt-3 mx-1 w-100">
-                        <button
-                            type="submit"
-                            className="btn btn-danger text-white float-end"
-                        >
-                            <i className="fas fa-save"></i> Update Candidate
-                        </button>
+                    <div className="row justify-content-end w-100">
+                        <div className="col-1 my-3 align-self-end">
+                            <Link
+                                to="/admin"
+                                className="btn btn-warning text-dark text-nowrap"
+                            >
+                                <i className="fas fa-angle-left"></i> Back
+                            </Link>
+                        </div>
+                        <div className="col-2 my-3">
+                            <button
+                                type="submit"
+                                className="btn btn-danger text-white text-nowrap"
+                            >
+                                <i className="fas fa-save"></i> Update Candidate
+                            </button>
+                        </div>
                     </div>
                 </form>
             </div>

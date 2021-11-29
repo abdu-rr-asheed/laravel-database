@@ -14,18 +14,11 @@ const Addresult = (props) => {
         assessor: "",
         overrall: "",
     });
-    const [studentID, setstudentID] = useState({
-        student_id: props.match.params.id,
-    });
+    const [error_list, setError] = useState([]);
 
     const handleInput = (e) => {
         e.persist();
         setresult({ ...resultInput, [e.target.name]: e.target.value });
-    };
-
-    const handleId = (e) => {
-        e.persist();
-        setstudentID({ student_id: e.target.name });
     };
 
     const [studentInput, setstudent] = useState([]);
@@ -62,10 +55,10 @@ const Addresult = (props) => {
                     assessor: "",
                 });
                 history.push("/user/result");
-                // setError([]);
+                setError([]);
             } else if (res.data.status === 422) {
                 swal("Validation Error", "", "warning");
-                // setError(res.data.errors);
+                setError(res.data.errors);
             }
         });
     };
@@ -133,14 +126,6 @@ const Addresult = (props) => {
             {/* <!-- Form --> */}
 
             <form className="d-flex flex-wrap" onSubmit={saveResult}>
-                {/* <input
-                        type="hidden"
-                        className="form-control bg-dark text-white border-warning"
-                        name="student_id"
-                        onChange={handleId}
-                        value={studentID.student_id}
-                        placeholder="Knowlage Area"
-                    /> */}
                 <div className="row addForm">
                     <div className="col-md-4 col-12 my-2">
                         <div className="form-floating mx-1">
@@ -156,19 +141,29 @@ const Addresult = (props) => {
                                 Knowlage Area
                             </label>
                         </div>
+                        <div className="text-warning">
+                            {error_list.knowledge_area}
+                        </div>
                     </div>
                     <div className="col-md-4 col-12 my-2">
                         <div className="form-floating mx-1">
-                            <input
-                                type="text"
+                            <select
                                 className="form-control bg-dark text-white border-warning"
                                 name="level"
                                 onChange={handleInput}
                                 value={resultInput.level}
                                 placeholder="Level"
-                            />
+                            >
+                                <option>Please choose one</option>
+                                <option value="level 1">level 1</option>
+                                <option value="level 2">level 2</option>
+                                <option value="level 3">level 3</option>
+                                <option value="level 4">level 4</option>
+                                <option value="level 5">level 5</option>
+                            </select>
                             <label className="text-warning">Level</label>
                         </div>
+                        <div className="text-warning">{error_list.level}</div>
                     </div>
                     <div className="col-md-4 col-12 my-2">
                         <div className="form-floating mx-1">
@@ -182,6 +177,7 @@ const Addresult = (props) => {
                             />
                             <label className="text-warning">Score</label>
                         </div>
+                        <div className="text-warning">{error_list.score}</div>
                     </div>
                     <div className="col-md-4 col-12 my-2">
                         <div className="form-floating mx-1">
@@ -195,18 +191,27 @@ const Addresult = (props) => {
                             />
                             <label className="text-warning">Assessor</label>
                         </div>
+                        <div className="text-warning">
+                            {error_list.assessor}
+                        </div>
                     </div>
                     <div className="col-md-4 col-12 my-2">
                         <div className="form-floating mx-1">
-                            <input
-                                type="text"
+                            <select
                                 className="form-control bg-dark text-white border-warning"
                                 name="overrall"
                                 onChange={handleInput}
                                 value={resultInput.overrall}
                                 placeholder="overrall"
-                            />
+                            >
+                                <option>Please choose one</option>
+                                <option value="pass">Pass</option>
+                                <option value="fail">Fail</option>
+                            </select>
                             <label className="text-warning">Overrall</label>
+                        </div>
+                        <div className="text-warning">
+                            {error_list.overrall}
                         </div>
                     </div>
                 </div>

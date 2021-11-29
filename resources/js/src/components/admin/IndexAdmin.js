@@ -63,7 +63,6 @@ const IndexAdmin = () => {
             }
         });
     };
-    console.log(allstudents);
 
     var student_HTMLTABLE = "";
     student_HTMLTABLE =
